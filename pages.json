@@ -1,0 +1,69 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+{
+			"path": "pages/clocklist/clocklist",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, 
+		{
+			"path": "pages/login/login",
+			"style": {"navigationBarTitleText": "Login"}
+		}, 
+		{
+			"path": "pages/register/register",
+			"style": {"navigationBarTitleText": "Register"}
+		}, {
+			"path": "pages/friendlist/friendlist",
+			"style": {
+				"navigationBarTitleText": "Friends"
+			}
+		},
+		{
+			"path": "pages/userinfo/userinfo",
+			"style": {
+				"navigationBarTitleText": "Me"
+			}
+		}, {
+			"path": "pages/focus/focus",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/data/data",
+			"style": {
+				"navigationBarTitleText": "Statistics"
+			}
+		}, {
+			"path": "pages/set/set",
+			"style": {
+				"navigationBarTitleText": "Settings"
+			}
+		}
+
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#aaaaff",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/clocklist/clocklist",
+			"iconPath": "static/clock.png",
+			"selectedIconPath": "static/clock.png",
+			"text": "闹钟"
+		}, {
+			"pagePath": "pages/focus/focus",
+			"iconPath": "static/lock.png",
+			"selectedIconPath": "static/lock.png",
+			"text": "专注"
+		}]
+	}
+}

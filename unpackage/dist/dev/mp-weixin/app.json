@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/clocklist/clocklist",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/focus/focus",
+    "pages/data/data",
+    "pages/set/set"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#aaaaff",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/clocklist/clocklist",
+        "iconPath": "static/clock.png",
+        "selectedIconPath": "static/clock.png",
+        "text": "闹钟"
+      },
+      {
+        "pagePath": "pages/focus/focus",
+        "iconPath": "static/lock.png",
+        "selectedIconPath": "static/lock.png",
+        "text": "专注"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
