@@ -1,22 +1,26 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-{
+		{
 			"path": "pages/clocklist/clocklist",
 			"style": {
 				"navigationStyle": "custom"
 			}
-		}, 
+		},
 		{
 			"path": "pages/login/login",
-			"style": {"navigationBarTitleText": "Login"}
-		}, 
+			"style": {
+				"navigationBarTitleText": "Login"
+			}
+		},
 		{
 			"path": "pages/register/register",
-			"style": {"navigationBarTitleText": "Register"}
+			"style": {
+				"navigationBarTitleText": "Register"
+			}
 		}, {
 			"path": "pages/friendlist/friendlist",
 			"style": {
-				"navigationBarTitleText": "Friends"
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -39,31 +43,37 @@
 			"style": {
 				"navigationBarTitleText": "Settings"
 			}
+		} ,{
+			"path": "pages/friendlist/friendInfo",
+			"style": {
+				"transparentTitle": "auto",
+				"navigationBarBackgroundColor": "#c4c4e9"
+			}
 		}
 
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	},
+],
+"globalStyle": {
+	"navigationBarTextStyle": "white",
+	"navigationBarTitleText": "",
+	"navigationBarBackgroundColor": "#c4c4e9",
+	"backgroundColor": "#c4c4e9"
+},
 
-	"tabBar": {
-		"color": "#7A7E83",
-		"selectedColor": "#aaaaff",
-		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		"list": [{
-			"pagePath": "pages/clocklist/clocklist",
-			"iconPath": "static/clock.png",
-			"selectedIconPath": "static/clock.png",
-			"text": "闹钟"
-		}, {
-			"pagePath": "pages/focus/focus",
-			"iconPath": "static/lock.png",
-			"selectedIconPath": "static/lock.png",
-			"text": "专注"
-		}]
-	}
+"tabBar": {
+	"color": "#7A7E83",
+	"selectedColor": "#aaaaff",
+	"borderStyle": "black",
+	"backgroundColor": "#ffffff",
+	"list": [{
+		"pagePath": "pages/clocklist/clocklist",
+		"iconPath": "static/clock.png",
+		"selectedIconPath": "static/clock.png",
+		"text": "闹钟"
+	}, {
+		"pagePath": "pages/focus/focus",
+		"iconPath": "static/lock.png",
+		"selectedIconPath": "static/lock.png",
+		"text": "专注"
+	}]
+}
 }
