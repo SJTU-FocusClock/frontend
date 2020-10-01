@@ -299,7 +299,8 @@
 		/* #ifdef H5 */
 		bottom: calc(30px + var(--window-bottom));
 		/* #endif */
-	}
+		
+	}   
 
 	.uni-fab__circle--rightTop {
 		right: 15px;
