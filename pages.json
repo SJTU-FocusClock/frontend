@@ -49,6 +49,9 @@
 				"transparentTitle": "auto",
 				"navigationBarBackgroundColor": "#c4c4e9"
 			}
+		},
+		{
+			"path":"pages/focus/timeOut"
 		}
 
 ],

@@ -18,6 +18,19 @@
 				</uni-list>
 
 			</uni-drawer>
+			
+		
+			
+			<view class="focus_content">
+				<div>start focus!</div>
+				<slider v-bind:value="60" step="5"  @change="sliderChange" min="0"
+				max="120" 
+				@changing="changing"
+				></slider>
+				<div>{{value}}:00</div>
+				<button>start</button>
+			</view>
+			
 		</view>
 	</view>
 </template>
@@ -26,11 +39,13 @@
 	import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
+
 	export default {
 		components: {
 			uniDrawer,
 			uniNavBar,
-			uniIcons
+			uniIcons,
+
 		},
 		data() {
 			return {
@@ -49,7 +64,9 @@
 					color: '#93989d',
 					size: '22',
 					type: 'gear'
-				}
+				},
+				value:60
+		
 			}
 		},
 		methods: {
@@ -90,7 +107,18 @@
 			change(e, type) {
 				console.log((type === 'showLeft' ? '左窗口' : '右窗口') + (e ? '打开' : '关闭'));
 				this[type] = e
-			}
+			},
+			start_focus(){
+				uni.navigateTo({
+					url:"./timeOut"
+				})
+			},
+			 sliderChange(e) {
+			            console.log('value 发生变化：' + e.detail.value)
+			        },
+					changing(e){
+						this.value=e.detail.value
+					}
 		},
 	}
 </script>
@@ -111,4 +139,38 @@
 		align-items: center;
 		justify-content: center;
 	}
+	.focus_content{
+		
+		display: flex;
+		flex-direction: column;
+		justify-content:center;
+		flex-grow:1;
+		/* 放在中间？ */
+		margin:auto;
+		
+	}
+	.focus_button{
+		display: flex;
+		min-width: 100px;
+		max-width: 100px;
+		min-height: 100px;
+		max-height: 100px;
+		border-radius: 50px;
+		font-size: 15px;
+		color:white;
+		background: #aaaaff;
+		margin: auto;
+		vertical-align: middle;
+		line-height: 100px;
+	}
+	.focus_button:hover{
+		background: #aaaaf0;
+	}
+	.focus_button:active{
+		background:#4CD964;
+	}
+	text{
+		text-align: center;
+	}
+
 </style>
