@@ -1,10 +1,10 @@
 <template>
-	<view>
+	<view class="all">
+		
 		
 	<!-- 不显示天数 -->
-	<uni-countdown :show-day="false" :hour="12" :minute="12" :second="12" :show-colon="false"></uni-countdown>	
-	<!-- 修改颜色 -->
-	<uni-countdown color="#FFFFFF" background-color="#00B26A" border-color="#00B26A" :day="1" :hour="2" :minute="30" :second="0"></uni-countdown>
+	<uni-countdown :show-day="false" :hour="hour" :minute="minute" :second="second" ></uni-countdown>	
+	<button>cancle</button>
 	</view>
 	
 </template>
@@ -17,14 +17,33 @@
 		},
 		data(){
 			return{
-				
+				hour,minute,second
 			}
 		},
-		onLoad(){
-			
+		onLoad(options){
+			var data=JSON.parse(options.value);
+			this.hour=data/60;
+			this.minute=data-hour*60;
+			this.second=0;
 		},
 		methods:{
 			
 		}
 	}
 </script>
+
+<style>
+
+	.all{
+		display: flex;
+		flex-direction: column;
+		margin: 20%;
+	}
+	button{
+		height: 40px;
+		text-align: center;
+		font-size: 15px;
+		background-color:#AAAAFF;
+		/* color:white */
+	}
+</style>

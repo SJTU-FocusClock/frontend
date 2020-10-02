@@ -20,15 +20,21 @@
 			</uni-drawer>
 			
 		
-			
+			<div  class="font">start focus!</div>
 			<view class="focus_content">
-				<div>start focus!</div>
+				
 				<slider v-bind:value="60" step="5"  @change="sliderChange" min="0"
-				max="120" 
+				max="120" activeColor="#aaaaff"
 				@changing="changing"
 				></slider>
-				<div>{{value}}:00</div>
-				<button>start</button>
+				<div class="time_value">{{value}}:00</div>
+				
+			</view>
+			<button @click="start_focus" class="start_button">start</button>
+			<view class="mode">
+				<switch @change="change_mode"></switch>
+			<text >{{mode}}</text>
+			<a >设置白名单</a>
 			</view>
 			
 		</view>
@@ -65,7 +71,8 @@
 					size: '22',
 					type: 'gear'
 				},
-				value:60
+				value:60,
+				mode:"专注模式"
 		
 			}
 		},
@@ -109,8 +116,10 @@
 				this[type] = e
 			},
 			start_focus(){
+				let that=this;
+				var v=JSON.stringify(that.value);
 				uni.navigateTo({
-					url:"./timeOut"
+					url:"./timeOut?value="+v
 				})
 			},
 			 sliderChange(e) {
@@ -118,6 +127,15 @@
 			        },
 					changing(e){
 						this.value=e.detail.value
+					},
+					change_mode(e){
+						if(e.target.value){
+							this.mode="深度模式"
+						}
+						if(!e.target.value){
+							this.mode="专注模式"
+						}
+						 console.log('switch2 发生 change 事件，携带值为', e.target.value)
 					}
 		},
 	}
@@ -149,28 +167,43 @@
 		margin:auto;
 		
 	}
-	.focus_button{
-		display: flex;
-		min-width: 100px;
-		max-width: 100px;
-		min-height: 100px;
-		max-height: 100px;
-		border-radius: 50px;
-		font-size: 15px;
-		color:white;
-		background: #aaaaff;
-		margin: auto;
-		vertical-align: middle;
-		line-height: 100px;
-	}
-	.focus_button:hover{
-		background: #aaaaf0;
-	}
-	.focus_button:active{
-		background:#4CD964;
-	}
+
 	text{
 		text-align: center;
 	}
-
+	.time_value{
+		margin: 10px;
+		margin: auto;
+	}
+slider{
+	
+}
+.font{
+	font-size: 20px;
+	margin: 90px;
+}
+.start_button{
+	margin-top: 50px;
+	width: 10%;
+	background-color:#AAAAFF;
+	border-color: white;
+	color:white;
+	border-radius: 10px;
+	border-style: solid
+}
+.start_button:hover {
+	background-color:#AAAAf0;
+}
+.start_button:active {
+	background-color:#AAAAf0;
+}
+.mode{
+	display: flex;
+	flex-direction: column;
+	font-size: 15px;
+	margin: 20px;
+}
+a{
+	color: grey;
+}
 </style>
