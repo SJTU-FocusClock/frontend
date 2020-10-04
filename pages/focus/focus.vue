@@ -32,7 +32,7 @@
 			</view>
 			<button @click="start_focus" class="start_button">start</button>
 			<view class="mode">
-				<switch @change="change_mode"></switch>
+			<switch @change="change_mode"></switch>
 			<text >{{mode}}</text>
 			<a >设置白名单</a>
 			</view>
@@ -205,5 +205,6 @@ slider{
 }
 a{
 	color: grey;
+	
 }
 </style>

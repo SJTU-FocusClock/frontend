@@ -3,8 +3,10 @@
 		
 		
 	<!-- 不显示天数 -->
-	<uni-countdown :show-day="false" :hour="hour" :minute="minute" :second="second" ></uni-countdown>	
-	<button>cancle</button>
+	<uni-countdown :show-day="false" :hour="hour" :minute="minute" :second="second" 
+	backgroundColor="#efeff4"
+	></uni-countdown>	
+	<button @click="cancle">  cancle</button>
 	</view>
 	
 </template>
@@ -27,12 +29,25 @@
 			this.second=0;
 		},
 		methods:{
-			
+			cancle(){
+				console.log("cancle")
+				uni.navigateTo({
+				                url: '/pages/focus/focus',
+				            });
+			}
 		}
 	}
 </script>
 
 <style>
+page {
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		background-color: #efeff4;
+		min-height: 100%;
+		height: auto;
+	}
 
 	.all{
 		display: flex;
@@ -40,10 +55,11 @@
 		margin: 20%;
 	}
 	button{
-		height: 40px;
+		
 		text-align: center;
 		font-size: 15px;
 		background-color:#AAAAFF;
-		/* color:white */
+		color:white;
+		padding: 3px 15px;
 	}
 </style>
