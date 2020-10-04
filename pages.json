@@ -39,9 +39,24 @@
 			"style": {
 				"navigationBarTitleText": "Settings"
 			}
-		}
-
-	],
+		}, {
+            "path" : "pages/clocklist/quickclock",
+            "style" : {
+				"transparentTitle": "auto",
+					"navigationBarBackgroundColor": "#c4c4e9"
+			}
+        }, {
+            "path" : "pages/clocklist/normalclock",
+            "style" : {
+				"transparentTitle": "auto",
+				"navigationBarBackgroundColor": "#c4c4e9"
+			}
+        }
+        ,{
+            "path" : "pages/game/game",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -65,5 +80,11 @@
 			"selectedIconPath": "static/lock.png",
 			"text": "专注"
 		}]
-	}
+	},
+	"easycom": {
+	    "autoscan": true,
+	    "custom": {
+	      "^gg-(.*)": "@10yun/ggui-mobile/lib/gg-$1/gg-$1.vue"
+	    }
+	  }
 }
