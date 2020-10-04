@@ -12,8 +12,9 @@
 					</uni-list-item>
 					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="eye" clickable @click="onClick2" title="Statistics">
 					</uni-list-item>
+					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="info"  clickable @click="onClick4" title="Userinfo">
+					</uni-list-item>
 					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="gear"  clickable @click="onClick3" title="Settings">
-						
 					</uni-list-item>
 				</uni-list>
 
@@ -44,6 +45,11 @@
 					color: '#93989d',
 					size: '22',
 					type: 'eye'
+				},
+				info: {
+					color: '#93989d',
+					size: '22',
+					type: 'person'
 				},
 				gear: {
 					color: '#93989d',
@@ -76,6 +82,12 @@
 				console.log('执行click事件', e.data)
 				uni.navigateTo({
 				                url: '/pages/set/set',
+				            });
+			},
+			onClick4(e) {
+				console.log('执行click事件', e.data)
+				uni.navigateTo({
+				                url: '/pages/userinfo/userinfo',
 				            });
 			},
 			// 打开窗口
