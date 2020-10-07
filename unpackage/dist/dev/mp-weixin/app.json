@@ -3,16 +3,19 @@
     "pages/clocklist/clocklist",
     "pages/login/login",
     "pages/register/register",
+    "pages/friendlist/friendlist",
+    "pages/userinfo/userinfo",
     "pages/focus/focus",
     "pages/data/data",
-    "pages/set/set"
+    "pages/set/set",
+    "pages/friendlist/friendInfo"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#c4c4e9",
+    "backgroundColor": "#c4c4e9"
   },
   "tabBar": {
     "color": "#7A7E83",

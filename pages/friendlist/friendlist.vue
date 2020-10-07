@@ -3,11 +3,12 @@
 		<uni-nav-bar  :status-bar="true"  backgroundColor="#c4c4e9"  @clickLeft="back"  left-icon="arrowleft" left-text="返回"  :fixed="true" color="white" rightIcon="personadd" @clickRight="addNew">
 			<view class="input-view">
 				<uni-icons class="input-uni-icon" type="search" size="22" color="#666666" />
-				<input confirm-type="search" class="nav-bar-input" type="text" placeholder="输入关键词搜索您的好友"   @confirm="confirm">
+				<input confirm-type="search" class="nav-bar-input" type="text" style="color: #333333;" placeholder="输入手机号添加好友"   @confirm="confirm">
+				<uni-badge class="mybadge" type="error" text="5" size="small"></uni-badge>
 			</view>
 		</uni-nav-bar>
 		<uni-list :border="false">
-			<uni-list-chat v-for="item in listData" :avatar-circle="false" :key="item.id" :title="item.nickname" :avatar="item.avatar
+			<uni-list-chat  v-for="item in listData" :avatar-circle="true" :key="item.id" :title="item.nickname" :avatar="item.avatar
 			"   :clickable="true"  @click="onClick"></uni-list-chat>
 		</uni-list>
 		
@@ -120,7 +121,7 @@
 			methods: {
 				confirm() {
 					uni.showToast({
-						title: '搜索'
+						title: '添加好友'
 					})
 				},
 				onClick(e){
@@ -130,9 +131,10 @@
 					            });	
 				},
 				addNew(e){
-					uni.showModal({
-						title:"添加好友"
-					})
+					console.log('执行click事件')
+					uni.navigateTo({
+					                url: '/pages/friendlist/requestlist',
+					            });	
 				}
 			}
 		}
@@ -170,5 +172,10 @@
 		padding: 0 5px;
 		font-size: 28rpx;
 		background-color: #f8f8f8;
+	}
+	
+	.mybadge{
+		position: absolute;
+		right: 10rpx;
 	}
 </style>

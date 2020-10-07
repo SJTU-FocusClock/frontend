@@ -1,0 +1,12 @@
+{
+  "transparentTitle": "auto",
+  "navigationBarBackgroundColor": "#c4c4e9",
+  "usingComponents": {
+    "uni-list": "/components/uni-list/uni-list",
+    "uni-list-item": "/components/uni-list-item/uni-list-item",
+    "uni-fab": "/components/uni-fab/uni-fab",
+    "uni-icons": "/components/uni-icons/uni-icons",
+    "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar",
+    "uni-section": "/components/uni-section/uni-section"
+  }
+}
