@@ -12,10 +12,6 @@ page {
 	min-height: 100%;
 	height: auto;
 }
-view {
-	font-size: 14px;
-	line-height: inherit;
-}
 .content {
 	display: -webkit-box;
 	display: -webkit-flex;
