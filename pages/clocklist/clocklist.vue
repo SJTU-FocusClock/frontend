@@ -168,7 +168,7 @@
 				console.log(e)
 				if(e.index == 0) {
 					uni.navigateTo({
-						url:'/pages/clocklist/normalclock?id=0',
+						url:'/pages/normalclock/normalclock?id=0',
 					});
 				}
 				if(e.index == 1) {
