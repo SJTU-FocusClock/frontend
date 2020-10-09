@@ -170,7 +170,7 @@
 </script>
 
 <style lang="scss">
-.normal_clock {
+page {
 	background-color: #f4f4f4;
 }
 
