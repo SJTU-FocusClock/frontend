@@ -3,9 +3,10 @@
 		
 		
 	<!-- 不显示天数 -->
-	<uni-countdown :show-day="false" :hour="hour" :minute="minute" :second="second" 
+<!-- 	<uni-countdown class="countDown" :show-day="false" :hour="hour" :minute="minute" :second="second" 
 	backgroundColor="#efeff4"
-	></uni-countdown>	
+	></uni-countdown>	 -->
+	<span>01 : 00 : 00</span>
 	<button @click="cancle">  cancle</button>
 	</view>
 	
@@ -52,7 +53,7 @@ page {
 	.all{
 		display: flex;
 		flex-direction: column;
-		margin: 20%;
+		margin: 10%;
 	}
 	button{
 		
@@ -62,4 +63,11 @@ page {
 		color:white;
 		padding: 3px 15px;
 	}
+
+span{
+	text-align: center;
+	font-size: 30px;
+	margin-top: 30%;
+	margin-bottom:30%;
+}
 </style>

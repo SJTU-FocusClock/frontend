@@ -28,7 +28,7 @@
 				@changing="changing"
 				></slider>
 				<div class="time_value">{{value}}:00</div>
-				
+			 
 			</view>
 			<button @click="start_focus" class="start_button">start</button>
 			<view class="mode">
@@ -165,6 +165,7 @@
 		flex-grow:1;
 		/* 放在中间？ */
 		margin:auto;
+		width:80%;
 		
 	}
 
@@ -176,6 +177,7 @@
 		margin: auto;
 	}
 slider{
+	width:100%;
 	
 }
 .font{
@@ -184,7 +186,7 @@ slider{
 }
 .start_button{
 	margin-top: 50px;
-	width: 10%;
+	width: 20%;
 	background-color:#AAAAFF;
 	border-color: white;
 	color:white;
