@@ -15,7 +15,7 @@
 		<YSteps   lineNum='0' color='#fff' backgroundColor='rgb(194,197,228)' :infoList='list'></YSteps>
 		</view>
 		<view v-if="this.index==1">
-			<text>本周每天专注时长</text>
+			<uni-section title="本周每天专注时长" type="line"></uni-section>
 		<histogram-chart
 		            :dataAs="histogramData1"
 		            canvasId="ht1"
@@ -27,7 +27,7 @@
 		                }
 		            }"
 		        />
-				<text>本年度每月专注时长</text>
+				<uni-section title="本年度每月专注时长" type="line"></uni-section>
 				<histogram-chart
 				            :dataAs="histogramData2"
 				            canvasId="ht2"
@@ -39,7 +39,7 @@
 				                }
 				            }"
 				        />
-						<text>本周每天起床时间</text>
+						<uni-section title="本周每天起床时间" type="line"></uni-section>
 						<line-chart ref="lineData" canvasId="lt1" :dataAs="lineData" :yAxisAs="{
 					formatter: {
 						type: 'String', //type:number percent String,额外参数:fixed:NUmber,name:String
