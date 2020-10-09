@@ -178,8 +178,7 @@
 	}
 slider{
 	width:100%;
-	    padding-left: 0px;
-	    padding-right: 35px;
+	margin:auto;
 }
 .font{
 	font-size: 20px;
@@ -209,5 +208,8 @@ slider{
 a{
 	color: grey;
 	
+}
+switch{
+	margin-left: 10px;
 }
 </style>
