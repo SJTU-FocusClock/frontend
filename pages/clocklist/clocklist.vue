@@ -12,11 +12,17 @@
 					</uni-list-item>
 					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="eye" clickable @click="onClick2" title="统计数据">
 					</uni-list-item>
+<<<<<<< HEAD
+					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="info"  clickable @click="onClick4" title="Userinfo">
+					</uni-list-item>
+					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="gear"  clickable @click="onClick3" title="Settings">
+=======
 					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="gear"  clickable @click="onClick3" title="设置">
 						
 					</uni-list-item>
 					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="undo"  clickable @click="onClick4" title="退出登录">
 						
+>>>>>>> ec1fe27492e3f205f5a949dc9a08e3aeb1fdc840
 					</uni-list-item>
 				</uni-list>
 
@@ -47,6 +53,11 @@
 					color: '#93989d',
 					size: '22',
 					type: 'eye'
+				},
+				info: {
+					color: '#93989d',
+					size: '22',
+					type: 'person'
 				},
 				gear: {
 					color: '#93989d',
@@ -87,6 +98,12 @@
 				            });
 			},
 			onClick4(e) {
+<<<<<<< HEAD
+				console.log('执行click事件', e.data)
+				uni.navigateTo({
+				                url: '/pages/userinfo/userinfo',
+				            });
+=======
 				uni.showModal({
 					title: '提示',
 					content: `退出登录`,
@@ -98,6 +115,7 @@
 						}
 					}
 				})
+>>>>>>> ec1fe27492e3f205f5a949dc9a08e3aeb1fdc840
 			},
 			// 打开窗口
 			showDrawer(e) {
