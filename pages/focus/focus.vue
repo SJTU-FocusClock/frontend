@@ -119,12 +119,6 @@
 				            });
 			},
 			onClick4(e) {
-
-				console.log('执行click事件', e.data)
-				uni.navigateTo({
-				                url: '/pages/userinfo/userinfo',
-				            });
-
 				uni.showModal({
 					title: '提示',
 					content: `退出登录`,

@@ -1,23 +1,24 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
 		{
-			"path": "pages/clocklist/clocklist",
+			"path": "pages/register/register",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "Register"
 			}
-		},
-		{
+		},{
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "Login"
 			}
 		},
 		{
-			"path": "pages/register/register",
+			"path": "pages/clocklist/clocklist",
 			"style": {
-				"navigationBarTitleText": "Register"
+				"navigationStyle": "custom"
 			}
-		}, {
+		},
+		 {
 			"path": "pages/friendlist/friendlist",
 			"style": {
 				"navigationStyle": "custom"
@@ -67,6 +68,21 @@
 				"navigationBarBackgroundColor": "#c4c4e9"
 			}
 
+		},
+		{
+		    "path" : "pages/clocklist/quickclock",
+		    "style" : {
+				"transparentTitle": "auto",
+					"navigationBarBackgroundColor": "#c4c4e9"
+			}
+		}, {
+		    "path" : "pages/normalclock/normalclock",
+		    "style" : {
+				// "transparentTitle": "auto",
+				// "navigationBarBackgroundColor": "#c4c4e9"
+				"navigationStyle":"custom",
+				"navigationBarBackgroundColor": "#c4c4e9"
+			}
 		}
 	],
 	"globalStyle": {
@@ -92,5 +108,12 @@
 			"selectedIconPath": "static/lock.png",
 			"text": "专注"
 		}]
-	}
+	},
+	
+	"easycom": {
+		    "autoscan": true,
+		    "custom": {
+		      "^gg-(.*)": "@10yun/ggui-mobile/lib/gg-$1/gg-$1.vue"
+		    }
+		  }
 }
