@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar :status-bar="true" left-icon="bars" title="Focus" @clickLeft="showDrawer('showLeft')" />
+		<uni-nav-bar :status-bar="true" background-color="#c4c4e9"  color="white" left-icon="bars" title="Focus" @clickLeft="showDrawer('showLeft')" />
 		<view class="content">
 			<uni-drawer ref="showLeft" mode="left" :width="250" @change="change($event,'showLeft')">
 				<view style="width: 250px;height: 150px;padding-left: 75px;padding-top: 50px;">
@@ -8,13 +8,21 @@
 				</view>
 
 				<uni-list :border="false">
-					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="chatboxes" clickable title="Friends"  @click="onClick1" >
+					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="chatboxes" clickable title="我的好友"  @click="onClick1" >
 					</uni-list-item>
-					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="eye" clickable @click="onClick2" title="Statistics">
+					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="eye" clickable @click="onClick2" title="统计数据">
 					</uni-list-item>
+<<<<<<< HEAD
 					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="info"  clickable @click="onClick4" title="Userinfo">	
 					</uni-list-item>
 					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="gear"  clickable @click="onClick3" title="Settings">
+=======
+					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="gear"  clickable @click="onClick3" title="设置">
+						
+					</uni-list-item>
+					<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="undo"  clickable @click="onClick4" title="退出登录">
+						
+>>>>>>> ec1fe27492e3f205f5a949dc9a08e3aeb1fdc840
 					</uni-list-item>
 				</uni-list>
 
@@ -55,6 +63,11 @@
 					color: '#93989d',
 					size: '22',
 					type: 'gear'
+				},
+				undo: {
+					color: '#93989d',
+					size: '22',
+					type: 'undo'
 				}
 			}
 		},
@@ -85,10 +98,24 @@
 				            });
 			},
 			onClick4(e) {
+<<<<<<< HEAD
 				console.log('执行click事件', e.data)
 				uni.navigateTo({
 				                url: '/pages/userinfo/userinfo',
 				            });
+=======
+				uni.showModal({
+					title: '提示',
+					content: `退出登录`,
+					success: function(res) {
+						if (res.confirm) {
+							console.log('用户点击确定')
+						} else if (res.cancel) {
+							console.log('用户点击取消')
+						}
+					}
+				})
+>>>>>>> ec1fe27492e3f205f5a949dc9a08e3aeb1fdc840
 			},
 			// 打开窗口
 			showDrawer(e) {

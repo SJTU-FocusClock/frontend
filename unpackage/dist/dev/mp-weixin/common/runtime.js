@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/uni-icons/uni-icons":1,"components/uni-drawer/uni-drawer":1,"components/uni-list-item/uni-list-item":1,"components/uni-list/uni-list":1,"components/uni-nav-bar/uni-nav-bar":1,"components/uni-badge/uni-badge":1,"components/uni-status-bar/uni-status-bar":1};
+/******/ 		var cssChunks = {"components/uni-icons/uni-icons":1,"components/uni-drawer/uni-drawer":1,"components/uni-list-item/uni-list-item":1,"components/uni-list/uni-list":1,"components/uni-nav-bar/uni-nav-bar":1,"components/uni-list-chat/uni-list-chat":1,"components/uni-section/uni-section":1,"components/uni-fab/uni-fab":1,"components/uni-badge/uni-badge":1,"components/uni-status-bar/uni-status-bar":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/uni-icons/uni-icons":"components/uni-icons/uni-icons","components/uni-drawer/uni-drawer":"components/uni-drawer/uni-drawer","components/uni-list-item/uni-list-item":"components/uni-list-item/uni-list-item","components/uni-list/uni-list":"components/uni-list/uni-list","components/uni-nav-bar/uni-nav-bar":"components/uni-nav-bar/uni-nav-bar","components/uni-badge/uni-badge":"components/uni-badge/uni-badge","components/uni-status-bar/uni-status-bar":"components/uni-status-bar/uni-status-bar"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/uni-icons/uni-icons":"components/uni-icons/uni-icons","components/uni-drawer/uni-drawer":"components/uni-drawer/uni-drawer","components/uni-list-item/uni-list-item":"components/uni-list-item/uni-list-item","components/uni-list/uni-list":"components/uni-list/uni-list","components/uni-nav-bar/uni-nav-bar":"components/uni-nav-bar/uni-nav-bar","components/uni-list-chat/uni-list-chat":"components/uni-list-chat/uni-list-chat","components/uni-section/uni-section":"components/uni-section/uni-section","components/uni-fab/uni-fab":"components/uni-fab/uni-fab","components/uni-badge/uni-badge":"components/uni-badge/uni-badge","components/uni-status-bar/uni-status-bar":"components/uni-status-bar/uni-status-bar"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
