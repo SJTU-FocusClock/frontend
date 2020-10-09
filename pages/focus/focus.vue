@@ -178,7 +178,8 @@
 	}
 slider{
 	width:100%;
-	
+	    padding-left: 0px;
+	    padding-right: 35px;
 }
 .font{
 	font-size: 20px;
