@@ -121,12 +121,6 @@
 						selectedIconPath: '/static/clock2.png',
 						text: '闹钟',
 						active: false
-					},
-					{
-						iconPath: '/static/quickclock.png',
-						selectedIconPath: '/static/quickclock.png',
-						text: '快速闹钟',
-						active: false
 					}
 				]
 			}
@@ -166,16 +160,16 @@
 			},
 			trigger(e) {
 				console.log(e)
-				if(e.index == 0) {
+				// if(e.index == 0) {
 					uni.navigateTo({
-						url:'/pages/clocklist/normalclock?id=0',
+						url:'/pages/normalclock/normalclock?id=0',
 					});
-				}
-				if(e.index == 1) {
-					uni.navigateTo({
-						url:'/pages/clocklist/quickclock',
-					});
-				}
+				// }
+				// if(e.index == 1) {
+				// 	uni.navigateTo({
+				// 		url:'/pages/clocklist/quickclock',
+				// 	});
+				// }
 			},
 			// 打开窗口
 			showDrawer(e) {
@@ -216,7 +210,8 @@
 		width: 20%;
 	}
 	
-	.uni-list
+	.clockList
+	/* .uni-list */
 	.uni-list-item__content-title {
 		font-size:xx-large;
 		margin-left: 10px;
