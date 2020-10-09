@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar :status-bar="true" left-icon="bars" title="Clock" @clickLeft="showDrawer('showLeft')" />
+		<uni-nav-bar :status-bar="true" color="white" backgroundColor='#c4c4e9' left-icon="bars" title="Clock" @clickLeft="showDrawer('showLeft')" />
 		<view class="content">
 			<uni-drawer ref="showLeft" mode="left" :width="250" @change="change($event,'showLeft')">
 				<view style="width: 250px;height: 150px;padding-left: 75px;padding-top: 50px;">
@@ -170,6 +170,9 @@
 					success: function(res) {
 						if (res.confirm) {
 							console.log('用户点击确定')
+							uni.redirectTo({
+															url:'/pages/login/login'
+														})
 						} else if (res.cancel) {
 							console.log('用户点击取消')
 						}

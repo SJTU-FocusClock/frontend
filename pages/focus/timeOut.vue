@@ -6,8 +6,8 @@
 <!-- 	<uni-countdown class="countDown" :show-day="false" :hour="hour" :minute="minute" :second="second" 
 	backgroundColor="#efeff4"
 	></uni-countdown>	 -->
-	<span>01 : 00 : 00</span>
-	<button @click="cancle">  cancle</button>
+	<uni-countdown :show-day="false" :hour="hour" :minute="minute" :second="second"></uni-countdown>
+	<button @click="cancel">  cancel</button>
 	</view>
 	
 </template>
@@ -30,8 +30,8 @@
 			this.second=0;
 		},
 		methods:{
-			cancle(){
-				console.log("cancle")
+			cancel(){
+				console.log("cancel")
 				uni.navigateTo({
 				                url: '/pages/focus/focus',
 				            });
@@ -49,7 +49,6 @@ page {
 		min-height: 100%;
 		height: auto;
 	}
-
 	.all{
 		display: flex;
 		flex-direction: column;
@@ -63,8 +62,7 @@ page {
 		color:white;
 		padding: 3px 15px;
 	}
-
-span{
+uni-countdown {
 	text-align: center;
 	font-size: 30px;
 	margin-top: 30%;

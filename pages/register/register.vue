@@ -1,165 +1,134 @@
 <template>
-	<view>
+	<view class="register">
+	
 		<view class="content">
-
-			<view class = "avatar">
-				<image style="width: 100px; height: 100px; border-radius:100px;" :mode="'scaleToFill'" src="../../static/avatar.png"
-				 clickable @click="onClick"></image>
+			<!-- 头部logo -->
+			<view class="header">
+				<image src="../../static/avatar.png"></image>
 			</view>
-
-			<view class="buttons">
-				<input class="uni-input" type="number" placeholder="请输入手机号" />
-				<button type="primary" size="mini" style="background-color: #aaaaff;">发送验证码</button>
+			<!-- 主体 -->
+			<view class="main">
+				<wInput
+					v-model="phoneData"
+					type="text"
+					maxlength="11"
+					placeholder="请输入手机号"
+				></wInput>
+		
+				<wInput
+					v-model="verCode"
+					type="number"
+					maxlength="4"
+					placeholder="请输入验证码"
+					
+					isShowCode
+					ref="runCode"
+					@setCode="getVerCode()"
+				></wInput>
+					
 			</view>
-
-			<padding>
 				
-			</padding>
-
-			<view class="buttons">
-				<input class="uni-input" type="number" placeholder="请输入验证码" />
-				<button type="primary" size="mini" style="background-color: #aaaaff;">验证并注册</button>
-			</view>
+			<wButton 
+				class="wbutton"
+				text="注 册"
+				:rotate="isRotate" 
+				bgColor="#c4c4e9"
+				@click.native="startReg()"
+			></wButton>
+			
+			<!-- 底部信息 -->
+	
 		</view>
 	</view>
 </template>
 
 <script>
-	import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
-	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
-	import uniIcons from "@/components/uni-icons/uni-icons.vue"
-
+	var _this;
+	import wInput from '../../components/watch-login/watch-input.vue' //input
+	import wButton from '../../components/watch-login/watch-button.vue' //button
+	
 	export default {
-		components: {
-
-		},
 		data() {
 			return {
-				title: 'input',
-				focus: false,
-				inputValue: '',
-				showClearIcon: true,
-				inputClearValue: '',
-				changeValue: '',
-				showPassword: true,
-				src: '../../../static/eye-1.png',
-				platform: '',
-				isNvue: false,
+				//logo图片 base64
+				phoneData:'', // 用户/电话
+		
+				verCode:"", //验证码
+				isRotate: false, //是否加载旋转
 			}
+		},
+		components:{
+			wInput,
+			wButton,
+		},
+		mounted() {
+			_this= this;
 		},
 		methods: {
-			onKeyInput: function(event) {
-				this.inputValue = event.detail.value
-			},
-			replaceInput: function(event) {
-				var value = event.detail.value;
-				if (value === '11') {
-					this.changeValue = '2';
+			getVerCode(){
+				//获取验证码
+				if (_this.phoneData.length != 11) {
+				     uni.showToast({
+				        icon: 'none',
+						position: 'bottom',
+				        title: '手机号不正确'
+				    });
+				    return false;
 				}
+				console.log("获取验证码")
+				this.$refs.runCode.$emit('runCode'); //触发倒计时（一般用于请求成功验证码后调用）
+				uni.showToast({
+				    icon: 'none',
+					position: 'bottom',
+				    title: '模拟倒计时触发'
+				});
+				
+				setTimeout(function(){
+					_this.$refs.runCode.$emit('runCode',0); //假装模拟下需要 终止倒计时
+					uni.showToast({
+					    icon: 'none',
+						position: 'bottom',
+					    title: '模拟倒计时终止'
+					});
+				},3000)
 			},
-			hideKeyboard: function(event) {
-				if (event.detail.value === '123') {
-					uni.hideKeyboard();
+		    startReg() {
+				//注册
+				if(this.isRotate){
+					//判断是否加载中，避免重复点击请求
+					return false;
 				}
-			},
-			clearInput: function(event) {
-				this.inputClearValue = event.detail.value;
-				if (event.detail.value.length > 0) {
-					this.showClearIcon = true;
-				} else {
-					this.showClearIcon = false;
+				if (this.phoneData.length !=11) {
+				    uni.showToast({
+				        icon: 'none',
+						position: 'bottom',
+				        title: '手机号不正确'
+				    });
+				    return false;
 				}
-			},
-			clearIcon: function() {
-				this.inputClearValue = '';
-			},
-			changePassword: function() {
-				this.showPassword = !this.showPassword;
-			},
-			onFocus() {
-				this.$mp.page.$getAppWebview().setStyle({
-					softinputNavBar: 'none'
+		       
+				if (this.verCode.length != 4) {
+				    uni.showToast({
+				        icon: 'none',
+						position: 'bottom',
+				        title: '验证码不正确'
+				    });
+				    return false;
+				}
+				console.log("注册成功")
+				_this.isRotate=true
+				setTimeout(function(){
+					_this.isRotate=false
+				},3000)
+				uni.switchTab({
+					url:"/pages/clocklist/clocklist"
 				})
-			},
-			onBlur() {
-				this.$mp.page.$getAppWebview().setStyle({
-					softinputNavBar: 'auto'
-				})
-			}
-		},
-		onLoad() {
-			this.platform = uni.getSystemInfoSync().platform
-			// #ifdef APP-PLUS-NVUE
-			this.isNvue = true
-			// #endif
+		    }
 		}
 	}
 </script>
 
-<style scoped>
-	page {
-		display: flex;
-		flex-direction: column;
-		box-sizing: border-box;
-		background-color: #efeff4;
-		min-height: 100%;
-		height: auto;
-	}
-
-	.title {
-		padding: 5px 13px;
-	}
-
-	.uni-input-wrapper {
-		/* #ifndef APP-NVUE */
-		/* display: flex; */
-		/* #endif */
-		padding: 10px 20px;
-		flex-direction: row;
-		/* flex-wrap: nowrap; */
-		background-color: #FFFFFF;
-	}
-
-	.uni-input {
-		height: 28px;
-		line-height: 28px;
-		font-size: 15px;
-		padding: 0px;
-		flex: 1;
-		background-color: #FFFFFF;
-	}
-
-	.uni-icon {
-		font-family: uniicons;
-		font-size: 24px;
-		font-weight: normal;
-		font-style: normal;
-		width: 24px;
-		height: 24px;
-		line-height: 24px;
-		color: #999999;
-	}
-
-	.uni-eye-active {
-		color: #aaaaff;
-	}
-
-
-
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.buttons {
-		display: flex;
-		flex-direction: row;
-		padding-top: 10rpx;
-	}
-
-	.avatar{
-		padding-top: 100rpx;
-	}
+<style>
+	@import url("../../components/watch-login/css/icon.css");
+	@import url("./css/main.css");
 </style>

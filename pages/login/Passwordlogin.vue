@@ -11,22 +11,16 @@
 					v-model="phoneData"
 					type="text"
 					maxlength="11"
-					placeholder="请输入手机号"
+					placeholder="请输入用户名/邮箱"
 				></wInput>
 				<wInput
-					v-model="verCode"
-					type="number"
-					maxlength="4"
-					placeholder="请输入验证码"
-					
-					isShowCode
-					ref="runCode"
-					@setCode="getVerCode()"
+					v-model="passData"
+					type="password"
+					maxlength="11"
+					placeholder="请输入密码"
+					isShowPass='ture'
 				></wInput>
 			</view>
-			
-			<navigator hover-class="none" url="/pages/login/Passwordlogin" open-type="navigate" style="font-size: 25rpx; color:#555555; margin-left: 100rpx;">使用密码登录</navigator>
-			
 			<wButton 
 				class="wbutton"
 				text="登 录"
@@ -41,7 +35,7 @@
 			<view class="footer">
 				<navigator url="forget" open-type="navigate">找回密码</navigator>
 				<text>|</text>
-				<navigator url="/pages/register/register" open-type="navigate">注册账号</navigator>
+				<navigator url="register" open-type="navigate">注册账号</navigator>
 			</view>
 		</view>
 	</view>
@@ -55,8 +49,9 @@
 	export default {
 		data() {
 			return {
+				//logo图片 base64
 				phoneData:'', //用户/电话
-				verCode:"", //验证码
+				passData:'', //密码
 				isRotate: false, //是否加载旋转
 			};
 		},
@@ -85,65 +80,39 @@
 				// 	// error
 				// }
 			},
-			getVerCode(){
-				//获取验证码
-				if (_this.phoneData.length != 11) {
-				     uni.showToast({
-				        icon: 'none',
-						position: 'bottom',
-				        title: '手机号不正确'
-				    });
-				    return false;
-				}
-				console.log("获取验证码")
-				this.$refs.runCode.$emit('runCode'); //触发倒计时（一般用于请求成功验证码后调用）
-				uni.showToast({
-				    icon: 'none',
-					position: 'bottom',
-				    title: '模拟倒计时触发'
-				});
-				
-				setTimeout(function(){
-					_this.$refs.runCode.$emit('runCode',0); //假装模拟下需要 终止倒计时
-					uni.showToast({
-					    icon: 'none',
-						position: 'bottom',
-					    title: '模拟倒计时终止'
-					});
-				},3000)
-			},
 		    startLogin(e){
                 console.log(e)
-				//注册
+				//登录
 				if(this.isRotate){
 					//判断是否加载中，避免重复点击请求
 					return false;
 				}
-				if (this.phoneData.length !=11) {
-				    uni.showToast({
+				if (this.phoneData.length == "") {
+				     uni.showToast({
 				        icon: 'none',
 						position: 'bottom',
-				        title: '手机号不正确'
+				        title: '用户名不能为空'
 				    });
-				    return false;
+				    return;
 				}
-						       
-				if (this.verCode.length != 4) {
-				    uni.showToast({
-				        icon: 'none',
+		        if (this.passData.length < 5) {
+		            uni.showToast({
+		                icon: 'none',
 						position: 'bottom',
-				        title: '验证码不正确'
-				    });
-				    return false;
-				}
+		                title: '密码不正确'
+		            });
+		            return;
+		        }
+				
 				console.log("登录成功")
 				
 				_this.isRotate=true
 				setTimeout(function(){
 					_this.isRotate=false
 				},3000)
-				
-				
+				uni.switchTab({
+					url:"/pages/clocklist/clocklist"
+				})
 				// uni.showLoading({
 				// 	title: '登录中'
 				// });
@@ -183,11 +152,9 @@
 				// }).catch(err => {
 				// 	uni.hideLoading();
 				// })
-				uni.switchTab({
-					url:"/pages/clocklist/clocklist"
-				})
+				
 		    }
-			
+		
 		}
 	}
 </script>

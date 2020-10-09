@@ -1,15 +1,21 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		
+		{
+					"path": "pages/login/login",
+					"style": {
+						"navigationBarTitleText": "登录"
+					}
+				},
+				{
+							"path": "pages/login/Passwordlogin",
+							"style": {
+								"navigationBarTitleText": "登录"
+							}
+						},
 		{
 			"path": "pages/register/register",
 			"style": {
-				"navigationBarTitleText": "Register"
-			}
-		},{
-			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": "Login"
+				"navigationBarTitleText": "注册"
 			}
 		},
 		{
@@ -27,22 +33,24 @@
 		{
 			"path": "pages/userinfo/userinfo",
 			"style": {
-				"navigationBarTitleText": "Me"
+				"transparentTitle": "auto",
+				"navigationBarBackgroundColor": "#c4c4e9"
 			}
 		}, {
 			"path": "pages/focus/focus",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				 "enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/data/data",
 			"style": {
-				"navigationBarTitleText": "Statistics"
+				"navigationBarTitleText": "统计数据"
 			}
 		}, {
 			"path": "pages/set/set",
 			"style": {
-				"navigationBarTitleText": "Settings"
+				"navigationBarTitleText": "设置"
 			}
 		}, {
 			"path": "pages/friendlist/friendInfo",
