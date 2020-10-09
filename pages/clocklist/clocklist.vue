@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar :status-bar="true" left-icon="bars" title="Clock" @clickLeft="showDrawer('showLeft')" />
+		<uni-nav-bar :status-bar="true" left-icon="bars"   background-color="#c4c4e9"  color="white" title="Clock" @clickLeft="showDrawer('showLeft')" />
 		<view class="content">
 			<uni-drawer ref="showLeft" mode="left" :width="250" @change="change($event,'showLeft')">
 				<view style="width: 250px;height: 150px;padding-left: 75px;padding-top: 50px;">

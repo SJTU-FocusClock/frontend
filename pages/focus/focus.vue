@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar :status-bar="true" left-icon="bars" title="Focus" @clickLeft="showDrawer('showLeft')" />
+		<uni-nav-bar :status-bar="true" background-color="#c4c4e9"  color="white" left-icon="bars" title="Focus" @clickLeft="showDrawer('showLeft')" />
 		<view class="content">
 			<uni-drawer ref="showLeft" mode="left" :width="250" @change="change($event,'showLeft')">
 				<view style="width: 250px;height: 150px;padding-left: 75px;padding-top: 50px;">
@@ -18,6 +18,25 @@
 				</uni-list>
 
 			</uni-drawer>
+			
+		
+			<div  class="font">start focus!</div>
+			<view class="focus_content">
+				
+				<slider v-bind:value="60" step="5"  @change="sliderChange" min="0"
+				max="120" activeColor="#aaaaff"
+				@changing="changing"
+				></slider>
+				<div class="time_value">{{value}}:00</div>
+			 
+			</view>
+			<button @click="start_focus" class="start_button">start</button>
+			<view class="mode">
+			<switch @change="change_mode"></switch>
+			<text >{{mode}}</text>
+			<a >设置白名单</a>
+			</view>
+			
 		</view>
 	</view>
 </template>
@@ -26,11 +45,13 @@
 	import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
+
 	export default {
 		components: {
 			uniDrawer,
 			uniNavBar,
-			uniIcons
+			uniIcons,
+
 		},
 		data() {
 			return {
@@ -49,7 +70,10 @@
 					color: '#93989d',
 					size: '22',
 					type: 'gear'
-				}
+				},
+				value:60,
+				mode:"专注模式"
+		
 			}
 		},
 		methods: {
@@ -90,7 +114,29 @@
 			change(e, type) {
 				console.log((type === 'showLeft' ? '左窗口' : '右窗口') + (e ? '打开' : '关闭'));
 				this[type] = e
-			}
+			},
+			start_focus(){
+				let that=this;
+				var v=JSON.stringify(that.value);
+				uni.navigateTo({
+					url:"./timeOut?value="+v
+				})
+			},
+			 sliderChange(e) {
+			            console.log('value 发生变化：' + e.detail.value)
+			        },
+					changing(e){
+						this.value=e.detail.value
+					},
+					change_mode(e){
+						if(e.target.value){
+							this.mode="深度模式"
+						}
+						if(!e.target.value){
+							this.mode="专注模式"
+						}
+						 console.log('switch2 发生 change 事件，携带值为', e.target.value)
+					}
 		},
 	}
 </script>
@@ -111,4 +157,59 @@
 		align-items: center;
 		justify-content: center;
 	}
+	.focus_content{
+		
+		display: flex;
+		flex-direction: column;
+		justify-content:center;
+		flex-grow:1;
+		/* 放在中间？ */
+		margin:auto;
+		width:80%;
+		
+	}
+
+	text{
+		text-align: center;
+	}
+	.time_value{
+		margin: 10px;
+		margin: auto;
+	}
+slider{
+	width:100%;
+	margin:auto;
+}
+.font{
+	font-size: 20px;
+	margin: 90px;
+}
+.start_button{
+	margin-top: 50px;
+	width: 20%;
+	background-color:#AAAAFF;
+	border-color: white;
+	color:white;
+	border-radius: 10px;
+	border-style: solid
+}
+.start_button:hover {
+	background-color:#AAAAf0;
+}
+.start_button:active {
+	background-color:#AAAAf0;
+}
+.mode{
+	display: flex;
+	flex-direction: column;
+	font-size: 15px;
+	margin: 20px;
+}
+a{
+	color: grey;
+	
+}
+switch{
+	margin-left: 10px;
+}
 </style>
