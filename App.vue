@@ -1,6 +1,7 @@
 <script>
 	export default {
 		onLaunch: function() {
+			/* app启动时触发 */
 			console.log('App Launch')
 		},
 		onShow: function() {
