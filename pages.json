@@ -110,9 +110,7 @@
 				"navigationBarTitleText": "typist"
 			}
 		},
-		{
-			"path":"pages/game/turnTable"
-		}
+	
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
