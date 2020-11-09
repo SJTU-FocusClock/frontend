@@ -25,8 +25,13 @@
 		
 		<uni-popup ref="popup" type="dialog" @change="change">
 			<uni-popup-dialog mode="input" title="时间设定" value="" placeholder="请输入您想要专注的分钟数/min" @confirm="dialogInputConfirm"></uni-popup-dialog>
-		</uni-popup>
-			
+		</uni-popup>		
+		
+		
+		<uni-popup ref="whitelist" type="dialog" @change="change">
+			<uniPopupWhiteList mode="input" title="白名单设定" @confirm="dialogInputConfirm"></uniPopupWhiteList>
+		</uni-popup>	
+		
 		
 		
 		<view class="content">
@@ -56,6 +61,7 @@
 	import uniPopup from '@/components/uni-popup/uni-popup.vue'
 	import uniPopupMessage from '@/components/uni-popup/uni-popup-message.vue'
 	import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue'
+	import uniPopupWhiteList from '@/components/uni-popup/uni-popup-whitelist.vue'
 	import uniCountdown from '@/components/uni-countdown/uni-countdown.vue'
 	
 	export default {
@@ -66,7 +72,8 @@
 			uniPopup,
 			uniPopupMessage,
 			uniPopupDialog,
-			uniCountdown
+			uniCountdown,
+			uniPopupWhiteList
 		},
 		data() {
 			return {
@@ -210,6 +217,7 @@
 				uni.showToast({
 					title:"倒计时结束"
 				})
+				this.isdisabled=false;
 			},
 			stop(){
 				let _this = this; 
@@ -220,7 +228,7 @@
 						if (res.confirm) {
 							console.log('用户点击确定')
 							uni.switchTab({
-								url:"/pages/clocklist/clocklist"
+								url:"/pages/focus/focus"
 							})
 							}
 						else if (res.cancel) {
@@ -231,11 +239,15 @@
 			},
 			
 			setwhite(){
-				uni.showToast({
-					title:"设置白名单"
-				})
+				// uni.showToast({
+				// 	title:"设置白名单"
+				// })
+				this.$refs.whitelist.open()
 			}
 		},
+	onShow() {
+
+	}
 	}
 </script>
 

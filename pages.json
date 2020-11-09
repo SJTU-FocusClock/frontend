@@ -1,17 +1,17 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		 {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
 		{
-					"path": "pages/login/login",
-					"style": {
-						"navigationBarTitleText": "登录"
-					}
-				},
-				{
-							"path": "pages/login/Passwordlogin",
-							"style": {
-								"navigationBarTitleText": "登录"
-							}
-						},
+			"path": "pages/login/Passwordlogin",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
 		{
 			"path": "pages/register/register",
 			"style": {
@@ -24,7 +24,7 @@
 				"navigationStyle": "custom"
 			}
 		},
-		 {
+		{
 			"path": "pages/friendlist/friendlist",
 			"style": {
 				"navigationStyle": "custom"
@@ -40,7 +40,7 @@
 			"path": "pages/focus/focus",
 			"style": {
 				"navigationStyle": "custom",
-				 "enablePullDownRefresh": true
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/data/data",
@@ -61,9 +61,9 @@
 		},
 		{
 
-			"path":"pages/focus/timeOut"
-},
-{
+			"path": "pages/focus/timeOut"
+		},
+		{
 			"path": "pages/friendlist/requestlist",
 			"style": {
 				"navigationBarTitleText": "好友请求"
@@ -78,19 +78,40 @@
 
 		},
 		{
-		    "path" : "pages/clocklist/quickclock",
-		    "style" : {
+			"path": "pages/clocklist/quickclock",
+			"style": {
 				"transparentTitle": "auto",
-					"navigationBarBackgroundColor": "#c4c4e9"
-			}
-		}, {
-		    "path" : "pages/normalclock/normalclock",
-		    "style" : {
-				// "transparentTitle": "auto",
-				// "navigationBarBackgroundColor": "#c4c4e9"
-				"navigationStyle":"custom",
 				"navigationBarBackgroundColor": "#c4c4e9"
 			}
+		}, {
+			"path": "pages/normalclock/normalclock",
+			"style": {
+				// "transparentTitle": "auto",
+				// "navigationBarBackgroundColor": "#c4c4e9"
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#c4c4e9"
+			}
+		},
+		{
+			"path": "pages/game/caculate",
+			"style": {
+				"navigationBarTitleText": "算数游戏"
+			}
+		},
+		{
+			"path":"pages/game/game2048",
+			"style": {
+				"navigationBarTitleText": "2048"
+			}
+		},
+		{
+			"path":"pages/game/typist",
+			"style": {
+				"navigationBarTitleText": "typist"
+			}
+		},
+		{
+			"path":"pages/game/turnTable"
 		}
 	],
 	"globalStyle": {
@@ -98,7 +119,7 @@
 		"navigationBarTitleText": "",
 		"navigationBarBackgroundColor": "#c4c4e9",
 		"backgroundColor": "#c4c4e9"
-		
+
 	},
 
 	"tabBar": {
@@ -118,11 +139,11 @@
 			"text": "专注"
 		}]
 	},
-	
+
 	"easycom": {
-		    "autoscan": true,
-		    "custom": {
-		      "^gg-(.*)": "@10yun/ggui-mobile/lib/gg-$1/gg-$1.vue"
-		    }
-		  }
+		"autoscan": true,
+		"custom": {
+			"^gg-(.*)": "@10yun/ggui-mobile/lib/gg-$1/gg-$1.vue"
+		}
+	}
 }

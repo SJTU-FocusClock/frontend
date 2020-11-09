@@ -1,4 +1,5 @@
 <script>
+	var Vconsole=require("node_modules/vconsole/dist/vconsole.min.js")
 	export default {
 		onLaunch: function() {
 			/* app启动时触发 */

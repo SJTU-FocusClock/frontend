@@ -36,20 +36,6 @@
 			</uni-list-item>
 		</uni-list>
 		
-		<!-- <view class="clockList">
-			<view class="clockListItem" v-for="item in clockListData">
-				<view class="VMAM">
-					<text v-if="item.hour < 12">上午</text>
-					<text v-else>下午</text>	
-				</view>
-				<view class="timeAndDay">
-					<text class="time">{{item.hour}}:{{item.minute}}</text>
-					<text class="day">{{item.week}}</text>
-				</view>
-			</view>
-			
-			
-		</view> -->
 		<uni-fab ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal" @trigger="trigger"/>
 		
 	</view>
@@ -59,7 +45,6 @@
 	import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
-	//import DateTimePicker from "@/components/bory-dateTimePicker/bory-dateTimePicker.vue"
 
 	export default {
 		components: {
