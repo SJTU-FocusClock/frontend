@@ -4,8 +4,8 @@
 			请计算
 		</view>
 		<view class="content">
-		{{first}}+{{second}}= 
-		<input type="number" class="input" @input="onKeyInput" v-model="value"></input>
+		{{first}}{{op}}{{second}}= 
+		<input type="text" class="input" @input="onKeyInput" v-model="value"></input>
 	</view>
 	<button @click="submit">确定</button>
 	</view>
@@ -24,7 +24,8 @@
 			max:20,
 			min:0,
 			myResult:null,
-			value:""
+			value:"",
+			op:""
 			}
 		},
 		methods: {
@@ -33,9 +34,18 @@
 			            this.myResult = event.target.value
 			        },
 			restart() {
+				var ope=Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
 				this.first = Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
 				this.second=Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
-				this.result=this.first+this.second
+				if(ope%2==0)
+				{
+					this.op="+"
+					this.result=this.first+this.second
+				}
+				else{
+					this.op="-"
+					this.result=this.first-this.second
+				}
 				this.value=null
 				
 			},
@@ -58,9 +68,19 @@
 			}
 		},
 		onShow(){
+			var ope=Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
 			this.first = Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
 			this.second=Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
-			this.result=this.first+this.second
+			if(ope%2==0)
+			{
+				this.op="+"
+				this.result=this.first+this.second
+			}
+			else{
+				this.op="-"
+				this.result=this.first-this.second
+			}
+			
 		}
 		}
 </script>
@@ -86,9 +106,13 @@
 	.input{
 		width: 100rpx;
 		font-size: xx-large;
+		border:1px #0056B3 solid;
+		border-radius: 10px;
+		text-align: center;
 		
 		
 	}
+
 	button{
 		width:400rpx
 	}

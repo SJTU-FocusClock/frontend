@@ -72,24 +72,19 @@
 		{
 			"path": "pages/friendlist/dealrequest",
 			"style": {
-				"transparentTitle": "auto",
-				"navigationBarBackgroundColor": "#c4c4e9"
+				"transparentTitle": "auto"
 			}
 
 		},
 		{
 			"path": "pages/clocklist/quickclock",
 			"style": {
-				"transparentTitle": "auto",
-				"navigationBarBackgroundColor": "#c4c4e9"
+				"transparentTitle": "auto"
 			}
 		}, {
 			"path": "pages/normalclock/normalclock",
 			"style": {
-				// "transparentTitle": "auto",
-				// "navigationBarBackgroundColor": "#c4c4e9"
-				"navigationStyle": "custom",
-				"navigationBarBackgroundColor": "#c4c4e9"
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -109,13 +104,16 @@
 			"style": {
 				"navigationBarTitleText": "typist"
 			}
+		},
+		{
+			"path":"pages/test"
 		}
 	
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "",
-		"navigationBarBackgroundColor": "#c4c4e9",
+		"navigationBarBackgroundColor": "#aaaaff",
 		"backgroundColor": "#c4c4e9"
 
 	},
