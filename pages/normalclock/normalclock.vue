@@ -53,14 +53,14 @@
 				<gg-nav-group>
 					<uni-list class="other_setting_list">
 						<!-- 音量设置 -->
-						<uni-list-item title="音量">
+						<!-- <uni-list-item title="音量">
 							<bing-progress slot="footer" class="bp" :showInfo="false"
 								strokeWidth="4px" handleHeight="20px" 
 								handleWidth="20px" handleBorderRadius="10px"
 								:max="100" :min="0" :value="volume_value" 
 								:step="20" :continuous="false"
 								handleColor="#a1a1bf" activeColor="#bbbbdd" noActiveColor="#f0f0f0"></bing-progress>
-						</uni-list-item>
+						</uni-list-item> -->
 					</uni-list>
 					
 					<!-- 备注设置 -->
@@ -150,7 +150,9 @@
 				})
 			},
 			delete_clock: function() {
-				
+				uni.navigateBack({
+					
+				})
 			},
 			
 			//时间编辑版块，滑动获取选择的闹钟时间

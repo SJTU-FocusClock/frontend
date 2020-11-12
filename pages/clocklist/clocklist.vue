@@ -36,26 +36,7 @@
 		data() {
 			return {
 				
-				chatboxes: {
-					color: '#93989d',
-					size: '22',
-					type: 'chatboxes'
-				},
-				eye: {
-					color: '#93989d',
-					size: '22',
-					type: 'eye'
-				},
-				gear: {
-					color: '#93989d',
-					size: '22',
-					type: 'gear'
-				},
-				undo: {
-					color: '#93989d',
-					size: '22',
-					type: 'undo'
-				},
+				
 				clockListData: [
 					{
 						id: 1,//闹钟id

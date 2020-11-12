@@ -1,34 +1,33 @@
 <template>
 	<view>
-	<drawer></drawer>
-		
-		<uni-popup ref="popup" type="dialog" @change="change">
+		<drawer></drawer>
+		<uni-popup ref="popup" type="dialog">
 			<uni-popup-dialog mode="input" title="时间设定" value="" placeholder="请输入您想要专注的分钟数/min" @confirm="dialogInputConfirm"></uni-popup-dialog>
-		</uni-popup>		
-		
-		
-		<uni-popup ref="whitelist" type="dialog" @change="change">
+		</uni-popup>
+
+
+		<uni-popup ref="whitelist" type="dialog">
 			<uniPopupWhiteList mode="input" title="白名单设定" @confirm="dialogInputConfirm"></uniPopupWhiteList>
-		</uni-popup>	
-			
-		
+		</uni-popup>
+
+
 		<view class="content">
 			<image style="width: 600rpx;height: 600rpx;" src="../../static/avatar.png"> </image>
 			<view class="mode">
 				<switch color="#c4c4e9" @change="change_mode"></switch>
-				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;" >{{mode}}</text>
+				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
 			</view>
-			
-			<uni-countdown  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
-		
-		
-		<view class="b">
-			<button :disabled="isdisabled" @click="set_time" class="my_button">开始专注</button>
-			<button :disabled="!isdisabled" @click="stop" class="my_button"  >停止专注</button>
+
+			<uni-countdown :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
+
+
+			<view class="b">
+				<button :disabled="isdisabled" @click="set_time" class="my_button">开始专注</button>
+				<button :disabled="!isdisabled" @click="stop" class="my_button">停止专注</button>
 			</view>
-			<text  clickable @click="setwhite"  style="font-size: 30rpx; color: #808080;margin-top: 20rpx;" >设置白名单</text>
+			<text clickable @click="setwhite" style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">设置白名单</text>
 		</view>
-		
+
 	</view>
 </template>
 
@@ -42,6 +41,10 @@
 	import uniPopupWhiteList from '@/components/uni-popup/uni-popup-whitelist.vue'
 	import uniCountdown from '@/components/uni-countdown/uni-countdown.vue'
 	import drawer from '@/components/drawer.vue'
+
+
+	const audio=uni.createInnerAudioContext();
+	audio.src="http://mp3.9ku.com/hot/2004/07-17/41811.mp3";
 	
 	export default {
 		components: {
@@ -64,10 +67,10 @@
 					size: '22',
 					type: 'undo'
 				},
-				hour:0,
-				minute:0,
-				second:0,
-				isdisabled:false
+				hour: 0,
+				minute: 0,
+				second: 0,
+				isdisabled: false,
 			}
 		},
 		methods: {
@@ -86,15 +89,15 @@
 				return num;
 			},
 			confirm() {},
-			set_time(){
+			set_time() {
 				this.$refs.popup.open()
 			},
 			dialogInputConfirm(done, val) {
 				console.log(val);
-				this.isdisabled=true;
-				this.hour=val/60;
-				this.minute=val-this.hour*60;
-				this.second=0;
+				this.isdisabled = true;
+				this.hour = val / 60;
+				this.minute = val - this.hour * 60;
+				this.second = 0;
 				done();
 			},
 			/**
@@ -107,7 +110,7 @@
 				// 需要执行 done 才能关闭对话框
 				done()
 			},
-			
+
 			change_mode(e) {
 				if (e.target.value) {
 					this.mode = "深度模式"
@@ -117,14 +120,20 @@
 				}
 				console.log('switch2 发生 change 事件，携带值为', e.target.value)
 			},
-			end(){
+			end() {
 				uni.showToast({
-					title:"倒计时结束"
+					title: "倒计时结束"
 				})
-				this.isdisabled=false;
+				this.isdisabled = false;
+				audio.play();
+				uni.vibrateLong({
+				    success: function () {
+				        console.log('success');
+				    }
+				});
 			},
-			stop(){
-				let _this = this; 
+			stop() {
+				let _this = this;
 				uni.showModal({
 					title: '提示',
 					content: `中止专注吗？`,
@@ -132,26 +141,26 @@
 						if (res.confirm) {
 							console.log('用户点击确定')
 							uni.switchTab({
-								url:"/pages/focus/focus"
+								url: "/pages/focus/focus"
 							})
-							}
-						else if (res.cancel) {
+						} else if (res.cancel) {
 							console.log('用户点击取消')
 						}
-						}
-				})	
+					}
+				})
 			},
-			
-			setwhite(){
+
+			setwhite() {
 				// uni.showToast({
 				// 	title:"设置白名单"
 				// })
 				this.$refs.whitelist.open()
 			}
 		},
-	onShow() {
-
-	}
+		onHide() {
+		audio.destroy();
+		},
+		
 	}
 </script>
 
@@ -181,13 +190,14 @@
 		width: 80%;
 
 	}
-.time_setting{
-	width:80%;
-	border: #808080;
-	border-radius: 10rpx;
-}
 
-	
+	.time_setting {
+		width: 80%;
+		border: #808080;
+		border-radius: 10rpx;
+	}
+
+
 
 	slider {
 		width: 100%;
@@ -199,7 +209,8 @@
 		width: 100px;
 		background-color: #c4c4e9;
 		color: white;
-		border-radius: 10px;
+		border:none;
+		border-radius: 13px;
 		margin: 10px;
 		font-size: 40rpx;
 	}
@@ -210,12 +221,11 @@
 		flex-direction: column;
 		margin: 20px;
 	}
-	
+
 	.b {
 		margin-top: 20px;
 		display: flex;
 		flex-direction: row;
 	}
-
-
+	button{}
 </style>

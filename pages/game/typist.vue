@@ -3,7 +3,10 @@
 		<view class="show">
 			{{result}}
 		</view>
-		<input type="text" v-model="myResult"/>
+		<view class="inp">
+			<input type="text" v-model="myResult"/>
+		</view>
+		
 		<button @click="submit">确定</button>
 	</view>
 </template>
@@ -66,15 +69,20 @@
 	.show{
 		font-size: xx-large;
 		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		margin-top: 130px;
 	}
 	input{
 		font-size: xx-large;
 /* border: 1px solid rgba(0,255,255,.8); */
+margin-top: 30px;
+width:150px;
+
 		text-align: center;
-		border-radius: 10rpx;
+		border-bottom: #0056B3 1px solid;
+		
 	}
 	button{
-
+margin-top: 50px;
 	}
-	
+
 </style>

@@ -1,16 +1,16 @@
 <template>
   <view class="layout">
-	  <view class="goal">目标:100</view>
+	  <view class="goal">目标:200</view>
     <header>
       <span class="score">总分：{{score}}</span>
       <button class="star" @click="init">开始新的游戏</button>
       <span class="sd"></span>
     </header>
-    <view class="all-container">
-      <view class="background">
+    <view class="all-container"  >
+      <view class="background" >
         <span v-for="list in 16"></span>
       </view>
-      <view class="container">
+      <view class="container" @touchstart="start" @touchmove="movef">
         <span
           class="list"
           v-for="(e,index) in rocks"
@@ -33,8 +33,6 @@
 </template>
 
 <script>
-  import VConsole from "vconsole";
-  new VConsole();
   const pointSort = property => (firstRocks, secondRocks) => {
     const firstPoint = firstRocks[property];
     const secondPoint = secondRocks[property];
@@ -44,6 +42,7 @@
   export default {
     data() {
       return {
+		laststart:[],
         msg:'',
         score:0,
         rocks: [],
@@ -66,57 +65,33 @@
       };
     },
     mounted() {
-      window.app = this;
       this.init();
-      document.addEventListener("keydown", e => {
-        switch (e.key.toLocaleUpperCase ()){
-          case "ARROWRIGHT":
-          case 'D':
-            this.turn('right');
-            break;
-          case "ARROWLEFT":
-          case 'A':
-            this.turn('left');
-            break;
-          case "ARROWDOWN":
-          case 'S':
-            this.turn('down');
-            break;
-          case "ARROWUP":
-          case 'W':
-            this.turn('up');
-            break;
-        }
-      });
-      document.addEventListener('touchstart',(start)=>{
-        const moveFunc = (move) => {
-          move && move.preventDefault();
-          const dx = move.touches[0].clientX -  start.touches[0].clientX;
-          const dy = move.touches[0].clientY -  start.touches[0].clientY;
-          if(dx> this.directX){
-            this.turn('right');
-            document.removeEventListener('touchmove',moveFunc)
-          }else if(dx<-this.directX){
-            this.turn('left');
-            document.removeEventListener('touchmove',moveFunc)
-          }else if(dy>this.directX){
-            this.turn('down');
-            document.removeEventListener('touchmove',moveFunc)
-          }else if(dy<-this.directX){
-            this.turn('up');
-            document.removeEventListener('touchmove',moveFunc)
-          }
-        }
-        document.addEventListener('touchmove',moveFunc)
-        document.addEventListener('touchend',()=>{
-          document.removeEventListener('touchmove',moveFunc)
-        })
-      })
-
     },
     methods: {
-      isMobile() {
-        return window.navigator.userAgent.match(/Mobile/)
+		start(event){
+			console.log(event)
+			this.laststart=event.touches;
+		},
+		movef(event)
+		{
+			var move=event;
+			console.log(event)
+			move && move.preventDefault();
+			const dx = move.touches[0].clientX -  this.laststart[0].clientX;
+			const dy = move.touches[0].clientY -  this.laststart[0].clientY;
+			if(dx> this.directX){
+			  this.turn('right');			  
+			}else if(dx<-this.directX){
+			  this.turn('left');			 
+			}else if(dy>this.directX){
+			  this.turn('down');			
+			}else if(dy<-this.directX){
+			  this.turn('up');
+			}
+		},
+     isMobile() {
+       /* return window.navigator.userAgent.match(/Mobile/) */
+	   return true
       },
       cssTransition(e) {
         if(this.isMobile()){
