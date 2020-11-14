@@ -41,7 +41,7 @@
   const dely = ms => new Promise(res => setTimeout(res, ms));
   export default {
     data() {
-      return {
+      return { 
 		laststart:[],
         msg:'',
         score:0,
@@ -69,13 +69,13 @@
     },
     methods: {
 		start(event){
-			console.log(event)
+			
 			this.laststart=event.touches;
 		},
 		movef(event)
 		{
 			var move=event;
-			console.log(event)
+			
 			move && move.preventDefault();
 			const dx = move.touches[0].clientX -  this.laststart[0].clientX;
 			const dy = move.touches[0].clientY -  this.laststart[0].clientY;
@@ -283,6 +283,7 @@
        */
       mergeNumericBlockAddStyle(next){
         const nextDom = document.querySelector(`#r${next.id}`);
+		console.log(nextDom);
         nextDom.animate([
           { transform: 'scale(0.95)' },
           { transform: 'scale(1.3)' },
@@ -321,7 +322,7 @@
     },
 	onShow(){
 		 this.$watch("score", function (newValue, oldValue) {
-			 if(newValue>=100){
+			 if(newValue>=200){
 				 uni.showToast({
 				 	title:"win!"
 				 })

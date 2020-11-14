@@ -1,4 +1,13 @@
 <template>
+	<page-meta
+	    root-font-size="16px"
+	  >
+	    <navigation-bar
+		title="设置"
+	        front-color="#ffffff"
+	        :background-color="currentcolor"
+	      />
+	    </page-meta>
 	<view>
 		<drawer></drawer>
 		
@@ -36,7 +45,7 @@
 		data() {
 			return {
 				
-				
+				currentcolor:'',
 				clockListData: [
 					{
 						id: 1,//闹钟id
@@ -84,27 +93,36 @@
 			confirm() {},
 			onClickClock(item) {
 				console.log("点击闹钟进入编辑页面", item)
-				//if()
-				// uni.navigateTo({
-					
-				// })
 			},
 			trigger(e) {
 				console.log(e)
-				// if(e.index == 0) {
 					uni.navigateTo({
 						url:'/pages/normalclock/normalclock?id=0',
 					});
-				// }
-				// if(e.index == 1) {
-				// 	uni.navigateTo({
-				// 		url:'/pages/clocklist/quickclock',
-				// 	});
-				// }
-			},
-			
-			
+			}			
 		},
+		onShow() {		
+			var style=getApp().globalData.style
+			console.log(style)
+			 uni.setTabBarStyle({
+				selectedColor:style
+			}) 
+			uni.setNavigationBarTitle({
+				title:'Clock'
+			})
+			uni.setNavigationBarColor({
+				frontColor:'#ffffff',
+				backgroundColor:style,
+				fail:event=>{
+					console.log(event)
+				},
+				success:event=>{
+					console.log(event)
+				}
+			})
+			this.currentcolor=style
+			this.pattern.buttonColor=style
+		}
 	}
 </script>
 

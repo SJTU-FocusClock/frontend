@@ -75,6 +75,8 @@
 				uni.navigateTo({
 				                url: '/pages/set/set',
 				            });
+				
+						
 			},
 			onClick4(e) {
 			

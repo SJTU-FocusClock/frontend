@@ -1,4 +1,14 @@
 <template>
+	<page-meta
+	    
+	    root-font-size="16px"
+	  >
+	    <navigation-bar
+		title="设置"
+	        front-color="#ffffff"
+	        :background-color="currentcolor"
+	      />
+	    </page-meta>
 	<view>
 		<uni-card title="主题风格">
 			<radio-group @change="radioChange">
@@ -28,7 +38,7 @@
 						checked:'true'
 					},{
 						value: 'green',
-						color: '#00ff48',
+						color: '#83ff67',
 						name:"绿色"
 
 					},
@@ -45,7 +55,8 @@
 						name:'蓝色'
 
 					}
-				]
+				],
+				currentcolor:'#aaaaff'
 			}
 		},
 		methods: {
@@ -59,34 +70,38 @@
 				}
 				if(evt.detail.value=='green')
 				{
-					getApp().globalData.style='#00ff48'
+					getApp().globalData.style='#83ff67'
+					this.currentcolor='#83ff67'
 					uni.setTabBarStyle({
-						backgroundColor:'#00ff48',
-						selectedColor:'#00ff48'
+						backgroundColor:'#83ff67',
+						selectedColor:'#83ff67'
 					})
 				}
 				else if(evt.detail.value=='yellow')
 				{
 					getApp().globalData.style='#ffd426'
-					uni.setTabBarStyle({
-						backgroundColor:'#ffd426',
-						selectedColor:'#ffd426'
-					})
-					uni.setNavigationBarColor({
-						backgroundColor:'#ffd426'
-					})
+					this.currentcolor='#ffd426'
 				}
 				else if(evt.detail.value=='blue')
 				{
 					getApp().globalData.style='#55aaff'
+					this.currentcolor='#55aaff'
+				}
+				else if(evt.detail.value=='purple')
+				{
+					getApp().globalData.style='#aaaaff'
+					this.currentcolor='#aaaaff'
+					uni.setNavigationBarTitle({
+						title:'设置'
+					})
 					uni.setTabBarStyle({
-						backgroundColor:'#55aaff',
-						selectedColor:'#55aaff'
+						backgroundColor:'#aaaaff',
+						selectedColor:'#aaaaff'
 					})
 				}
 			},
 			chooseStyle(item) {
-				console.log(item)
+				
 
 			}
 		}
