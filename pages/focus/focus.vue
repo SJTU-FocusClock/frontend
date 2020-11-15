@@ -1,4 +1,14 @@
 <template>
+	<page-meta
+	    root-font-size="16px"
+	  >
+	    <navigation-bar
+		title="设置"
+	        front-color="#ffffff"
+	        :background-color="currentcolor"
+			:key="value"
+	      />
+	    </page-meta>
 	<view>
 		<drawer></drawer>
 		<uni-popup ref="popup" type="dialog">
@@ -14,7 +24,7 @@
 		<view class="content">
 			<image style="width: 600rpx;height: 600rpx;" src="../../static/avatar.png"> </image>
 			<view class="mode">
-				<switch color="#c4c4e9" @change="change_mode"></switch>
+				<switch :color="currentcolor" @change="change_mode"></switch>
 				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
 			</view>
 
@@ -22,8 +32,8 @@
 
 
 			<view class="b">
-				<button :disabled="isdisabled" @click="set_time" class="my_button">开始专注</button>
-				<button :disabled="!isdisabled" @click="stop" class="my_button">停止专注</button>
+				<button  :style="{backgroundColor:startcolor}" :disabled="isdisabled"  @click="set_time" class="my_button">开始专注</button>
+				<button  :style="{backgroundColor:stopcolor}"  :disabled="!isdisabled" @click="stop" class="my_button">停止专注</button>
 			</view>
 			<text clickable @click="setwhite" style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">设置白名单</text>
 		</view>
@@ -61,7 +71,12 @@
 		data() {
 			return {
 				mode: "普通模式",
-
+				value:1,
+				value2:1,
+				currentcolor:'',
+				disabledcolor:'#f5f1f0',
+				startcolor:'',
+				stopcolor:'#f5f1f0',
 				undo: {
 					color: '#93989d',
 					size: '22',
@@ -70,14 +85,16 @@
 				hour: 0,
 				minute: 0,
 				second: 0,
-				isdisabled: false,
+				isdisabled: false
+			
 			}
 		},
 		methods: {
 			onFinish() {
 				uni.showToast({
 					icon: 'none',
-					title: '倒计时结束'
+					title: '倒计时结束',
+					duration:2000
 				})
 			},
 			fillWithZero(num, n) {
@@ -98,6 +115,8 @@
 				this.hour = val / 60;
 				this.minute = val - this.hour * 60;
 				this.second = 0;
+				this.stopcolor=this.startcolor;
+				this.startcolor=this.disabledcolor;
 				done();
 			},
 			/**
@@ -131,6 +150,10 @@
 				        console.log('success');
 				    }
 				});
+				console.log("end")
+				this.stopcolor=this.startcolor;
+				this.startcolor=this.currentcolor;
+				console.log('endend')
 			},
 			stop() {
 				let _this = this;
@@ -139,10 +162,13 @@
 					content: `中止专注吗？`,
 					success: function(res) {
 						if (res.confirm) {
-							console.log('用户点击确定')
-							uni.switchTab({
-								url: "/pages/focus/focus"
-							})
+							console.log('用户点击确定');
+							this.isdisabled = false;
+							this.stopcolor=this.disabledcolor;
+							this.startcolor=this.currentcolor;
+							console.log("pause")
+							
+							this.value++;
 						} else if (res.cancel) {
 							console.log('用户点击取消')
 						}
@@ -160,6 +186,25 @@
 		onHide() {
 		audio.destroy();
 		},
+		onShow()
+		{
+			var style=getApp().globalData.style
+			this.currentcolor=style;
+			if(!this.isdisabled)
+			{
+				this.startcolor=this.currentcolor
+				}
+			console.log(this.currentcolor)
+			 uni.setTabBarStyle({
+				selectedColor:style
+			});
+			 uni.setNavigationBarColor({
+				frontColor:'#ffffff',
+				backgroundColor:style
+			}); 
+			this.value++;
+		
+		}
 		
 	}
 </script>
@@ -207,7 +252,7 @@
 	.my_button {
 		margin-top: 10px;
 		width: 100px;
-		background-color: #c4c4e9;
+		 background-color: #c4c4e9; 
 		color: white;
 		border:none;
 		border-radius: 13px;
@@ -215,6 +260,9 @@
 		font-size: 40rpx;
 	}
 
+button[disabled]{
+	background-color: #808080;
+}
 
 	.mode {
 		display: flex;

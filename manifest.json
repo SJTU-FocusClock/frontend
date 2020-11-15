@@ -49,10 +49,51 @@
             },
             /* ios打包配置 */
             "ios" : {
-				"UIBackgroundModes":["audio"]
-			},
+                "UIBackgroundModes" : [ "audio" ]
+            },
             /* SDK配置 */
             "sdkConfigs" : {}
+        },
+        "nativePlugins" : {
+            "JG-JVerification" : {
+                "JPUSH_CHANNEL_ANDROID" : "developer-default",
+                "JPUSH_APPKEY_IOS" : "aa9c6f60ce94de9d29c9dc34",
+                "JPUSH_APPKEY_ANDROID" : "aa9c6f60ce94de9d29c9dc34",
+                "JPUSH_CHANNEL_IOS" : "developer-default",
+                "__plugin_info__" : {
+                    "name" : "JG-JVerification",
+                    "description" : "极光认证Hbuilder插件",
+                    "platforms" : "Android,iOS",
+                    "url" : "",
+                    "android_package_name" : "",
+                    "ios_bundle_id" : "",
+                    "isCloud" : false,
+                    "bought" : -1,
+                    "pid" : "",
+                    "parameters" : {
+                        "JPUSH_CHANNEL_ANDROID" : {
+                            "des" : "[Android]用于统计分发渠道，不需要可填默认值 developer-default",
+                            "key" : "JPUSH_CHANNEL",
+                            "value" : ""
+                        },
+                        "JPUSH_APPKEY_IOS" : {
+                            "des" : "[iOS]极光 portal 配置应用信息时分配的 AppKey",
+                            "key" : "JVerification:APP_KEY",
+                            "value" : ""
+                        },
+                        "JPUSH_APPKEY_ANDROID" : {
+                            "des" : "[Android]极光 portal 配置应用信息时分配的 AppKey",
+                            "key" : "JPUSH_APPKEY",
+                            "value" : ""
+                        },
+                        "JPUSH_CHANNEL_IOS" : {
+                            "des" : "[iOS]用于统计分发渠道，不需要可填默认值 developer-default",
+                            "key" : "JVerification:CHANNEL",
+                            "value" : ""
+                        }
+                    }
+                }
+            }
         }
     },
     /* 快应用特有相关 */
@@ -74,7 +115,7 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
     }
 }

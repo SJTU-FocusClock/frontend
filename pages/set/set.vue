@@ -1,6 +1,5 @@
 <template>
-	<page-meta
-	    
+	<page-meta  
 	    root-font-size="16px"
 	  >
 	    <navigation-bar
@@ -35,7 +34,7 @@
 						value: 'purple',
 						name:"紫色",
 						color:'#aaaaff',
-						checked:'true'
+						
 					},{
 						value: 'green',
 						color: '#83ff67',
@@ -103,6 +102,24 @@
 			chooseStyle(item) {
 				
 
+			}
+		},
+		onShow(){
+			this.currentcolor=getApp().globalData.style;
+			if(this.currentcolor==='#aaaaff')
+			{
+				this.current=0;
+			}
+			if(this.currentcolor==='#83ff67')
+			{
+				this.current=1;
+			}
+			if(this.currentcolor==='#ffd426')
+			{
+				this.current=2;
+			}if(this.currentcolor==='#55aaff')
+			{
+				this.current=3;
 			}
 		}
 

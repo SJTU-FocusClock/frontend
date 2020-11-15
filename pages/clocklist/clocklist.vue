@@ -1,13 +1,4 @@
 <template>
-	<page-meta
-	    root-font-size="16px"
-	  >
-	    <navigation-bar
-		title="设置"
-	        front-color="#ffffff"
-	        :background-color="currentcolor"
-	      />
-	    </page-meta>
 	<view>
 		<drawer></drawer>
 		
@@ -25,7 +16,7 @@
 			</uni-list-item>
 		</uni-list>
 		
-		<uni-fab ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal" @trigger="trigger"/>
+		<uni-fab  :key="value" v-if="hackReset" ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal" @trigger="trigger"/>
 		
 	</view>
 </template>
@@ -46,6 +37,8 @@
 			return {
 				
 				currentcolor:'',
+				hackReset:true,
+				value:1,
 				clockListData: [
 					{
 						id: 1,//闹钟id
@@ -93,6 +86,9 @@
 			confirm() {},
 			onClickClock(item) {
 				console.log("点击闹钟进入编辑页面", item)
+				uni.navigateTo({
+					url:'../normalclock/normalclock'
+				})
 			},
 			trigger(e) {
 				console.log(e)
@@ -103,25 +99,25 @@
 		},
 		onShow() {		
 			var style=getApp().globalData.style
-			console.log(style)
+			this.currentcolor=style
+			console.log(this.currentcolor)
 			 uni.setTabBarStyle({
 				selectedColor:style
-			}) 
+			});
 			uni.setNavigationBarTitle({
-				title:'Clock'
-			})
-			uni.setNavigationBarColor({
+				title:'???'
+			});
+			 uni.setNavigationBarColor({
 				frontColor:'#ffffff',
-				backgroundColor:style,
-				fail:event=>{
-					console.log(event)
-				},
-				success:event=>{
-					console.log(event)
-				}
-			})
-			this.currentcolor=style
+				backgroundColor:"#0056B3"
+			}); 
+			
 			this.pattern.buttonColor=style
+			//this.hackReset = false;
+			/*  this.$nextTick(() => {
+			       this.hackReset = true;
+			  }) */
+			  this.value++;
 		}
 	}
 </script>
