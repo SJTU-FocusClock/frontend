@@ -67,7 +67,7 @@
 				value2:1,
 				currentcolor:'',
 				disabledcolor:'#f5f1f0',
-				startcolor:'',
+				startcolor:'#c4c4e9',
 				stopcolor:'#f5f1f0',
 				undo: {
 					color: '#93989d',
@@ -107,8 +107,8 @@
 				this.hour = val / 60;
 				this.minute = val - this.hour * 60;
 				this.second = 0;
-				this.stopcolor=this.currentcolor;
-				this.startcolor=this.disabledcolor;
+				 this.stopcolor=this.currentcolor;
+				this.startcolor=this.disabledcolor; 
 				done();
 			},
 			/**
@@ -155,12 +155,12 @@
 					success: function(res) {
 						if (res.confirm) {
 							console.log('用户点击确定');
-							this.isdisabled = false;
-							this.stopcolor=this.disabledcolor;
-							this.startcolor=this.currentcolor;
+							_this.isdisabled = false;
+							_this.stopcolor=_this.disabledcolor;
+							_this.startcolor=_this.currentcolor; 
 							console.log("pause")
 							
-							this.value++;
+							_this.value++;
 						} else if (res.cancel) {
 							console.log('用户点击取消')
 						}
@@ -189,7 +189,7 @@
 		},
 		onShow()
 		{
-			var style=getApp().globalData.style
+			/* var style=getApp().globalData.style
 			this.currentcolor=style;
 			if(!this.isdisabled)
 			{
@@ -202,7 +202,7 @@
 			 uni.setNavigationBarColor({
 				frontColor:'#ffffff',
 				backgroundColor:style
-			}); 
+			}); */
 			
 		
 		}

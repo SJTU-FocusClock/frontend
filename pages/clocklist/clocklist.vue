@@ -98,7 +98,7 @@
 			}			
 		},
 		onShow() {		
-			var style=getApp().globalData.style
+			/* var style=getApp().globalData.style
 			this.currentcolor=style
 			console.log(this.currentcolor)
 			 uni.setTabBarStyle({
@@ -113,7 +113,7 @@
 			}); 
 			
 			this.pattern.buttonColor=style
-			  this.value++;
+			  this.value++; */
 		}
 	}
 </script>

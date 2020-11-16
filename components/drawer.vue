@@ -15,6 +15,9 @@
 				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="gear"  clickable @click="onClick3" title="设置">
 					
 				</uni-list-item>
+				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="person"  clickable @click="onClick5" title="个人信息">
+					
+				</uni-list-item>
 				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="undo"  clickable @click="onClick4" title="退出登录">
 			
 				</uni-list-item>
@@ -49,6 +52,11 @@
 					size: '22',
 					type: 'undo'
 				},
+				person:{
+					color: '#93989d',
+					size: '22',
+					type: 'person'
+				}
 			}
 		},
 		methods:{
@@ -77,6 +85,12 @@
 				            });
 				
 						
+			},
+			onClick5(e)
+			{
+					uni.navigateTo({
+					                url: '/pages/userinfo/userinfo',
+					            });
 			},
 			onClick4(e) {
 			
