@@ -6065,7 +6065,7 @@ var render = function() {
             { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
             [
               _c("v-uni-switch", {
-                attrs: { color: _vm._$g(9, "a-color"), _i: 9 },
+                attrs: { _i: 9 },
                 on: {
                   change: function($event) {
                     return _vm.$handleViewEvent($event)
@@ -6103,7 +6103,6 @@ var render = function() {
                 "v-uni-button",
                 {
                   staticClass: _vm._$g(13, "sc"),
-                  style: _vm._$g(13, "s"),
                   attrs: { disabled: _vm._$g(13, "a-disabled"), _i: 13 },
                   on: {
                     click: function($event) {
@@ -6117,7 +6116,6 @@ var render = function() {
                 "v-uni-button",
                 {
                   staticClass: _vm._$g(14, "sc"),
-                  style: _vm._$g(14, "s"),
                   attrs: { disabled: _vm._$g(14, "a-disabled"), _i: 14 },
                   on: {
                     click: function($event) {
