@@ -90,7 +90,7 @@
 						if (res.confirm) {
 							console.log('用户点击确定')
 							uni.redirectTo({
-															url:'/pages/login/login'
+															url:'/pages/login/phonelogin'
 														})
 						} else if (res.cancel) {
 							console.log('用户点击取消')

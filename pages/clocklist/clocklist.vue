@@ -113,10 +113,6 @@
 			}); 
 			
 			this.pattern.buttonColor=style
-			//this.hackReset = false;
-			/*  this.$nextTick(() => {
-			       this.hackReset = true;
-			  }) */
 			  this.value++;
 		}
 	}

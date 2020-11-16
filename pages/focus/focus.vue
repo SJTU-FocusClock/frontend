@@ -1,14 +1,5 @@
 <template>
-	<page-meta
-	    root-font-size="16px"
-	  >
-	    <navigation-bar
-		title="设置"
-	        front-color="#ffffff"
-	        :background-color="currentcolor"
-			:key="value"
-	      />
-	    </page-meta>
+
 	<view>
 		<drawer></drawer>
 		<uni-popup ref="popup" type="dialog">
@@ -32,6 +23,7 @@
 
 
 			<view class="b">
+				<!-- :style="{backgroundColor:stopcolor}" -->
 				<button  :style="{backgroundColor:startcolor}" :disabled="isdisabled"  @click="set_time" class="my_button">开始专注</button>
 				<button  :style="{backgroundColor:stopcolor}"  :disabled="!isdisabled" @click="stop" class="my_button">停止专注</button>
 			</view>
@@ -115,7 +107,7 @@
 				this.hour = val / 60;
 				this.minute = val - this.hour * 60;
 				this.second = 0;
-				this.stopcolor=this.startcolor;
+				this.stopcolor=this.currentcolor;
 				this.startcolor=this.disabledcolor;
 				done();
 			},
@@ -151,7 +143,7 @@
 				    }
 				});
 				console.log("end")
-				this.stopcolor=this.startcolor;
+				this.stopcolor=this.disabledcolor;
 				this.startcolor=this.currentcolor;
 				console.log('endend')
 			},
@@ -185,6 +177,15 @@
 		},
 		onHide() {
 		audio.destroy();
+		this.isdisabled=false;
+		this.stopcolor=this.startcolor;
+		this.startcolor=this.disabledcolor;
+		/* uni.navigateTo({
+			url:'pages/focus/fail',
+			success: e=>{
+				console.log(e)
+			}
+		}) */
 		},
 		onShow()
 		{
@@ -193,7 +194,7 @@
 			if(!this.isdisabled)
 			{
 				this.startcolor=this.currentcolor
-				}
+			}
 			console.log(this.currentcolor)
 			 uni.setTabBarStyle({
 				selectedColor:style
@@ -202,7 +203,7 @@
 				frontColor:'#ffffff',
 				backgroundColor:style
 			}); 
-			this.value++;
+			
 		
 		}
 		

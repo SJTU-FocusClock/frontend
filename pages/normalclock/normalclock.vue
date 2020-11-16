@@ -73,7 +73,7 @@
 			</view>
 		
 			<view class="save_setting">
-				<button class="save_button" @click="saveClock">
+				<button class="save_button" @click="saveClock" :style="{backgroundColor:currentcolor}">
 					<text class="save">储存</text>
 				</button>
 						
@@ -140,7 +140,9 @@
 					{ value: '5', text: '六' },
 					{ value: '6', text: '七' },
 				],
+				currentcolor:''
 			}
+			
         },
         methods: {
 			//页面顶部导航条版块
@@ -167,7 +169,10 @@
 			saveClock: function() {
 				
 			}
-        }
+        },
+		onShow(){
+			this.currentcolor=getApp().globalData.style
+		}
     }
 </script>
 

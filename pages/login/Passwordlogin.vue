@@ -1,3 +1,4 @@
+<!-- 用户名登录 -->
 <template>
 	<view class="login">
 		<view class="content">
@@ -8,10 +9,10 @@
 			<!-- 主体表单 -->
 			<view class="main">
 				<wInput
-					v-model="phoneData"
+					v-model="usernameData"
 					type="text"
-					maxlength="11"
-					placeholder="请输入用户名/邮箱"
+					
+					placeholder="请输入用户名"
 				></wInput>
 				<wInput
 					v-model="passData"
@@ -21,6 +22,9 @@
 					isShowPass='ture'
 				></wInput>
 			</view>
+			<navigator url="/pages/login/phonelogin"   hover-class="none" style="font-size: 25rpx; color:#555555; margin-left: 100rpx;">手机号登录 </navigator>
+				 <span class="warn" >{{result}}</span>
+			
 			<wButton 
 				class="wbutton"
 				text="登 录"
@@ -50,9 +54,10 @@
 		data() {
 			return {
 				//logo图片 base64
-				phoneData:'', //用户/电话
+				usernameData:'', //用户名
 				passData:'', //密码
 				isRotate: false, //是否加载旋转
+				result:''
 			};
 		},
 		components:{
@@ -81,13 +86,13 @@
 				// }
 			},
 		    startLogin(e){
-                console.log(e)
+               let that=this;
 				//登录
 				if(this.isRotate){
 					//判断是否加载中，避免重复点击请求
 					return false;
 				}
-				if (this.phoneData.length == "") {
+				if (this.usernameData.length == "") {
 				     uni.showToast({
 				        icon: 'none',
 						position: 'bottom',
@@ -104,15 +109,44 @@
 		            return;
 		        }
 				
-				console.log("登录成功")
+				uni.request({
+					url:'http://106.54.76.21:8080/users/Ulogin',
+					data:{
+						username:that.usernameData,
+						password:that.passData
+					},
+					method:'POST',
+					header: {
+					'content-type': 'application/x-www-form-urlencoded'
+							},
+					complete: e=>{
+						
+					},
+					success: function(e){
+						if(e.data.status==1)
+						{
+							console.log('登陆成功')
+							uni.switchTab({
+							url: "/pages/clocklist/clocklist"
+						})
+						}
+						if(e.data.status==0)
+						{
+							
+							that.result = e.data.result
+							
+						}
+				
+					}
+				})
+				
+				
 				
 				_this.isRotate=true
 				setTimeout(function(){
 					_this.isRotate=false
 				},3000)
-				uni.switchTab({
-					url:"/pages/clocklist/clocklist"
-				})
+				
 				// uni.showLoading({
 				// 	title: '登录中'
 				// });
@@ -162,4 +196,10 @@
 <style>
 	@import url("../../components/watch-login/css/icon.css");
 	@import url("./css/main.css");
+	.warn{
+		
+		color:#DD524D;
+		font-size: 25rpx;
+		margin-left: 100rpx;
+	}
 </style>
