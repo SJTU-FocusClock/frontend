@@ -116,6 +116,12 @@
 		},
 		{
 			"path":"pages/focus/fail"
+		},
+		{
+			"path":"pages/normalclock/modifyclock",
+			"style": {
+				"navigationStyle": "custom"
+			}
 		}
 	
 	

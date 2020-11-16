@@ -5,18 +5,25 @@
 		</view>
 
 		<view class="uni-dialog-content">
-			<!-- <text class="uni-dialog-content-text" v-if="mode === 'base'">{{content}}</text>
-			<input v-else class="uni-dialog-input" v-model="val" type="text" :placeholder="placeholder" :focus="focus" > -->
-
-			<checkbox-group @change="checkboxChange">
+		
+			<!-- <checkbox-group @change="checkboxChange">
 				<label class="uni-list-cell uni-list-cell-pd" v-for="item in items" :key="item.value">
 					<view>
-						<checkbox :value="item.value" :checked="item.checked" />
+						<checkbox :value="item.value" :checked="item.checked"  />
 						{{item.name}}
 					</view>
 					
 				</label>
-			</checkbox-group>
+			</checkbox-group> -->
+			 <radio-group @change="radioChange">
+			           <label class="uni-list-cell uni-list-cell-pd" v-for="(item, index) in items" :key="item.value">
+			                    <view>
+			                        <radio :value="item.value" :checked="index === current" />
+			                    
+			                    {{item.name}}  
+								</view>
+			                </label>
+			            </radio-group>
 		</view>
 
 
@@ -54,7 +61,7 @@
 	 */
 
 	export default {
-		name: "uniPopupWhiteList",
+		name: "uniPopupGame",
 		props: {
 			value: {
 				type: [String, Number],
@@ -104,23 +111,28 @@
 			return {
 				dialogType: 'error',
 				focus: false,
+				 current: 0,
 				val: "",
-				items: [{
-						value: 'wechat',
-						name: '微信'
+				items: [
+					{
+							value:'casual',
+							name:'随机游戏',
+							id:0
+					},{
+						value: '2048',
+						name: '2048',
+						id:1
 					},
 					{
-						value: 'QQ',
-						name: 'QQ',
-						checked: 'true'
+						value: 'typist',
+						name: '打字游戏',
+						checked: 'true',
+						id:2
 					},
 					{
-						value: 'weibo',
-						name: '微博'
-					},
-					{
-						value: 'taobao',
-						name: '淘宝'
+						value: 'caculate',
+						name: '算术游戏',
+						id:3
 					}
 				]
 			}
@@ -157,10 +169,10 @@
 			 * 点击确认按钮
 			 */
 			onOk() {
+				
 				this.$emit('confirm', () => {
 					this.popup.close()
-					if (this.mode === 'input') this.val = this.value
-				}, this.mode === 'input' ? this.val : '')
+				}, this.items[this.current])
 			},
 			/**
 			 * 点击取消按钮
@@ -173,19 +185,17 @@
 					return
 				}
 				this.popup.close()
-			},
-			checkboxChange: function(e) {
-				var items = this.items,
-					values = e.detail.value;
-				for (var i = 0, lenI = items.length; i < lenI; ++i) {
-					const item = items[i]
-					if (values.includes(item.value)) {
-						this.$set(item, 'checked', true)
-					} else {
-						this.$set(item, 'checked', false)
-					}
-				}
-			}
+			}, 
+			radioChange: function(evt) {
+            for (let i = 0; i < this.items.length; i++) {
+                if (this.items[i].value === evt.target.value) {
+                    this.current = i;
+                    break;
+                }
+            }
+        },
+			
+			
 		}
 	}
 </script>

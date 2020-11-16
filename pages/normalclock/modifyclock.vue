@@ -202,6 +202,7 @@
 						text: '榴莲'
 					}
 				],
+				id:0
 			}
 
 		},
@@ -213,8 +214,20 @@
 				})
 			},
 			delete_clock: function() {
-				uni.navigateBack({
-
+				let that=this
+				uni.request({
+					url:'http://106.54.76.21:8080/clocks/delete/'+that.id.toString(),
+					method:'DELETE',
+					complete:(e)=> {
+						console.log(e)
+					},
+					success:function(e)
+					{
+						console.log(e);
+						uni.navigateBack({
+							
+						})
+					}
 				})
 			},
 
@@ -229,7 +242,7 @@
 			},
 
 			//底部储存按钮版块
-			//创建闹钟
+			//修改闹钟
 			saveClock: function() {
 				let that = this
 				var type = that.gameid === 0 ? 0 : 1;
@@ -241,7 +254,7 @@
 				week = week.map(Number)
 				console.log(that.ringData.radio)
 				uni.request({
-					url: 'http://106.54.76.21:8080/clocks/create',
+					url: 'http://106.54.76.21:8080/clocks/modify/'+that.id.toString(),
 					data: {
 						gameType: type,
 						gameId: that.gameid,
@@ -250,18 +263,11 @@
 						ring: that.ringData.radio,
 						tag: that.tag
 					},
-					dataType:'json',
-					method: 'POST',
-					header: {
-						'content-type': 'application/json'
-					},
+					method: 'PUT',
 					success: function(e) {
 						console.log(e)
-						if(e.data.status===true)
-						{
-							uni.navigateBack({
-							})
-						}
+						uni.navigateBack({
+						})
 					}
 				})
 			},
@@ -274,11 +280,28 @@
 				this.gameid = val.id;
 				done();
 			},
-		},
-		onShow() {
-			/* this.currentcolor=getApp().globalData.style */
-			console.log(this.value)
+		onLoad(v) {
+			console.log("onload")
+			console.log(v)
+			this.id=parseInt(v.id);		
+			//获取单个闹钟
+			uni.request({
+				url:'http://106.54.76.21:8080/clocks/clock/'+v.id,
+				method:'GET',
+				header: {
+				'content-type': 'application/x-www-form-urlencoded'
+						},
+				complete: e=>{
+					
+				},
+				success: function(e){
+					//成功拿到了e.data,但是还没有渲染
+			}
+			})
+			
+			
 		}
+	},
 	}
 </script>
 

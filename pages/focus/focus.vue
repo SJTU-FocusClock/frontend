@@ -65,7 +65,7 @@
 				mode: "普通模式",
 				value:1,
 				value2:1,
-				currentcolor:'',
+				currentcolor:'#c4c4e9',
 				disabledcolor:'#f5f1f0',
 				startcolor:'#c4c4e9',
 				stopcolor:'#f5f1f0',
