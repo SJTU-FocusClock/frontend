@@ -22,6 +22,13 @@
 </template>
 
 <script>
+	const audio = uni.getBackgroundAudioManager();
+	audio.src = '/static/music/normal.mp3';
+	
+	audio.onPlay(function(){
+		console.log("kai")
+	})
+	
 	import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
@@ -34,8 +41,7 @@
 			drawer
 		},
 		data() {
-			return {
-				
+			return {				
 				currentcolor:'',
 				hackReset:true,
 				value:1,
@@ -70,7 +76,10 @@
 					uni.navigateTo({
 						url:'/pages/normalclock/normalclock?id=0',
 					});
-			}			
+			},
+			set_audio(){
+				
+			}
 		},
 		onShow() {
 			let that=this;

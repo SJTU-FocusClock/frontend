@@ -13,8 +13,7 @@
 					<view>
 						<checkbox :value="item.value" :checked="item.checked" />
 						{{item.name}}
-					</view>
-					
+					</view>					
 				</label>
 			</checkbox-group>
 		</view>
