@@ -26,9 +26,6 @@
 				</view>
 			</view>
 
-
-
-
 			<!-- 闹钟时间编辑 -->
 			<view class="time_setting">
 				<text class="time_setting_text">时间</text>
@@ -50,7 +47,7 @@
 
 			<!-- 闹钟重复模式编辑 -->
 			<view class="date_setting">
-				<gg-checkbox-tag label="闹钟重复" v-model="formData.checkboxTag" :dataLists="checkLists" :maxNumber="7" />
+				<gg-checkbox-tag  :key="k"  label="闹钟重复" v-model="formData.checkboxTag" :dataLists="checkLists" :maxNumber="7" />
 			</view>
 
 			<!-- 闹钟其他设定编辑 -->
@@ -68,16 +65,21 @@
 						</uni-list-item> -->
 					</uni-list>
 
-					<gg-radio label="铃声" v-model="ringData.radio" :dataLists="radioLists" />
+<!-- radio无法设置默认选项 -->
+<view :key="k">
+			<gg-radio   label="铃声" v-model="ringData.radio" :dataLists="radioLists" />
+</view>
+
+
 
 
 
 					<!-- 备注设置 -->
 					<gg-input-text label="备注" v-model="tag"></gg-input-text>
 
-					<!-- 不玩儿游戏设置 -->
-				<!-- 	<gg-switch labelWidth="140" style="color:#c4c4e9 ;" label="不玩游戏直接关闭闹钟" tip="在闹钟画面有关闭闹钟功能,不完成小游戏,也可以快速关闭闹钟"></gg-switch> -->
-
+				<!-- 	不玩儿游戏设置 -->
+			 	<gg-switch labelWidth="140" style="color:#c4c4e9 ;" label="不玩游戏直接关闭闹钟" tip="在闹钟画面有关闭闹钟功能,不完成小游戏,也可以快速关闭闹钟"></gg-switch>
+ 
 				</gg-nav-group>
 			</view>
 
@@ -142,7 +144,7 @@
 				// 重复模式版块
 				formData: {
 					checkbox: ['2', '4'],
-					checkboxTag: '2,4',
+					checkboxTag: '',
 				},
 				maxNumber: 7,
 				checkLists: [{
@@ -176,18 +178,19 @@
 				],
 				gametext: '选择闹钟游戏',
 				gameid: 0,
+				gameitems:['随机游戏','2048','打字游戏','算术游戏'],
 				time: '',
 				tag: '',
 				ringData: {
-					radio: '',
+					radio: 0,
 				},
 				radioLists: [{
 						value: 0,
-						text: '橘子'
+						text: '平凡之路'
 					},
 					{
 						value: 1,
-						text: '柠檬'
+						text: '可爱'
 					},
 					{
 						value: 2,
@@ -202,7 +205,8 @@
 						text: '榴莲'
 					}
 				],
-				id:0
+				id:0,
+				k:0
 			}
 
 		},
@@ -224,8 +228,7 @@
 					success:function(e)
 					{
 						console.log(e);
-						uni.navigateBack({
-							
+						uni.navigateBack({					
 						})
 					}
 				})
@@ -252,7 +255,7 @@
 				time += ':00'
 				var week = that.formData.checkboxTag.split(",")
 				week = week.map(Number)
-				console.log(that.ringData.radio)
+				console.log('week',week)
 				uni.request({
 					url: 'http://106.54.76.21:8080/clocks/modify/'+that.id.toString(),
 					data: {
@@ -266,8 +269,7 @@
 					method: 'PUT',
 					success: function(e) {
 						console.log(e)
-						uni.navigateBack({
-						})
+						uni.navigateBack({})
 					}
 				})
 			},
@@ -280,7 +282,33 @@
 				this.gameid = val.id;
 				done();
 			},
+			handleData(e){
+				this.gametext=this.gameitems[e.data.gameid];
+				console.log(e);
+				var t=e.data.time;
+				this.value[0]=parseInt(parseInt(t.substr(0,2))/12);
+				var tmp=parseInt(t.substr(0,2));
+				this.value[1]=tmp>12?tmp-13:tmp-1;
+				this.value[2]=parseInt(t.substr(3,2));
+				
+				this.tag=e.data.tag;
+				this.ringData.radio=e.data.ring;
+				/* 设置重复星期 */
+				var w=e.data.week;
+				console.log(e.data.week)
+				if(w&1){
+					this.formData.checkboxTag='1';
+				}
+				for(var i=1;i<=6;i++){
+					if((w>>i)&1){
+						this.formData.checkboxTag+=','+(i+1).toString()
+					}
+				}
+				this.k++;//即时渲染
+				
+			},
 		onLoad(v) {
+			let that=this;
 			console.log("onload")
 			console.log(v)
 			this.id=parseInt(v.id);		
@@ -291,11 +319,9 @@
 				header: {
 				'content-type': 'application/x-www-form-urlencoded'
 						},
-				complete: e=>{
-					
-				},
 				success: function(e){
 					//成功拿到了e.data,但是还没有渲染
+					that.handleData(e);
 			}
 			})
 			

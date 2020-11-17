@@ -72,25 +72,6 @@
 					});
 			}			
 		},
-		/*
-		onShow() {		
-			 var style=getApp().globalData.style
-			this.currentcolor=style
-			console.log(this.currentcolor)
-			 uni.setTabBarStyle({
-				selectedColor:style
-			});
-			uni.setNavigationBarTitle({
-				title:'???'
-			});
-			 uni.setNavigationBarColor({
-				frontColor:'#ffffff',
-				backgroundColor:"#0056B3"
-			}); 
-			
-			this.pattern.buttonColor=style
-			  this.value++;
-		} */
 		onShow() {
 			let that=this;
 			uni.request({
@@ -99,9 +80,6 @@
 				header: {
 				'content-type': 'application/x-www-form-urlencoded'
 						},
-				complete: e=>{
-					console.log(e)
-				},
 				success: function(e){
 					that.clockListData=e.data
 					for(var i=0;i<e.data.length;i++)
@@ -112,9 +90,7 @@
 					}
 					console.log(that.clockListData)
 				}
-			})
-			
-			
+			})				
 		}
 	}
 </script>

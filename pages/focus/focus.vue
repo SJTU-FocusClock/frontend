@@ -18,7 +18,7 @@
 				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
 			</view>
 
-			<uni-countdown :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
+			<uni-countdown :key="value"  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
 
 
 			<view class="b">
@@ -67,7 +67,8 @@
 				isdisabled: false,
 				start:'',
 				endd:'',
-				duration:1		
+				duration:1,
+			    value:0
 			}
 		},
 		methods: {
@@ -96,6 +97,7 @@
 				this.hour = val / 60;
 				this.minute = val - this.hour * 60;
 				this.second = 0;
+				
 				var tmp=new Date();	
 				var h=tmp.getHours();
 				var m=tmp.getMinutes();
@@ -173,8 +175,10 @@
 						if (res.confirm) {
 							console.log('用户点击确定');
 							_this.isdisabled = false;
-							console.log("pause")
 							
+							_this.hour=0;
+							_this.minute=0;
+							_this.second=0;
 							_this.value++;
 						} else if (res.cancel) {
 							console.log('用户点击取消')
@@ -193,12 +197,11 @@
 		onHide() {
 		audio.destroy();
 		this.isdisabled=false;
-		/* uni.navigateTo({
-			url:'pages/focus/fail',
-			success: e=>{
-				console.log(e)
-			}
-		}) */
+		//???
+		this.hour=0;
+		this.minute=0;
+		this.second=0;
+		this.value++
 		}
 		
 	}

@@ -92,36 +92,16 @@
 							id:12,
 							nickname:"明月松间照",
 							avatar:"/static/avatar.png"
-						},
-						{
-							id:13,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:14,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:15,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:16,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						
+						}						
 					]
 
 				}
 			},
 			methods: {
-				confirm() {
-					uni.showToast({
-						title: '添加好友'
+				confirm(e) {		
+					var target=e.target.value
+					uni.navigateTo({
+						url:'/pages/friendlist/searchInfo?target='+target,
 					})
 				},
 				onClick(e){

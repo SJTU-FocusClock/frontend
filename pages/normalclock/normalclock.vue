@@ -56,17 +56,6 @@
 			<!-- 闹钟其他设定编辑 -->
 			<view class="other_setting">
 				<gg-nav-group>
-					<uni-list class="other_setting_list">
-						<!-- 音量设置 -->
-						<!-- <uni-list-item title="音量">
-							<bing-progress slot="footer" class="bp" :showInfo="false"
-								strokeWidth="4px" handleHeight="20px" 
-								handleWidth="20px" handleBorderRadius="10px"
-								:max="100" :min="0" :value="volume_value" 
-								:step="20" :continuous="false"
-								handleColor="#a1a1bf" activeColor="#bbbbdd" noActiveColor="#f0f0f0"></bing-progress>
-						</uni-list-item> -->
-					</uni-list>
 
 					<gg-radio label="铃声" v-model="ringData.radio" :dataLists="radioLists" />
 
@@ -183,11 +172,11 @@
 				},
 				radioLists: [{
 						value: 0,
-						text: '橘子'
+						text: '平凡之路'
 					},
 					{
 						value: 1,
-						text: '柠檬'
+						text: '可爱'
 					},
 					{
 						value: 2,
