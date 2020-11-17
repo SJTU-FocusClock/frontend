@@ -104,8 +104,6 @@
 					header: {
 		  		  'content-type': 'application/x-www-form-urlencoded'
 					},
-					complete: (e) => {	
-					},
 					success: function(e) {
 						console.log(e)
 						if(e.data.status==1)

@@ -8,7 +8,7 @@
 	        :background-color="currentcolor"
 	      />
 	    </page-meta>
-	<!-- <view>
+	 <view>
 		<uni-card title="主题风格">
 			<radio-group @change="radioChange">
 				<label class="uni-list-cell uni-list-cell-pd" v-for="(item, index) in items" :key="item.value">
@@ -17,7 +17,7 @@
 				</label>
 			</radio-group>
 		</uni-card>
-	</view> -->
+	</view> 
 </template>
 
 <script>

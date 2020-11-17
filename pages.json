@@ -111,23 +111,39 @@
 			"style": {
 				"navigationBarTitleText": "typist"
 			}
-		},{
-			"path":"pages/test2"
 		},
 		{
-			"path":"pages/focus/fail"
+			"path":"pages/game/puzzle",
+			"style": {
+				"navigationBarTitleText": "puzzle"
+			}
+		},
+		{
+			"path":"pages/game/catchMouse",
+			"style": {
+				"navigationBarTitleText": "打地鼠"
+			}
+		},
+		{
+			"path":"pages/normalclock/modifyclock",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"pages/friendlist/searchInfo",
+			"style": {
+				"transparentTitle": "auto",
+				"navigationBarBackgroundColor": "#c4c4e9"
+			}
 		}
-	
-	
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "",
 		"navigationBarBackgroundColor": "#aaaaff",
 		"backgroundColor": "#aaaaff"
-
 	},
-
 	"tabBar": {
 		"color": "#7A7E83",
 		"selectedColor": "#aaaaff",

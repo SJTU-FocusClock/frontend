@@ -1,31 +1,29 @@
 <template>
-
 	<view>
 		<drawer></drawer>
 		<uni-popup ref="popup" type="dialog">
-			<uni-popup-dialog mode="input" title="时间设定" value="" placeholder="请输入您想要专注的分钟数/min" @confirm="dialogInputConfirm"></uni-popup-dialog>
+			<uni-popup-dialog mode="input" title="时间设定" value="" placeholder="请输入您想要专注的分钟数/min" @confirm="dialogInputConfirm" ></uni-popup-dialog>
 		</uni-popup>
 
 
 		<uni-popup ref="whitelist" type="dialog">
-			<uniPopupWhiteList mode="input" title="白名单设定" @confirm="dialogInputConfirm"></uniPopupWhiteList>
+			<uniPopupWhiteList mode="input" title="白名单设定" @confirm="dialogInputConfirm"> </uniPopupWhiteList>
 		</uni-popup>
 
 
 		<view class="content">
 			<image style="width: 600rpx;height: 600rpx;" src="../../static/avatar.png"> </image>
 			<view class="mode">
-				<switch :color="currentcolor" @change="change_mode"></switch>
+				<switch  @change="change_mode"></switch>
 				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
 			</view>
 
-			<uni-countdown :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
+			<uni-countdown :key="value"  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
 
 
 			<view class="b">
-				<!-- :style="{backgroundColor:stopcolor}" -->
-				<button  :style="{backgroundColor:startcolor}" :disabled="isdisabled"  @click="set_time" class="my_button">开始专注</button>
-				<button  :style="{backgroundColor:stopcolor}"  :disabled="!isdisabled" @click="stop" class="my_button">停止专注</button>
+				<button  :disabled="isdisabled"  @click="set_time" class="my_button">开始专注</button>
+				<button  :disabled="!isdisabled" @click="stop" class="my_button">停止专注</button>
 			</view>
 			<text clickable @click="setwhite" style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">设置白名单</text>
 		</view>
@@ -63,22 +61,14 @@
 		data() {
 			return {
 				mode: "普通模式",
-				value:1,
-				value2:1,
-				currentcolor:'',
-				disabledcolor:'#f5f1f0',
-				startcolor:'#c4c4e9',
-				stopcolor:'#f5f1f0',
-				undo: {
-					color: '#93989d',
-					size: '22',
-					type: 'undo'
-				},
 				hour: 0,
 				minute: 0,
 				second: 0,
-				isdisabled: false
-			
+				isdisabled: false,
+				start:'',
+				endd:'',
+				duration:1,
+			    value:0
 			}
 		},
 		methods: {
@@ -107,8 +97,12 @@
 				this.hour = val / 60;
 				this.minute = val - this.hour * 60;
 				this.second = 0;
-				 this.stopcolor=this.currentcolor;
-				this.startcolor=this.disabledcolor; 
+				
+				var tmp=new Date();	
+				var h=tmp.getHours();
+				var m=tmp.getMinutes();
+				this.start=h+':'+m+':00';
+				this.duration=val;
 				done();
 			},
 			/**
@@ -132,6 +126,7 @@
 				console.log('switch2 发生 change 事件，携带值为', e.target.value)
 			},
 			end() {
+				let that=this;
 				uni.showToast({
 					title: "倒计时结束"
 				})
@@ -142,10 +137,34 @@
 				        console.log('success');
 				    }
 				});
-				console.log("end")
-				this.stopcolor=this.disabledcolor;
-				this.startcolor=this.currentcolor;
-				console.log('endend')
+				var tmp=new Date();
+				var h=tmp.getHours();
+				var m=tmp.getMinutes();
+				this.endd=h+':'+m+':00';
+				console.log(this.endd)
+				uni.request({
+					url:'http://106.54.76.21:8080/focus/addRecord',
+					data:{
+						start:that.start,
+						end:that.endd,
+						duration:that.duration					
+					},
+					method:'POST',
+					header: {
+					'content-type': 'application/x-www-form-urlencoded'
+							},
+							complete:e=>{
+								
+							},
+					success:function(e) {
+						if(e)
+						{
+							uni.showToast({
+								title:'成功！'
+							})
+						}
+					}
+				})		
 			},
 			stop() {
 				let _this = this;
@@ -156,10 +175,10 @@
 						if (res.confirm) {
 							console.log('用户点击确定');
 							_this.isdisabled = false;
-							_this.stopcolor=_this.disabledcolor;
-							_this.startcolor=_this.currentcolor; 
-							console.log("pause")
 							
+							_this.hour=0;
+							_this.minute=0;
+							_this.second=0;
 							_this.value++;
 						} else if (res.cancel) {
 							console.log('用户点击取消')
@@ -178,33 +197,11 @@
 		onHide() {
 		audio.destroy();
 		this.isdisabled=false;
-		this.stopcolor=this.startcolor;
-		this.startcolor=this.disabledcolor;
-		/* uni.navigateTo({
-			url:'pages/focus/fail',
-			success: e=>{
-				console.log(e)
-			}
-		}) */
-		},
-		onShow()
-		{
-			/* var style=getApp().globalData.style
-			this.currentcolor=style;
-			if(!this.isdisabled)
-			{
-				this.startcolor=this.currentcolor
-			}
-			console.log(this.currentcolor)
-			 uni.setTabBarStyle({
-				selectedColor:style
-			});
-			 uni.setNavigationBarColor({
-				frontColor:'#ffffff',
-				backgroundColor:style
-			}); */
-			
-		
+		//???
+		this.hour=0;
+		this.minute=0;
+		this.second=0;
+		this.value++
 		}
 		
 	}

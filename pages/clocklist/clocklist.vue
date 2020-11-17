@@ -22,6 +22,9 @@
 </template>
 
 <script>
+	const audio = uni.getBackgroundAudioManager();
+	/* audio.src='/static/music/morning.mp3';
+	audio.stop(); */
 	import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
@@ -34,38 +37,12 @@
 			drawer
 		},
 		data() {
-			return {
-				
+			return {				
 				currentcolor:'',
 				hackReset:true,
 				value:1,
-				clockListData: [
-					{
-						id: 1,//闹钟id
-						hour: 6,//小时
-						minute: 30,//分钟
-						state: 1,//闹钟状态，开1，关0
-						tag: "睡觉", //备注
-						ring: "tmp", //铃声
-						isRing: 1, //是否响铃，开1，关0
-						type: 1,//重复类型，1为每周重复，2为特定日期闹钟
-						week: "11",//一周重复星期的参数
-						date: "",//闹钟指定日期
-					},
-					{
-						id: 2,//闹钟id
-						hour: 14,//小时
-						minute: 30,//分钟
-						state: 1,//闹钟状态，开1，关0
-						tag: "起床", //备注
-						ring: "tmp", //铃声
-						isShake: 1, //是否振动，开1，关0
-						isRing: 1, //是否响铃，开1，关0
-						type: 1,//重复类型，1为每周重复，2为特定日期闹钟
-						week: "11",//一周重复星期的参数
-						date: "",//闹钟指定日期
-					},
-				],
+				onshowSet:false,
+				clockListData: [],
 				pattern: {
 					color: '#7A7E83',
 					backgroundColor: '#fff',
@@ -79,6 +56,23 @@
 						text: '闹钟',
 						active: false
 					}
+				],
+				gamepages:[
+					'/pages/game/caculate',/* 本来应该是随机游戏 */
+					'/pages/game/game2048',
+					'/pages/game/caculate',
+					'/pages/game/typist',
+					'/pages/game/puzzle',
+					'/pages/game/catchMouse'
+								
+				],
+				ringsrc:[
+					'/static/music/Breeze.mp3',
+					'/static/music/cute.mp3',
+					'/static/music/heartbeats.mp3',
+					'/static/music/morning.mp3',
+					'/static/music/Oops.mp3',
+					'/static/music/Solstice.mp3'
 				]
 			}
 		},
@@ -86,8 +80,9 @@
 			confirm() {},
 			onClickClock(item) {
 				console.log("点击闹钟进入编辑页面", item)
+				var i=item.id.toString()
 				uni.navigateTo({
-					url:'../normalclock/normalclock'
+					url:'/pages/normalclock/modifyclock?id='+i
 				})
 			},
 			trigger(e) {
@@ -95,26 +90,84 @@
 					uni.navigateTo({
 						url:'/pages/normalclock/normalclock?id=0',
 					});
-			}			
+			},
+			set_clock(){
+				let that=this;
+				console.log(this.clockListData);
+				var date=new Date();
+				var current_week=date.getDay();//星期几
+				//周日
+				if(current_week==0){
+					current_week=7;
+				}
+				console.log("currentweek",current_week)
+				for(var i=0;i<this.clockListData.length;i++)
+				{
+					var c=this.clockListData[i];
+					/* console.log("c",c) */
+					var h=c.time.substr(0,2);
+					var m=c.time.substr(3,2)
+					//看是否是今天的闹钟
+					if((c.week>>(current_week-1))&1)
+					{
+						//如果是才设置定时器
+						console.log("c",c)
+						var clock_date=new Date;
+						clock_date.setHours(parseInt(h),parseInt(m),0);
+						console.log(clock_date);
+						
+						var slice=date-clock_date;//时间差
+						console.log("slice",slice);
+						
+						//slice为负数说明在今天要响
+						if(slice<0)
+						{
+							setTimeout(that.ring_clock,-slice,c);
+						}	
+					}
+				}
+			},
+			set_audio(){
+				
+			},
+			ring_clock(c){
+				uni.showToast({
+					title:'闹钟响了！'
+				});
+				//跳转到游戏页面
+				audio.src=this.ringsrc[c.ring];
+				audio.play();
+				console.log("jump to ",this.gamepages[c.gameid])
+				uni.navigateTo({
+					url:this.gamepages[c.gameid]
+			})
 		},
-		onShow() {		
-			/* var style=getApp().globalData.style
-			this.currentcolor=style
-			console.log(this.currentcolor)
-			 uni.setTabBarStyle({
-				selectedColor:style
+		onShow() {
+			let that=this;
+			uni.request({
+				url:'http://106.54.76.21:8080/clocks/clockList',
+				method:'GET',
+				header: {
+				'content-type': 'application/x-www-form-urlencoded'
+						},
+				success: function(e){
+					that.clockListData=e.data
+					for(var i=0;i<e.data.length;i++)
+					{
+						var tmp=parseInt(that.clockListData[i].time.substr(0,2));
+						that.clockListData[i].hour=tmp
+						that.clockListData[i].minute=that.clockListData[i].time.substr(3,2)
+					}
+				if(true)/* !that.onsetshow */
+				{
+					that.set_clock();
+					that.onshowSet=true;
+				}								
+				}
 			});
-			uni.setNavigationBarTitle({
-				title:'???'
-			});
-			 uni.setNavigationBarColor({
-				frontColor:'#ffffff',
-				backgroundColor:"#0056B3"
-			}); 
 			
-			this.pattern.buttonColor=style
-			  this.value++; */
 		}
+	},
 	}
 </script>
 

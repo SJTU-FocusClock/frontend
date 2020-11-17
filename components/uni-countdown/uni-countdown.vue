@@ -64,7 +64,8 @@
 				i: '00',
 				s: '00',
 				leftTime: 0,
-				seconds: 0
+				seconds: 0,
+				key:0
 			}
 		},
 		watch: {

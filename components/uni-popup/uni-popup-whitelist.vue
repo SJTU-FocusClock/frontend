@@ -13,8 +13,7 @@
 					<view>
 						<checkbox :value="item.value" :checked="item.checked" />
 						{{item.name}}
-					</view>
-					
+					</view>					
 				</label>
 			</checkbox-group>
 		</view>
@@ -121,14 +120,6 @@
 					{
 						value: 'taobao',
 						name: '淘宝'
-					},
-					{
-						value: 'ENG',
-						name: '英国'
-					},
-					{
-						value: 'FRA',
-						name: '法国'
 					}
 				]
 			}
