@@ -78,7 +78,7 @@
 					<gg-input-text label="备注" v-model="tag"></gg-input-text>
 
 				<!-- 	不玩儿游戏设置 -->
-			 	<gg-switch labelWidth="140" style="color:#c4c4e9 ;" label="不玩游戏直接关闭闹钟" tip="在闹钟画面有关闭闹钟功能,不完成小游戏,也可以快速关闭闹钟"></gg-switch>
+			 <!-- 	<gg-switch labelWidth="140" style="color:#c4c4e9 ;" label="不玩游戏直接关闭闹钟" tip="在闹钟画面有关闭闹钟功能,不完成小游戏,也可以快速关闭闹钟"></gg-switch> -->
  
 				</gg-nav-group>
 			</view>
@@ -186,23 +186,27 @@
 				},
 				radioLists: [{
 						value: 0,
-						text: '平凡之路'
+						text: 'Breeze'
 					},
 					{
 						value: 1,
-						text: '可爱'
+						text: 'cute'
 					},
 					{
 						value: 2,
-						text: '香蕉'
+						text: 'heartbeats'
 					},
 					{
 						value: 3,
-						text: '苹果'
+						text: 'morning'
 					},
 					{
 						value: 4,
-						text: '榴莲'
+						text: 'Oops'
+					},
+					{
+						value: 5,
+						text: 'Solstice'
 					}
 				],
 				id:0,

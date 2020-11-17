@@ -113,7 +113,16 @@
 			}
 		},
 		{
-			"path":"pages/focus/fail"
+			"path":"pages/game/puzzle",
+			"style": {
+				"navigationBarTitleText": "puzzle"
+			}
+		},
+		{
+			"path":"pages/game/catchMouse",
+			"style": {
+				"navigationBarTitleText": "打地鼠"
+			}
 		},
 		{
 			"path":"pages/normalclock/modifyclock",

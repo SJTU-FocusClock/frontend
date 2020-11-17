@@ -133,7 +133,18 @@
 						value: 'caculate',
 						name: '算术游戏',
 						id:3
-					}
+					},
+					{
+						value: 'puzzle',
+						name: '拼图游戏',
+						id:4
+					},
+					{
+						value: 'catchMouse',
+						name: '打地鼠',
+						id:5
+					},
+						
 				]
 			}
 		},

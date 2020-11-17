@@ -131,7 +131,7 @@
 				// 重复模式版块
 				formData: {
 					checkbox: ['2', '4'],
-					checkboxTag: '2,4',
+					checkboxTag: '',
 				},
 				maxNumber: 7,
 				checkLists: [{
@@ -172,23 +172,27 @@
 				},
 				radioLists: [{
 						value: 0,
-						text: '平凡之路'
+						text: 'Breeze'
 					},
 					{
 						value: 1,
-						text: '可爱'
+						text: 'cute'
 					},
 					{
 						value: 2,
-						text: '香蕉'
+						text: 'heartbeats'
 					},
 					{
 						value: 3,
-						text: '苹果'
+						text: 'morning'
 					},
 					{
 						value: 4,
-						text: '榴莲'
+						text: 'Oops'
+					},
+					{
+						value: 5,
+						text: 'Solstice'
 					}
 				],
 			}

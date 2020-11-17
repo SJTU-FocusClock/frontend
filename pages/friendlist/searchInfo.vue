@@ -70,7 +70,7 @@
 					size: '22',
 					type: 'person'
 				},
-				target:''
+				target:0
 			
 				
 			}
@@ -97,24 +97,6 @@
 					}
 				})
 			}, 
-			dialogInputConfirm(done, val) {
-				console.log(val);
-				let that=this;
-				uni.request({
-					url:'http://106.54.76.21:8080/users/alterInfo',
-					method:'PUT',
-					data:{
-						nickname:val.name,
-						sex:val.sex==='女'?false:true
-					},
-					success:e=>{
-						console.log(e)
-						that.user.nickname=val.name;
-						that.user.sex=val.sex
-					}
-				})
-				done();
-			},
 		},
 		onShow(){
 		},
