@@ -13,9 +13,11 @@
 				</view>
 				<view class="s_l">
 					<view class="info_item" @tap="topage(index)">
-						<text>{{ i.date }}</text>
-						<view :style="{WebkitLineClamp:lineNum!=0?lineNum:''}">{{ i.info }}</view>
-					<label>{{i.dur}}</label>
+						<text v-if="type==1">{{ i.start}}-{{i.end}}</text>
+						<!-- <view :style="{WebkitLineClamp:lineNum!=0?lineNum:''}">{{ i.info }}</view> -->
+					<label v-if="type==1">共{{i.duration}}分钟</label>
+					<text v-if="type==2">闹钟响起时间：{{i.start}}</text>
+					<text v-if="type==2">闹钟结束时间：{{i.end}}</text>
 					</view>
 				</view>
 			</view>
@@ -30,6 +32,9 @@
 			infoList: {
 				type: Array,
 				default: []
+			},
+			type:{
+				type:Number,
 			},
 			color: {
 				type: String,

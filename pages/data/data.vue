@@ -10,11 +10,22 @@
 	    :start-date="'2019-1-1'"
 	    :end-date="'2020-10-3'"
 		:showMonth="false"
-	    @change="change"
+	    @change="change0"
 	     />
-		<YSteps   lineNum='0' color='#fff' backgroundColor='rgb(194,197,228)' :infoList='list'></YSteps>
+		<YSteps   lineNum='0' color='#fff' backgroundColor='rgb(194,197,228)' :infoList='list1' :type='1'></YSteps>
 		</view>
 		<view v-if="this.index==1">
+		<uni-calendar 
+		    :insert="true"
+		    :lunar="false" 
+		    :start-date="'2019-1-1'"
+		    :end-date="'2020-10-3'"
+			:showMonth="false"
+		    @change="change1"
+		     />
+			<YSteps   lineNum='0' color='#fff' backgroundColor='rgb(194,197,228)' :infoList='list2' :type='2'></YSteps>
+			</view>
+		<view v-if="this.index==2">
 			<uni-section title="本周每天专注时长" type="line"></uni-section>
 		<histogram-chart
 		            :dataAs="histogramData1"
@@ -39,12 +50,6 @@
 				                }
 				            }"
 				        />
-						<uni-section title="本周每天起床时间" type="line"></uni-section>
-						<line-chart ref="lineData" canvasId="lt1" :dataAs="lineData" :yAxisAs="{
-					formatter: {
-						type: 'String', //type:number percent String,额外参数:fixed:NUmber,name:String
-					}
-				}"/>
 
 									</view>
 
@@ -66,67 +71,140 @@ import LineChart from '@/components/stan-ucharts/LineChart.vue';
 			HistogramChart,
 			LineChart
 		},
+		onLoad(){
+			var d=new Date().toISOString().slice(0, 10)
+			console.log(d)
+			let that=this
+			uni.request({
+				url:'http://106.54.76.21:8080/focus/oneDay',
+				data:{
+					date:d,
+				},
+				header: {
+					'content-type': 'application/x-www-form-urlencoded'
+				},
+				method:'GET',
+				success:function(res){
+					console.log(res)
+					that.list1=res.data
+				}
+			});
+			uni.request({
+				url:'http://106.54.76.21:8080/clocks/getRecord',
+				data:{
+					date:d,
+				},
+				header: {
+					'content-type': 'application/x-www-form-urlencoded'
+				},
+				method:'GET',
+				success:function(res){
+					console.log(res)
+					that.list2=res.data
+				}
+			});
+			uni.request({
+				url:'http://106.54.76.21:8080/focus/recent7Days',
+				data:{
+				},
+				header: {
+					'content-type': 'application/x-www-form-urlencoded'
+				},
+				method:'GET',
+				success:function(res){
+					console.log(res)
+					that.histogramData1={
+					                //柱状图Compent  //label应为series value 应为
+					                label: ['昨天', '前天','大前天','四天前','五天前','六天前', '七天前'],
+					                value: [
+					                    {
+					                        name: '本周专注时间统计/min',
+					                        data: res.data,
+					                    }
+					                ]
+					            }
+				}
+			});
+			uni.request({
+				url:'http://106.54.76.21:8080/focus/recent6Months',
+				data:{
+				},
+				header: {
+					'content-type': 'application/x-www-form-urlencoded'
+				},
+				method:'GET',
+				success:function(res){
+					console.log(res)
+					that.histogramData2={
+					                //柱状图Compent  //label应为series value 应为
+					                label: [ '上个月','两个月前','三个月前','四个月前','五个月前','六个月前'],
+					                value: [
+					                    {
+					                        name: '本周专注时间统计/min',
+					                        data: res.data
+					                    }
+					                ]
+					            }
+				}
+			});
+		},
 		data() {
 			return {
 				index:0,
-				histogramData1: {
-				                //柱状图Compent  //label应为series value 应为
-				                label: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-				                value: [
-				                    {
-				                        name: '本周专注时间统计/min',
-				                        data: [163, 72, 389, 67, 302, 296, 23]
-				                    }
-				                ]
-				            },
-							histogramData2: {
-							                //柱状图Compent  //label应为series value 应为
-							                label: ['一月', '二月', '三月', '四月', '五月', '六月', '七月','八月','九月','十月','十一月','十二月'],
-							                value: [
-							                    {
-							                        name: '本周专注时间统计/min',
-							                        data: [163, 72, 389, 67, 302, 296, 23,89,60,176,480,86]
-							                    }
-							                ]
-							            },
-										lineData: {
-														//带百分比的图--折线图数据
-														categories: ['周一', '周二', '周三', '周四', '周五', '周六','周日'],
-														series: [{ name: '本周每日起床时间', data: [434, 482, 402, 497, 503, 419,475],format:val=>{return Math.floor(val/60)+':'+(val%60)}}]
-													},
+				data1:[],
+				data2:[],
+				histogramData1: {},
+							histogramData2: {},
 				tabs: [{
 				              label: '时间历程',
 				          }, {
+							  label:'闹钟记录',
+						  },{
 				              label: '统计数据',
 				          }],
-				list: [
-					{
-					    date: '13:45 - 15:39',
-					    info: '机器学习',
-						dur:'共114分钟'
-					},
-					
-					{
-					    date: '11:13 - 11:59',
-					    info: '软件工程原理与实践',
-						dur:'共46分钟'
-					},
-					{
-					    date: '9:02 - 10:45',
-					    info: 'CSE',
-						dur:'共103分钟'
-					},         
-					{
-					    date: '7:30',
-					    info: '闹钟',
-						dur:'持续2分钟'
-					},   
-				                    ]
+				list1: [ ],
+				list2: [ ]
 			}
 		},
 		methods: {
-			 change(e) {
+			 change0(e) {
 			    console.log(e);
+				console.log(e.fulldate)
+				let that=this
+				uni.request({
+					url:'http://106.54.76.21:8080/focus/oneDay',
+					data:{
+						date:e.fulldate,
+					},
+					header: {
+						'content-type': 'application/x-www-form-urlencoded'
+					},
+					method:'GET',
+					success:function(res){
+						console.log(res)
+						that.list1=res.data
+					}
+				});
+			 },
+			 change1(e) {
+			    console.log(e);
+			 				console.log(e.fulldate)
+			 				let that=this
+			 				uni.request({
+			 					url:'http://106.54.76.21:8080/clocks/getRecord',
+			 					data:{
+			 						date:e.fulldate,
+			 					},
+			 					header: {
+			 						'content-type': 'application/x-www-form-urlencoded'
+			 					},
+			 					method:'GET',
+			 					success:function(res){
+			 						console.log(res)
+			 						that.list2=res.data
+			 					}
+			 				});
+							
 			 },
 			 onChange(e) {
 				let label = e.label // 选项卡名
