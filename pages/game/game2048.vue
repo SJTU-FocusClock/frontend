@@ -69,7 +69,6 @@
     },
     methods: {
 		start(event){
-			
 			this.laststart=event.touches;
 		},
 		movef(event)

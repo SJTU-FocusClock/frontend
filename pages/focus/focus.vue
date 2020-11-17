@@ -22,7 +22,6 @@
 
 
 			<view class="b">
-				<!-- :style="{backgroundColor:stopcolor}" -->
 				<button  :disabled="isdisabled"  @click="set_time" class="my_button">开始专注</button>
 				<button  :disabled="!isdisabled" @click="stop" class="my_button">停止专注</button>
 			</view>

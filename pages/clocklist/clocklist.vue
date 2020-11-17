@@ -39,30 +39,7 @@
 				currentcolor:'',
 				hackReset:true,
 				value:1,
-				clockListData: [
-					 {
-						id: 1,//闹钟id
-						hour: 6,//小时
-						minute: 30,//分钟
-						state: 1,//闹钟状态，开1，关0
-						tag: "睡觉", //备注
-						ring: "tmp", //铃声
-						type: 1,//重复类型，1为每周重复，2为特定日期闹钟
-						week: "11",//一周重复星期的参数
-						date: "",//闹钟指定日期
-					},
-					{
-						id: 2,//闹钟id
-						hour: 14,//小时
-						minute: 30,//分钟
-						state: 1,//闹钟状态，开1，关0
-						tag: "起床", //备注
-						ring: "", //铃声
-						type: 1,//重复类型，1为每周重复，2为特定日期闹钟
-						week: "11",//一周重复星期的参数
-						date: "",//闹钟指定日期
-					}, 
-				],
+				clockListData: [],
 				pattern: {
 					color: '#7A7E83',
 					backgroundColor: '#fff',

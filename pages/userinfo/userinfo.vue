@@ -9,16 +9,24 @@
 			<text>{{user.nickname}}</text>
 		</view>
 		
+		
+		<uni-popup ref="popup" type="dialog">
+			<uni-popup-info mode="input" title="修改信息" value=""  @confirm="dialogInputConfirm" ></uni-popup-info>
+		</uni-popup>
+		
+		
 		<uni-list :border="false">
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="compose"  :title="user.intro"  />
+		<!-- 	<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="compose"  :title="user.intro"  />
 			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="person"  :title='user.sex+" / "+user.birthday'  />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="location"  :title="user.adress"  />
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="location"  :title="user.adress"  /> -->
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="sex"  :title="user.sex" />
 			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="phone"  :title="user.phone" />
 			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="email"  :title="user.email"  />
-		
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="credit"  :title="user.credit"  />
 		</uni-list>
+		
 		<view class = "mybutton">
-						  <button class="mbutton">编辑个人信息</button>
+			<button class="mbutton" @click="set_info">编辑个人信息</button>
 		</view>	
 </view>
 </template>
@@ -27,38 +35,29 @@
 	import uniIcons from '@/components/uni-icons/uni-icons.vue'
 	import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 	import uniSection from '@/components/uni-section/uni-section.vue'
+	import uniPopupInfo from '@/components/uni-popup/uni-popup-info.vue'
 	export default {
 		components: {
 			uniIcons,
 			uniNavBar,
-			uniSection
+			uniSection,
+			uniPopupInfo
 		},
 		data() {
 			return {
 				user:{
-					nickname:"明月松间照",
-					sex:"女",
-					birthday:"2000-09-16",
-					adress:"上海交通大学东27-809",
+					nickname:"",
 					intro:"Life is hard for everyone",
-					phone:"19833337666",
+					phone:"",
 					email:"19283746678@qq.com",
-					avatar:"/static/avatar.png"
-				},
-				person: {
-					color: '#93989d',
-					size: '22',
-					type: 'person'
+					avatar:"/static/avatar.png",
+					credit:'',
+					sex:''
 				},
 				email: {
 					color: '#93989d',
 					size: '22',
 					type: 'email'
-				},
-				location: {
-					color: '#93989d',
-					size: '22',
-					type: 'location'
 				},
 				phone: {
 					color: '#93989d',
@@ -69,13 +68,58 @@
 					color: '#93989d',
 					size: '22',
 					type: 'compose'
+				},
+				credit:{
+					color: '#93989d',
+					size: '22',
+					type: 'star-filled'
+				},
+				sex:{
+					color: '#93989d',
+					size: '22',
+					type: 'person'
 				}
 			
 				
 			}
 		},
 		methods: {
-			
+			set_info(){
+				this.$refs.popup.open()
+			},
+			dialogInputConfirm(done, val) {
+				console.log(val);
+				let that=this;
+				uni.request({
+					url:'http://106.54.76.21:8080/users/alterInfo',
+					method:'PUT',
+					data:{
+						nickname:val.name,
+						sex:val.sex==='女'?false:true
+					},
+					success:e=>{
+						console.log(e)
+						that.user.nickname=val.name;
+						that.user.sex=val.sex
+					}
+				})
+				done();
+			},
+		},
+		onShow(){
+			let that=this;
+			uni.request({
+				url:'http://106.54.76.21:8080/users/user',
+				method:'GET',
+				success:e=>{
+					console.log(e)
+					that.user.nickname=e.data.nickname;
+					that.user.phone=e.data.phone
+					that.user.credit=e.data.credit.toString()
+					that.user.sex=e.data.sex?'男':'女'
+					console.log(that.user)
+				}
+			})
 		}
 	}
 </script>
