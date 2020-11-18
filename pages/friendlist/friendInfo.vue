@@ -33,6 +33,22 @@
 			uniNavBar,
 			uniSection
 		},
+		props:{
+			id:{
+				type:Number,
+			},
+		},
+		onLoad(){
+			let that=this
+			console.log(id)
+			uni.request({
+				url:'http://106.54.76.21:8080/users/getUserInfo/'+that.id,
+				method:'GET',
+				success:(e)=> {
+					console.log(e)
+				}
+			})
+		},
 		data() {
 			return {
 				user:{

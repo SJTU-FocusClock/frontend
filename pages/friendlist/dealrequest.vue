@@ -35,6 +35,27 @@
 			uniNavBar,
 			uniSection
 		},
+		onLoad(params){
+			let id=params.id
+			let that=this
+			console.log(id)
+			uni.request({
+				url:'http://106.54.76.21:8080/users/getUserInfo/'+id,
+				method:'GET',
+				success:(e)=> {
+					console.log(e)
+					that.user.nickname=e.data.nickname
+					if(e.data.sex==true){
+						that.user.sex="男"
+					}else{
+						that.user.sex="女"
+					}
+					that.user.phone=e.data.phone
+					that.user.email=e.data.email
+					that.user.avatar="/static/avatar.png"
+				}
+			})
+		},
 		data() {
 			return {
 				user:{

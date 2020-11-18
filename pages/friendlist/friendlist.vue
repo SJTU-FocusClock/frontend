@@ -25,6 +25,17 @@
 				uniNavBar,
 				uniSection
 			},
+			onLoad(){
+				let that=this
+				uni.request({
+					url:'http://106.54.76.21:8080/friends/list',
+					method:'GET',
+					success:(e)=> {
+						console.log(e)
+						that.listData=e.data
+					}
+				})
+			},
 			data() {
 				return {
 					back() {
