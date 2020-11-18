@@ -4,12 +4,12 @@
 			<view class="input-view">
 				<uni-icons class="input-uni-icon" type="search" size="22" color="#666666" />
 				<input confirm-type="search" class="nav-bar-input" type="text" style="color: #333333;" placeholder="输入手机号添加好友"   @confirm="confirm">
-				<uni-badge class="mybadge" type="error" text="5" size="small"></uni-badge>
+				<uni-badge class="mybadge" type="error" :text="request_num" size="small"></uni-badge>
 			</view>
 		</uni-nav-bar>
 		<uni-list :border="false">
-			<uni-list-chat  v-for="item in listData" :avatar-circle="true" :key="item.id" :title="item.nickname" :avatar="item.avatar
-			"   :clickable="true"  @click="onClick"></uni-list-chat>
+			<uni-list-chat  v-for="item in listData" :avatar-circle="true" :key="item.id" :title="item.nickname" avatar="/static/avatar.png"
+			   :clickable="true"  @click="jump_to_friend(item)"></uni-list-chat>
 		</uni-list>
 		
 	</view>
@@ -32,68 +32,8 @@
 							delta: 1
 						})
 					},
-					listData:[
-						{
-							id:1,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:2,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:3,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:4,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:5,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:6,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:7,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:8,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:9,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:10,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:11,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						},
-						{
-							id:12,
-							nickname:"明月松间照",
-							avatar:"/static/avatar.png"
-						}						
-					]
+					listData:[],
+					request_num:0
 
 				}
 			},
@@ -104,18 +44,45 @@
 						url:'/pages/friendlist/searchInfo?target='+target,
 					})
 				},
-				onClick(e){
-					console.log('执行click事件', e.data)
+				jump_to_friend(item){//跳转到好友信息页面
+					console.log('好友', item);
+					 //构造字符串
+					 var info=JSON.stringify(item);
+					 console.log(info);
 					uni.navigateTo({
-					                url: '/pages/friendlist/friendInfo',
+					                url: '/pages/friendlist/friendInfo?info='+info,
 					            });	
 				},
 				addNew(e){
-					console.log('执行click事件')
 					uni.navigateTo({
 					                url: '/pages/friendlist/requestlist',
 					            });	
+				},
+				get_request(){
+					//重复请求，之后优化
+					let that=this;
+					uni.request({
+						url:'http://106.54.76.21:8080/friends/getRequestList',
+						method:'GET',
+						success:e=>{
+							console.log("获取的请求信息",e.data)
+							that.request_num=e.data.length
+						}
+					})
 				}
+			},
+			onShow(){
+				let that=this;
+				uni.request({
+					url:'http://106.54.76.21:8080/friends/list',
+					method:'GET',
+					success:e=>{
+						console.log(e);
+						that.listData=e.data;//将数据填入
+						
+					}
+				})
+				that.get_request()
 			}
 		}
 </script>

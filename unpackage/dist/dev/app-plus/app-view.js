@@ -10068,7 +10068,7 @@ var render = function() {
         [
           _c("v-uni-image", {
             staticClass: _vm._$g(2, "sc"),
-            attrs: { src: _vm._$g(2, "a-src"), _i: 2 }
+            attrs: { src: "/static/avatar.png", _i: 2 }
           })
         ],
         1
@@ -10085,15 +10085,13 @@ var render = function() {
         [
           _c("uni-list-item", { attrs: { _i: 6 } }),
           _c("uni-list-item", { attrs: { _i: 7 } }),
-          _c("uni-list-item", { attrs: { _i: 8 } }),
-          _c("uni-list-item", { attrs: { _i: 9 } }),
-          _c("uni-list-item", { attrs: { _i: 10 } })
+          _c("uni-list-item", { attrs: { _i: 8 } })
         ],
         1
       ),
       _c("uni-fab", {
         ref: "fab",
-        attrs: { _i: 11 },
+        attrs: { _i: 9 },
         on: {
           trigger: function($event) {
             return _vm.$handleViewEvent($event)
@@ -10645,7 +10643,7 @@ var render = function() {
         [
           _c("v-uni-image", {
             staticClass: _vm._$g(2, "sc"),
-            attrs: { src: _vm._$g(2, "a-src"), _i: 2 }
+            attrs: { src: "/static/avatar.png", _i: 2 }
           })
         ],
         1
@@ -10662,24 +10660,30 @@ var render = function() {
         [
           _c("uni-list-item", { attrs: { _i: 6 } }),
           _c("uni-list-item", { attrs: { _i: 7 } }),
-          _c("uni-list-item", { attrs: { _i: 8 } }),
-          _c("uni-list-item", { attrs: { _i: 9 } }),
-          _c("uni-list-item", { attrs: { _i: 10 } })
+          _c("uni-list-item", { attrs: { _i: 8 } })
         ],
         1
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
+        { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
         [
           _c(
             "v-uni-button",
-            { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
+            {
+              staticClass: _vm._$g(10, "sc"),
+              attrs: { _i: 10 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
             [_vm._v("同意")]
           ),
           _c(
             "v-uni-button",
-            { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
+            { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
             [_vm._v("拒绝")]
           )
         ],

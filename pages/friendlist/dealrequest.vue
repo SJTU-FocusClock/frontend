@@ -3,23 +3,21 @@
 		
 		
 		<view class="user_avatar">
-			<image class="avatar"  :src="user.avatar"></image>
+			<image class="avatar"  src="/static/avatar.png"></image>
 		</view>
 		
 		<view class="nickname">
-			<text>{{user.nickname}}</text>
+			<text>{{user.sendUser.nickname}}</text>
 		</view>
 		
 		<uni-list :border="false">
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="compose"  :title="user.intro"  />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="person"  :title='user.sex+" / "+user.birthday'  />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="location"  :title="user.adress"  />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="phone"  :title="user.phone" />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="email"  :title="user.email"  />
+		<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="sex"  :title="user.sendUser.sex" />
+		<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="phone"  :title="user.sendUser.phone" />
+		<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="email"  :title="user.sendUser.email"  />
 		
 		</uni-list>
 		      <view class = "mybutton">
-				  <button class="mbutton">同意</button>
+				  <button class="mbutton" @click="agree">同意</button>
 				  <button class="mbutton">拒绝</button>
 			  </view>		
 	</view>
@@ -37,41 +35,27 @@
 		},
 		data() {
 			return {
-				user:{
-					nickname:"明月松间照",
-					sex:"女",
-					birthday:"2000-09-16",
-					adress:"上海交通大学东27-809",
-					intro:"Life is hard for everyone",
-					phone:"19833337666",
-					email:"19283746678@qq.com",
-					avatar:"/static/avatar.png"
-				},
-				person: {
-					color: '#93989d',
-					size: '22',
-					type: 'person'
-				},
-				email: {
-					color: '#93989d',
-					size: '22',
-					type: 'email'
-				},
-				location: {
-					color: '#93989d',
-					size: '22',
-					type: 'location'
-				},
-				phone: {
-					color: '#93989d',
-					size: '22',
-					type: 'phone'
-				},
-				compose: {
-					color: '#93989d',
-					size: '22',
-					type: 'compose'
-				},
+				user:{},//user指的是所有的信息
+	email: {
+		color: '#93989d',
+		size: '22',
+		type: 'email'
+	},
+	phone: {
+		color: '#93989d',
+		size: '22',
+		type: 'phone'
+	},
+	compose: {
+		color: '#93989d',
+		size: '22',
+		type: 'compose'
+	},
+	sex:{
+		color: '#93989d',
+		size: '22',
+		type: 'person'
+	},
 				pattern: {
 					color: '#7A7E83',
 					backgroundColor: '#fff',
@@ -94,22 +78,44 @@
 			}
 		},
 		methods: {
-			trigger(e) {
-				console.log(e)
-				uni.showModal({
-					title: '提示',
-					content: `${(e.item.text=="设闹钟")? '您点击了设闹钟' : '您确定删除该好友吗'}`,
-					success: function(res) {
-						if (res.confirm) {
-							console.log('用户点击确定')
-						} else if (res.cancel) {
-							console.log('用户点击取消')
-						}
-					}
+agree(){
+	let that=this;
+	uni.request({
+		url:'http://106.54.76.21:8080/friends/handle',
+		method:'POST',
+		header: {
+		'content-type': 'application/x-www-form-urlencoded'
+		},
+		data:{
+			requestId:that.user.id,
+			type:1
+		},
+		success:e=>{
+			if(e.data){
+				//成功
+				uni.showToast({
+					title:'添加成功!',
+				});
+				uni.navigateBack({
+					
 				})
-			},
-			fabClick() {
-			},
+			}else{
+				uni.showToast({
+					title:'拒绝成功!',
+				});
+				uni.navigateBack({
+					
+				})
+			}
+		}
+	})
+}
+		},
+		onLoad(options){
+		/* 	console.log("iinfo",options.info); */
+			this.user=JSON.parse(options.info)
+			this.user.sendUser.sex=this.user.sendUser.sex?'男':'女'
+		/* 	console.log(this.user) */
 		}
 	}
 </script>

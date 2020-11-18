@@ -30,7 +30,7 @@
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
 	import drawer from "@/components/drawer.vue"
-	export default {
+	export default { 
 		components: {
 			uniDrawer,
 			uniNavBar,

@@ -94,7 +94,7 @@
 					{
 						console.log('登陆成功')
 						uni.switchTab({
-						url: "/pages/clocklist/clocklist"
+						url: "/pages/login/phonelogin"
 					})
 					}
 					else 

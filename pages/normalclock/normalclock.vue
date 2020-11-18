@@ -195,6 +195,7 @@
 						text: 'Solstice'
 					}
 				],
+				id:0
 			}
 
 		},
@@ -270,7 +271,7 @@
 		},
 		onShow() {
 			/* this.currentcolor=getApp().globalData.style */
-			console.log(this.value)
+			/* console.log(this.value) */
 		}
 	}
 </script>

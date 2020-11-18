@@ -3,7 +3,7 @@
 		
 		
 		<view class="user_avatar">
-			<image class="avatar"  :src="user.avatar"></image>
+			<image class="avatar"  src="/static/avatar.png"></image>
 		</view>
 		
 		<view class="nickname">
@@ -11,10 +11,8 @@
 		</view>
 		
 		<uni-list :border="false">
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="compose"  :title="user.intro"  />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="person"  :title='user.sex+" / "+user.birthday'  />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="location"  :title="user.adress"  />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="phone"  :title="user.phone" />
+	   <uni-list-item :border="true" :show-extra-icon="true" :extra-icon="sex"  :title="user.sex" />
+	 		<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="phone"  :title="user.phone" />
 			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="email"  :title="user.email"  />
 		
 		</uni-list>
@@ -35,42 +33,36 @@
 		},
 		data() {
 			return {
-				user:{
-					nickname:"明月松间照",
-					sex:"女",
-					birthday:"2000-09-16",
-					adress:"上海交通大学东27-809",
-					intro:"Life is hard for everyone",
-					phone:"19833337666",
-					email:"19283746678@qq.com",
-					avatar:"/static/avatar.png"
-				},
-				person: {
-					color: '#93989d',
-					size: '22',
-					type: 'person'
-				},
-				email: {
-					color: '#93989d',
-					size: '22',
-					type: 'email'
-				},
-				location: {
-					color: '#93989d',
-					size: '22',
-					type: 'location'
-				},
-				phone: {
-					color: '#93989d',
-					size: '22',
-					type: 'phone'
-				},
-				compose: {
-					color: '#93989d',
-					size: '22',
-					type: 'compose'
-				},
-				pattern: {
+		user:{
+			nickname:"",
+			phone:"",
+			email:"19283746678@qq.com",
+			avatar:"/static/avatar.png",
+			credit:'',
+			sex:'',
+			id:0
+		},
+		email: {
+			color: '#93989d',
+			size: '22',
+			type: 'email'
+		},
+		phone: {
+			color: '#93989d',
+			size: '22',
+			type: 'phone'
+		},
+		compose: {
+			color: '#93989d',
+			size: '22',
+			type: 'compose'
+		},
+		sex:{
+			color: '#93989d',
+			size: '22',
+			type: 'person'
+		},
+	pattern: {
 					color: '#7A7E83',
 					backgroundColor: '#fff',
 					selectedColor: '#c4c4e9',
@@ -93,21 +85,39 @@
 		},
 		methods: {
 			trigger(e) {
-				console.log(e)
+				let that=this;
 				uni.showModal({
 					title: '提示',
 					content: `${(e.item.text=="设闹钟")? '您点击了设闹钟' : '您确定删除该好友吗'}`,
 					success: function(res) {
 						if (res.confirm) {
-							console.log('用户点击确定')
+							console.log('用户点击确定删除好友');
+							uni.request({
+								url:'http://106.54.76.21:8080/friends/remove/'+that.user.id,
+								method:'DELETE',
+								success:e=>{
+									console.log(e);
+									uni.navigateBack({
+										
+									})
+								}
+							})
 						} else if (res.cancel) {
-							console.log('用户点击取消')
+							console.log('用户点击取消删除好友')
 						}
 					}
 				})
 			},
 			fabClick() {
 			},
+		},
+		onLoad(options){
+			var info=JSON.parse(options.info);
+			console.log("info",info);
+			this.user=info;
+			
+			//处理性别
+			this.user.sex=info.sex?'男':'女'
 		}
 	}
 </script>
