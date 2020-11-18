@@ -151,12 +151,32 @@
 				//跳转到游戏页面
 				audio.src=this.ringsrc[c.ring];
 				audio.play();
+				this.send_record(c.time);//发送闹钟记录
 				console.log("jump to ",this.gamepages[c.gameid])
 				uni.navigateTo({
 					url:this.gamepages[c.gameid]
 			})
 		},
+		send_record(record){
+			//发送闹钟记录
+			console.log("record:",record);
+			uni.request({
+				url:'http://106.54.76.21:8080/clocks/createRecord',
+				method:'POST',
+				header: {
+				'content-type': 'application/x-www-form-urlencoded'
+						},
+				data:{
+					start:record,
+					end:record.substr(0,6)+'50'//没有实现闹钟end的计算
+				},
+				complete:(e) =>{
+					console.log(e)
+				}
+			})
+		},
 		onShow() {
+			audio.stop();//让闹钟停止
 			let that=this;
 			uni.request({
 				url:'http://106.54.76.21:8080/clocks/clockList',

@@ -11,7 +11,9 @@
 				</uni-list-item>
 				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="eye" clickable @click="onClick2" title="统计数据">
 				</uni-list-item>
-			
+			<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="clock"  clickable @click="onClick6" title="闹钟请求">
+						
+			</uni-list-item>
 				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="gear"  clickable @click="onClick3" title="设置">
 					
 				</uni-list-item>
@@ -21,6 +23,7 @@
 				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="undo"  clickable @click="onClick4" title="退出登录">
 			
 				</uni-list-item>
+			
 			</uni-list>
 		</uni-drawer>
 	</view>
@@ -56,6 +59,11 @@
 					color: '#93989d',
 					size: '22',
 					type: 'person'
+				},
+				clock:{
+					color: '#93989d',
+					size: '22',
+					type: 'flag-filled'
 				}
 			}
 		},
@@ -112,6 +120,14 @@
 					}
 				})
 			
+			},
+			onClick6(e) {
+				console.log('执行click事件', e.data)
+				uni.navigateTo({
+				                url: '/pages/set/set',
+				            });
+				
+						
 			},
 			// 打开窗口
 			showDrawer(e) {

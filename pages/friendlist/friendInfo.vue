@@ -1,23 +1,24 @@
 <template>
 	<view>
-		
-		
+
+
 		<view class="user_avatar">
-			<image class="avatar"  src="/static/avatar.png"></image>
+			<image class="avatar" src="/static/avatar.png"></image>
 		</view>
-		
+
 		<view class="nickname">
 			<text>{{user.nickname}}</text>
 		</view>
-		
+
 		<uni-list :border="false">
-	   <uni-list-item :border="true" :show-extra-icon="true" :extra-icon="sex"  :title="user.sex" />
-	 		<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="phone"  :title="user.phone" />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="email"  :title="user.email"  />
-		
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="sex" :title="user.sex" />
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="phone" :title="user.phone" />
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="email" :title="user.email" />
+
 		</uni-list>
-		
-		<uni-fab ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal" @trigger="trigger" @fabClick="fabClick" />
+
+		<uni-fab ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal"
+		 @trigger="trigger" @fabClick="fabClick" />
 	</view>
 </template>
 
@@ -33,36 +34,36 @@
 		},
 		data() {
 			return {
-		user:{
-			nickname:"",
-			phone:"",
-			email:"19283746678@qq.com",
-			avatar:"/static/avatar.png",
-			credit:'',
-			sex:'',
-			id:0
-		},
-		email: {
-			color: '#93989d',
-			size: '22',
-			type: 'email'
-		},
-		phone: {
-			color: '#93989d',
-			size: '22',
-			type: 'phone'
-		},
-		compose: {
-			color: '#93989d',
-			size: '22',
-			type: 'compose'
-		},
-		sex:{
-			color: '#93989d',
-			size: '22',
-			type: 'person'
-		},
-	pattern: {
+				user: {
+					nickname: "",
+					phone: "",
+					email: "19283746678@qq.com",
+					avatar: "/static/avatar.png",
+					credit: '',
+					sex: '',
+					id: 0
+				},
+				email: {
+					color: '#93989d',
+					size: '22',
+					type: 'email'
+				},
+				phone: {
+					color: '#93989d',
+					size: '22',
+					type: 'phone'
+				},
+				compose: {
+					color: '#93989d',
+					size: '22',
+					type: 'compose'
+				},
+				sex: {
+					color: '#93989d',
+					size: '22',
+					type: 'person'
+				},
+				pattern: {
 					color: '#7A7E83',
 					backgroundColor: '#fff',
 					selectedColor: '#c4c4e9',
@@ -85,62 +86,66 @@
 		},
 		methods: {
 			trigger(e) {
-				let that=this;
-				uni.showModal({
-					title: '提示',
-					content: `${(e.item.text=="设闹钟")? '您点击了设闹钟' : '您确定删除该好友吗'}`,
-					success: function(res) {
-						if (res.confirm) {
-							console.log('用户点击确定删除好友');
-							uni.request({
-								url:'http://106.54.76.21:8080/friends/remove/'+that.user.id,
-								method:'DELETE',
-								success:e=>{
-									console.log(e);
-									uni.navigateBack({
-										
-									})
-								}
-							})
-						} else if (res.cancel) {
-							console.log('用户点击取消删除好友')
+				let that = this;
+				if (e.index == 1) {
+					uni.showModal({
+						title: '提示',
+						content: `${(e.item.text=="设闹钟")? '您点击了设闹钟' : '您确定删除该好友吗'}`,
+						success: function(res) {
+							if (res.confirm) {
+								console.log('用户点击确定删除好友');
+								uni.request({
+									url: 'http://106.54.76.21:8080/friends/remove/' + that.user.id,
+									method: 'DELETE',
+									success: e => {
+										console.log(e);
+										uni.navigateBack({
+
+										})
+									}
+								})
+							} else if (res.cancel) {
+								console.log('用户点击取消删除好友');
+							}
 						}
-					}
-				})
+					})
+				} else if (e.index == 0) { //给好友设闹钟
+					console.log("给好友设闹钟");
+					uni.navigateTo({
+						url:'/pages/normalclock/friendclock?receiver='+that.user.id
+					})
+				}
 			},
-			fabClick() {
-			},
+			fabClick() {},
 		},
-		onLoad(options){
-			var info=JSON.parse(options.info);
-			console.log("info",info);
-			this.user=info;
-			
+		onLoad(options) {
+			var info = JSON.parse(options.info);
+			console.log("info", info);
+			this.user = info;
+
 			//处理性别
-			this.user.sex=info.sex?'男':'女'
+			this.user.sex = info.sex ? '男' : '女'
 		}
 	}
 </script>
 
 <style>
-	.avatar{
+	.avatar {
 		width: 100px;
 		height: 100px;
-		border-radius:100px;
+		border-radius: 100px;
 		margin-top: 90px;
 	}
-	
-	.user_avatar{
+
+	.user_avatar {
 		height: 200px;
 		background-image: url(../../static/background.png);
 		padding-left: 110px;
 	}
-	
-	.nickname{
+
+	.nickname {
 		text-align: center;
 		font-size: 20px;
 		margin-bottom: 50px;
 	}
-	
-	
 </style>

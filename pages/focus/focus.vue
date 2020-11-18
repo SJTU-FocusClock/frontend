@@ -43,8 +43,8 @@
 	import drawer from '@/components/drawer.vue'
 
 
-	const audio=uni.createInnerAudioContext();
-	audio.src="http://mp3.9ku.com/hot/2004/07-17/41811.mp3";
+	/* const audio=uni.createInnerAudioContext();
+	audio.src="http://mp3.9ku.com/hot/2004/07-17/41811.mp3"; */
 	
 	export default {
 		components: {
@@ -131,7 +131,6 @@
 					title: "倒计时结束"
 				})
 				this.isdisabled = false;
-				audio.play();
 				uni.vibrateLong({
 				    success: function () {
 				        console.log('success');
