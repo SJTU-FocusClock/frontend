@@ -118,7 +118,7 @@ import LineChart from '@/components/stan-ucharts/LineChart.vue';
 					                label: ['昨天', '前天','大前天','四天前','五天前','六天前', '七天前'],
 					                value: [
 					                    {
-					                        name: '本周专注时间统计/min',
+					                        name: '当天专注时间统计/min',
 					                        data: res.data,
 					                    }
 					                ]
@@ -140,7 +140,7 @@ import LineChart from '@/components/stan-ucharts/LineChart.vue';
 					                label: [ '上个月','两个月前','三个月前','四个月前','五个月前','六个月前'],
 					                value: [
 					                    {
-					                        name: '本周专注时间统计/min',
+					                        name: '本月专注时间统计/min',
 					                        data: res.data
 					                    }
 					                ]
