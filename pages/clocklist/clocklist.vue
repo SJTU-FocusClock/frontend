@@ -16,7 +16,7 @@
 			</uni-list-item>
 		</uni-list>
 		
-		<uni-fab  :key="value" v-if="hackReset" ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal" @trigger="trigger"/>
+		<uni-fab   v-if="hackReset" ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal" @trigger="trigger"/>
 		
 	</view>
 </template>
@@ -25,6 +25,7 @@
 	const audio = uni.getBackgroundAudioManager();
 	/* audio.src='/static/music/morning.mp3';
 	audio.stop(); */
+	
 	import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniIcons from "@/components/uni-icons/uni-icons.vue"
@@ -73,7 +74,8 @@
 					'/static/music/morning.mp3',
 					'/static/music/Oops.mp3',
 					'/static/music/Solstice.mp3'
-				]
+				],
+				map:new Map()//全局，存储settimeout的id
 			}
 		},
 		methods: {
@@ -93,14 +95,16 @@
 			},
 			set_clock(){
 				let that=this;
-				console.log(this.clockListData);
+				/* console.log(this.clockListData); */
+				that.cancel_clock();
+				that.map.clear();
 				var date=new Date();
 				var current_week=date.getDay();//星期几
 				//周日
 				if(current_week==0){
 					current_week=7;
 				}
-				console.log("currentweek",current_week)
+				/* console.log("currentweek",current_week) */
 				for(var i=0;i<this.clockListData.length;i++)
 				{
 					var c=this.clockListData[i];
@@ -111,24 +115,34 @@
 					if((c.week>>(current_week-1))&1)
 					{
 						//如果是才设置定时器
-						console.log("c",c)
+						/* console.log("c",c) */
 						var clock_date=new Date;
 						clock_date.setHours(parseInt(h),parseInt(m),0);
-						console.log(clock_date);
+						
 						
 						var slice=date-clock_date;//时间差
 						console.log("slice",slice);
 						
-						//slice为负数说明在今天要响
+						//slice为负数说明在今天要响,此时才设置定时器
 						if(slice<0)
 						{
-							setTimeout(that.ring_clock,-slice,c);
+							console.log("c",c)
+							var cid=setTimeout(that.ring_clock,-slice,c);
+							that.map.set(c.id,cid);
 						}	
 					}
 				}
-			},
-			set_audio(){
+				that.map.forEach(function(value,key){
+					console.log("map",key,value);
+				});
 				
+			},
+			cancel_clock(){
+			//取消所有闹钟
+			console.log("取消所有闹钟")
+				this.map.forEach(function(value,key){
+					clearTimeout(value);
+				});
 			},
 			ring_clock(c){
 				uni.showToast({
@@ -160,12 +174,16 @@
 					}
 				if(true)/* !that.onsetshow */
 				{
+					//设置定时器
 					that.set_clock();
 					that.onshowSet=true;
 				}								
 				}
 			});
 			
+		},
+		onLoad(v){
+		
 		}
 	},
 	}

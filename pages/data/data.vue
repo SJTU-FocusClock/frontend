@@ -12,7 +12,7 @@
 		:showMonth="false"
 	    @change="change0"
 	     />
-		<YSteps   lineNum='0' color='#fff' backgroundColor='rgb(194,197,228)' :infoList='list1' :type='1'></YSteps>
+		<YSteps   color='#fff' backgroundColor='rgb(194,197,228)' :infoList='list1' :type='1'></YSteps>
 		</view>
 		<view v-if="this.index==1">
 		<uni-calendar 
@@ -23,7 +23,7 @@
 			:showMonth="false"
 		    @change="change1"
 		     />
-			<YSteps   lineNum='0' color='#fff' backgroundColor='rgb(194,197,228)' :infoList='list2' :type='2'></YSteps>
+			<YSteps color='#fff' backgroundColor='rgb(194,197,228)' :infoList='list2' :type='2'></YSteps>
 			</view>
 		<view v-if="this.index==2">
 			<uni-section title="本周每天专注时长" type="line"></uni-section>

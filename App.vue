@@ -12,7 +12,7 @@
 			console.log('App Hide')
 		},
 		globalData:{
-			style:'#1aaaff',
+			style:'#aaaaff',
 			
 		}
 	}

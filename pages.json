@@ -83,12 +83,7 @@
 			}
 
 		},
-		{
-			"path": "pages/clocklist/quickclock",
-			"style": {
-				"transparentTitle": "auto"
-			}
-		}, {
+	 {
 			"path": "pages/normalclock/normalclock",
 			"style": {
 				"navigationStyle": "custom"
