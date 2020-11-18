@@ -79,6 +79,12 @@
 			}
 
 		},
+		{
+			"path":"pages/clocklist/handlerequest",
+			"style": {
+				"navigationBarTitleText": "处理闹钟请求"
+			}
+		},
 	 {
 			"path": "pages/normalclock/normalclock",
 			"style": {

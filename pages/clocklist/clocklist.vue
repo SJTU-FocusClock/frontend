@@ -5,14 +5,16 @@
 		<uni-list class="clockList">
 			<uni-list-item class="clockListItem" v-for="item in clockListData"
 				:clickable="true" @click="onClickClock(item)" 
-				:title="item.hour+':'+item.minute" :note="item.tag">
+				:title="item.hour+':'+item.minute" :note="item.tag"
+				
+				>
 				<template v-slot:header>
 					<text v-if="item.hour < 12">上午</text>
 					<text v-else font-size="small">下午</text>
 				</template>
 				<template v-slot:footer>
-					<image src="../../static/avatar.png" class="clock-img"></image>
-				</template>
+					<image src="/static/avatar.png" class="clock-img"></image>
+				</template> 
 			</uni-list-item>
 		</uni-list>
 		
@@ -118,7 +120,6 @@
 						/* console.log("c",c) */
 						var clock_date=new Date;
 						clock_date.setHours(parseInt(h),parseInt(m),0);
-						
 						
 						var slice=date-clock_date;//时间差
 						console.log("slice",slice);

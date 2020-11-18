@@ -166,7 +166,7 @@
 				gametext: '选择闹钟游戏',
 				gameid: 0,
 				time: '',
-				tag: '',
+				tag: ' ',
 				ringData: {
 					radio: '',
 				},

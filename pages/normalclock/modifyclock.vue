@@ -180,7 +180,7 @@
 				gameid: 0,
 				gameitems:['随机游戏','2048','打字游戏','算术游戏'],
 				time: '',
-				tag: '',
+				tag: ' ',
 				ringData: {
 					radio: 0,
 				},

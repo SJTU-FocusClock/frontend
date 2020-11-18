@@ -1,7 +1,5 @@
 <template>
 	<view>
-		
-		
 		<view class="user_avatar">
 			<image class="avatar"  src="/static/avatar.png"></image>
 		</view>

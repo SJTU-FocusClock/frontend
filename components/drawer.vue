@@ -100,17 +100,17 @@
 					                url: '/pages/userinfo/userinfo',
 					            });
 			},
-			onClick4(e) {
-			
+			onClick4(e) {		
 				console.log('执行click事件', e.data)
-				
-			
 				uni.showModal({
 					title: '提示',
 					content: `退出登录`,
 					success: function(res) {
 						if (res.confirm) {
-							console.log('用户点击确定')
+							uni.request({
+								url:'http://106.54.76.21:8080/users/logout',
+								
+							})
 							uni.redirectTo({
 															url:'/pages/login/phonelogin'
 														})
@@ -124,7 +124,7 @@
 			onClick6(e) {
 				console.log('执行click事件', e.data)
 				uni.navigateTo({
-				                url: '/pages/set/set',
+				                url: '/pages/clocklist/handlerequest',
 				            });
 				
 						
