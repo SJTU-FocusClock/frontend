@@ -44,6 +44,7 @@
 	  methods:{
 		  handle_week(){
 			  //handle week
+			  this.week='';
 			  for(var j=0;j<this.requestlist.length;j++)
 			  {
 				  var w=this.requestlist[j].week;

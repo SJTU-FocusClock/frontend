@@ -1,7 +1,7 @@
 {
     "name" : "test",
-    "appid" : "",
-    "description" : "",
+    "appid" : "__UNI__DAFF3B3",
+    "description" : "test",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -52,13 +52,15 @@
                 "UIBackgroundModes" : [ "audio" ]
             },
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "ad" : {}
+            }
         },
         "nativePlugins" : {
             "JG-JVerification" : {
                 "JPUSH_CHANNEL_ANDROID" : "developer-default",
-                "JPUSH_APPKEY_IOS" : "aa9c6f60ce94de9d29c9dc34",
-                "JPUSH_APPKEY_ANDROID" : "aa9c6f60ce94de9d29c9dc34",
+                "JPUSH_APPKEY_IOS" : "ab60a00f80e0978a8f6b72c3",
+                "JPUSH_APPKEY_ANDROID" : "ab60a00f80e0978a8f6b72c3",
                 "JPUSH_CHANNEL_IOS" : "developer-default",
                 "__plugin_info__" : {
                     "name" : "JG-JVerification",
