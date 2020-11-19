@@ -12,18 +12,18 @@
 
 
 		<view class="content">
-			<image style="width: 600rpx;height: 600rpx;" src="../../static/avatar.png"> </image>
+			<image style="width: 400rpx;height: 400rpx;" src="../../static/avatar.png"> </image>
 			<view class="mode">
 				<switch  @change="change_mode"></switch>
 				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
 			</view>
 
-			<uni-countdown :key="value"  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
+			<uni-countdown font="20px" :key="value"  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
 
 
 			<view class="b">
-				<button  :disabled="isdisabled"  @click="set_time" class="my_button">开始专注</button>
-				<button  :disabled="!isdisabled" @click="stop" class="my_button">停止专注</button>
+				<button  :disabled="isdisabled"  @click="set_time" class="my_button">开始</button>
+				<button  :disabled="!isdisabled" @click="stop" class="my_button">停止</button>
 			</view>
 			<text clickable @click="setwhite" style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">设置白名单</text>
 		</view>
@@ -194,7 +194,6 @@
 			}
 		},
 		onHide() {
-		audio.destroy();
 		this.isdisabled=false;
 		//???
 		this.hour=0;

@@ -1,20 +1,20 @@
 <template>
 	<view class="content">
-		<button type="primary" @click="debug()">设置debug模式</button>
+<!-- 		<button type="primary" @click="debug()">设置debug模式</button>
 		<button type="primary" @click="init()">初始化</button>
-		<button type="primary" @click="isInitSuccess()">初始化是否成功</button>
-		<button type="primary" @click="checkVerifyEnable()">是否支持验证</button>
+ 		<button type="primary" @click="isInitSuccess()">初始化是否成功</button>
+		<button type="primary" @click="checkVerifyEnable()">是否支持验证</button> 
 		<button type="primary" @click="getToken()">获取token</button>
 		<button type="primary" @click="preLogin()">一键登录预取号</button>
-		<button type="primary" @click="clearPreLoginCache()">清除预取号缓存</button>
+		<button type="primary" @click="clearPreLoginCache()">清除预取号缓存</button> -->
 		<button type="primary" @click="loginAuth()">请求授权一键登录</button>
-		<button type="primary" @click="setCustomUIWithConfig()">自定义授权页面样式</button>
+	<!-- 	<button type="primary" @click="setCustomUIWithConfig()">自定义授权页面样式</button>
 		<button type="primary" @click="setCustomDialog()">自定义弹窗授权页</button>
 		<button type="primary" @click="getCode()">获取验证码</button>
 		<button type="primary" @click="setTimeWithConfig()">设置获取验证码时间间隔</button>
 		<view class="msg-box" >
 			<text class="msg">{{msg}}</text>
-		</view>
+		</view> -->
 	</view>
 </template>
 
