@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<drawer></drawer>
+		<drawer :color="color"></drawer>
 		<uni-popup ref="popup" type="dialog">
 			<uni-popup-dialog mode="input" title="时间设定" value="" placeholder="请输入您想要专注的分钟数/min" @confirm="dialogInputConfirm" ></uni-popup-dialog>
 		</uni-popup>
@@ -12,18 +12,18 @@
 
 
 		<view class="content">
-			<image style="width: 400rpx;height: 400rpx;" src="../../static/1.png"> </image>
+			<image style="width: 400rpx;height: 400rpx;" src="../../static/dogs/2.png"> </image>
 			<view class="mode">
 				<switch  @change="change_mode"></switch>
 				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
 			</view>
 
-			<uni-countdown font="20px" :key="value"  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
+			<uni-countdown font="40px" :key="value"  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
  
 
 			<view class="b">
-				<button  :disabled="isdisabled"  @click="set_time" class="my_button">开始</button>
-				<button  :disabled="!isdisabled" @click="stop" class="my_button">停止</button>
+				<button :style="{'background-color':!isdisabled?color:'#F5F5F5'}" :disabled="isdisabled"  @click="set_time" class="my_button">开始</button>
+				<button :style="{'background-color':isdisabled?color:'#F5F5F5'}" :disabled="!isdisabled" @click="stop" class="my_button">停止</button>
 			</view>
 			<text clickable @click="setwhite" style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">设置白名单</text>
 		</view>
@@ -68,7 +68,8 @@
 				start:'',
 				endd:'',
 				duration:1,
-			    value:0
+			    value:0,
+				color:"#cacaea"
 			}
 		},
 		methods: {
@@ -192,6 +193,10 @@
 				// })
 				this.$refs.whitelist.open()
 			}
+		},
+		onShow()
+		{
+			this.color=getApp().globalData.color
 		},
 		onHide() {
 		this.isdisabled=false;

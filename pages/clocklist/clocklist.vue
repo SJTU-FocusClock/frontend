@@ -1,7 +1,6 @@
 <template>
 	<view>
-		<drawer></drawer>
-		
+		<drawer :color="color"></drawer>
 		<uni-list class="clockList">
 			<uni-list-item class="clockListItem" v-for="(item,i) in clockListData"
 				:clickable="true" @click="onClickClock(item)" 
@@ -18,7 +17,7 @@
 			</uni-list-item>  
 		</uni-list>
 		
-		<uni-fab   v-if="hackReset" ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal" @trigger="trigger"/>
+		<uni-fab :key="num" v-if="hackReset" ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal" @trigger="trigger"/>
 		
 	</view>
 </template>
@@ -46,6 +45,7 @@
 				value:1,
 				onshowSet:false,
 				clockListData: [],
+				color:"#cacaea",
 				pattern: {
 					color: '#7A7E83',
 					backgroundColor: '#fff',
@@ -77,7 +77,8 @@
 					'/static/music/Oops.mp3',
 					'/static/music/Solstice.mp3'
 				],
-				map:new Map()//全局，存储settimeout的id
+				map:new Map(),//全局，存储settimeout的id
+				num:1
 			}
 		},
 		methods: {
@@ -177,8 +178,12 @@
 			})
 		},
 		onShow() {
-			audio.stop();//让闹钟停止
-			console.log(getApp().globalData.style)
+			audio.stop()//让闹钟停止
+
+			this.color=getApp().globalData.color
+			this.pattern.selectedColor=this.color
+			this.pattern.buttonColor=this.color
+			this.num++
 			let that=this;
 			uni.request({
 				url:'http://106.54.76.21:8080/clocks/clockList',
@@ -193,13 +198,15 @@
 						var tmp=parseInt(that.clockListData[i].time.substr(0,2));
 						that.clockListData[i].hour=tmp
 						that.clockListData[i].minute=that.clockListData[i].time.substr(3,2)
-						var count=i
+						var count=i%9
 						var path=""
 						if(getApp().globalData.style=="food") path="/static/clockicons/food/"
 						else if(getApp().globalData.style=="tree") path="/static/clockicons/tree/"
 						else if(getApp().globalData.style=="planet") path="/static/clockicons/planet/"
+						else if(getApp().globalData.style=="newyear") path="/static/clockicons/newyear/"
+						else if(getApp().globalData.style=="ghost") path="/static/clockicons/ghost/"
+						else if(getApp().globalData.style=="child") path="/static/clockicons/child/"
 						that.clockListData[i].src=path+count.toString()+'.png'
-						console.log(that.clockListData[i].src)
 					}
 				if(true)/* !that.onsetshow */
 				{
@@ -209,10 +216,6 @@
 				}								
 				}
 			});
-			
-		},
-		onLoad(v){
-		
 		}
 	},
 	}

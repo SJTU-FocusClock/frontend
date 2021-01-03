@@ -4,7 +4,7 @@
 
 		<!-- 页面顶部导航条 -->
 		<view class="head_box">
-			<uni-nav-bar :status-bar="true" @clickLeft="back_to_home" leftIcon="back" backgroundColor="#c4c4e9" :fixed="true"
+			<uni-nav-bar :status-bar="true" @clickLeft="back_to_home" leftIcon="back" :backgroundColor="color" :fixed="true"
 			 color="white" rightIcon="trash-filled" @clickRight="delete_clock">
 				<text class="head_box_text">设置闹钟</text>
 			</uni-nav-bar>
@@ -71,7 +71,7 @@
 			</view>
 
 			<view class="save_setting">
-				<button class="save_button" @click="saveClock">
+				<button class="save_button" @click="saveClock" :style="{'background-color':color}">
 					<text class="save">储存</text>
 				</button>
 
@@ -115,6 +115,7 @@
 				}
 			}
 			return {
+				color:"",
 				//时间编辑版块
 				hours,
 				hour,
@@ -272,6 +273,7 @@
 		onShow() {
 			/* this.currentcolor=getApp().globalData.style */
 			/* console.log(this.value) */
+			this.color=getApp().globalData.color
 		}
 	}
 </script>

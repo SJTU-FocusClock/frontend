@@ -1,6 +1,6 @@
 <template>
 	<view>
-
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="设置"  />
 
 		<view class="user_avatar">
 			<image class="avatar" src="/static/avatar.png"></image>
@@ -34,6 +34,7 @@
 		},
 		data() {
 			return {
+				color:"#F08080",
 				user: {
 					nickname: "",
 					phone: "",
@@ -125,6 +126,7 @@
 
 			//处理性别
 			this.user.sex = info.sex ? '男' : '女'
+			this.color=getApp().globalData.color
 		}
 	}
 </script>

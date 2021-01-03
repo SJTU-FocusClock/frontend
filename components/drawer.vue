@@ -1,6 +1,6 @@
 <template>
 	<view>
-	<uni-nav-bar :status-bar="true" color="white" backgroundColor='#c4c4e9' left-icon="bars" title="Clock" @clickLeft="showDrawer('showLeft')" />
+	<uni-nav-bar :num="num" :status-bar="true" color="white" :backgroundColor="color" left-icon="bars" title="Clock" @clickLeft="showDrawer('showLeft')" />
 	<view class="content">
 		<uni-drawer ref="showLeft" mode="left" :width="250" @change="change($event,'showLeft')">
 			<view style="width: 250px;height: 150px;padding-left: 75px;padding-top: 50px;">
@@ -35,6 +35,7 @@
 		data(){
 			return{
 				showLeft: false,
+				num:1,
 				chatboxes: {
 					color: '#93989d',
 					size: '22',
@@ -66,6 +67,18 @@
 					type: 'flag-filled'
 				}
 			}
+		},
+		props:{
+			color:{
+				type:String,
+				default:"#c4c4e9"
+				}
+		},
+		onShow()
+		{
+			console.log(getApp().globalData.color)
+			//this.color=getApp().globalData.color
+			this.num++
 		},
 		methods:{
 			onClick(e){

@@ -1,5 +1,6 @@
 <template>
 	<view >
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="统计数据"  />
 		 <view class="wyb-tabs" >
 		     <wyb-tabs :tabs="tabs" @change="onChange" />
 		 </view>
@@ -63,15 +64,18 @@ import YSteps from '../../components/Y-Steps/Y-Steps.vue'
 import wybTabs from '@/components/wyb-tabs/wyb-tabs.vue'
 import HistogramChart from '@/components/stan-ucharts/HistogramChart.vue';
 import LineChart from '@/components/stan-ucharts/LineChart.vue';
+import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	export default {
 		components:{
 			uniCalendar,
 			YSteps,
 			wybTabs,
 			HistogramChart,
-			LineChart
+			LineChart,
+			uniNavBar
 		},
 		onLoad(){
+			 this.color=getApp().globalData.color
 			var d=new Date().toISOString().slice(0, 10)
 			console.log(d)
 			let that=this
@@ -163,7 +167,8 @@ import LineChart from '@/components/stan-ucharts/LineChart.vue';
 				              label: '统计数据',
 				          }],
 				list1: [ ],
-				list2: [ ]
+				list2: [ ],
+				color:""
 			}
 		},
 		methods: {

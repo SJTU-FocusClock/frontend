@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="设置"  />
 		<view class="user_avatar">
 			<image class="avatar"  src="/static/avatar.png"></image>
 		</view>
@@ -34,6 +35,7 @@
 		data() {
 			return {
 				user:{},//user指的是所有的信息
+				color:"#F08080",
 	email: {
 		color: '#93989d',
 		size: '22',
@@ -114,6 +116,10 @@ agree(){
 			this.user=JSON.parse(options.info)
 			this.user.sendUser.sex=this.user.sendUser.sex?'男':'女'
 		/* 	console.log(this.user) */
+		},
+		onShow()
+		{
+			this.color=getApp().globalData.color
 		}
 	}
 </script>

@@ -166,6 +166,7 @@
 		justify-content: flex-start;
 		padding: 2rpx 0;
 			margin: auto;
+			font-size: larger;
 			}
 
 	.uni-countdown__splitor {

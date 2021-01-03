@@ -1,7 +1,7 @@
 <template>
 	<!-- 用于添加好友 -->
 	<view>
-		
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="搜索"  />
 		<view class="user_avatar">
 			<image class="avatar"  :src="user.avatar"></image>
 		</view>
@@ -24,7 +24,7 @@
 		</uni-list>
 		
 		<view class = "mybutton">
-			<button class="mbutton" @click="add_friend">添加</button>
+			<button :style="{'background-color':color}" class="mbutton" @click="add_friend">添加</button>
 		</view>	
 </view>
 </template>
@@ -41,6 +41,7 @@
 		},
 		data() {
 			return {
+				color:"#F08080",
 				user:{
 					nickname:"",
 					phone:"",
@@ -99,6 +100,7 @@
 			}, 
 		},
 		onShow(){
+			this.color=getApp().globalData.color
 		},
 		onLoad(e) {
 			let that=this;
@@ -132,7 +134,7 @@
 	.user_avatar{
 		
 		height: 200px;
-		background-image: url(../../static/background.png);
+		/* background-image: url(../../static/background.png); */
 		padding-left: 110px;
 	}
 	

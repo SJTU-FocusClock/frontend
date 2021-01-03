@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="闹钟请求"  />
 		<!-- 标题卡片模式 -->
 		<uni-card
 		 v-for="item in requestlist"
@@ -33,12 +34,15 @@
 </template>
 
 <script>
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	export default {
+		components:{uniNavBar},
 	  data() {
 	    return {
 	      requestlist:[],
 		  week:'',
-		  value:0
+		  value:0,
+		  color:"#cacaea",
 	    };
 	  },
 	  methods:{
@@ -97,6 +101,7 @@
 	  },
 	  onShow(){
 		  let that=this;
+		  this.color=getApp().globalData.color
 		  uni.request({
 		  	url:'http://106.54.76.21:8080/clocks/requestList',
 			method:'GET',

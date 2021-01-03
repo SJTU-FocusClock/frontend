@@ -26,7 +26,7 @@
 		</uni-list>
 		
 		<view class = "mybutton">
-			<button class="mbutton" @click="set_info">编辑个人信息</button>
+			<button :style="{'background-color':color}" class="mbutton" @click="set_info">编辑个人信息</button>
 		</view>	
 </view>
 </template>
@@ -45,6 +45,7 @@
 		},
 		data() {
 			return {
+				color:"",
 				user:{
 					nickname:"",
 					intro:"Life is hard for everyone",
@@ -107,6 +108,7 @@
 			},
 		},
 		onShow(){
+			this.color=getApp().globalData.color
 			let that=this;
 			uni.request({
 				url:'http://106.54.76.21:8080/users/user',
@@ -135,7 +137,7 @@
 	.user_avatar{
 		
 		height: 200px;
-		background-image: url(../../static/background.png);
+		/* background-image: url(../../static/background.png); */
 		padding-left: 110px;
 	}
 	

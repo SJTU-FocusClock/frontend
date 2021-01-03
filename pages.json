@@ -40,8 +40,8 @@
 		{
 			"path": "pages/userinfo/userinfo",
 			"style": {
-				"transparentTitle": "auto",
-				"navigationBarBackgroundColor": "#c4c4e9"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/focus/focus",
@@ -52,37 +52,42 @@
 		}, {
 			"path": "pages/data/data",
 			"style": {
-				"navigationBarTitleText": "统计数据"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/set/set",
 			"style": {
-				"navigationBarTitleText": "设置"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/friendlist/friendInfo",
 			"style": {
-				"transparentTitle": "auto",
-				"navigationBarBackgroundColor": "#c4c4e9"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
 			"path": "pages/friendlist/requestlist",
 			"style": {
-				"navigationBarTitleText": "好友请求"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
 			"path": "pages/friendlist/dealrequest",
 			"style": {
-				"transparentTitle": "auto"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 
 		},
 		{
 			"path":"pages/clocklist/handlerequest",
 			"style": {
-				"navigationBarTitleText": "处理闹钟请求"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		},
 	 {
@@ -136,8 +141,8 @@
 		{
 			"path":"pages/friendlist/searchInfo",
 			"style": {
-				"transparentTitle": "auto",
-				"navigationBarBackgroundColor": "#c4c4e9"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		}
 	],
