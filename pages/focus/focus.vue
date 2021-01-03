@@ -12,14 +12,14 @@
 
 
 		<view class="content">
-			<image style="width: 400rpx;height: 400rpx;" src="../../static/avatar.png"> </image>
+			<image style="width: 400rpx;height: 400rpx;" src="../../static/1.png"> </image>
 			<view class="mode">
 				<switch  @change="change_mode"></switch>
 				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
 			</view>
 
 			<uni-countdown font="20px" :key="value"  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
-
+ 
 
 			<view class="b">
 				<button  :disabled="isdisabled"  @click="set_time" class="my_button">开始</button>

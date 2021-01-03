@@ -3,7 +3,7 @@
 		<drawer></drawer>
 		
 		<uni-list class="clockList">
-			<uni-list-item class="clockListItem" v-for="item in clockListData"
+			<uni-list-item class="clockListItem" v-for="(item,i) in clockListData"
 				:clickable="true" @click="onClickClock(item)" 
 				:title="item.hour+':'+item.minute" :note="item.tag"
 				
@@ -11,11 +11,11 @@
 				<template v-slot:header>
 					<text v-if="item.hour < 12">上午</text>
 					<text v-else font-size="small">下午</text>
-				</template>
-				<template v-slot:footer>
-					<image src="/static/avatar.png" class="clock-img"></image>
-				</template> 
-			</uni-list-item>
+				</template>  
+				<template v-slot:footer> 
+					<image :src="item.src" class="clock-img"></image>
+				</template>  
+			</uni-list-item>  
 		</uni-list>
 		
 		<uni-fab   v-if="hackReset" ref="fab" :pattern="pattern" :content="content" horizontal="left" vertical="bottom" direction="horizontal" @trigger="trigger"/>
@@ -178,6 +178,7 @@
 		},
 		onShow() {
 			audio.stop();//让闹钟停止
+			console.log(getApp().globalData.style)
 			let that=this;
 			uni.request({
 				url:'http://106.54.76.21:8080/clocks/clockList',
@@ -192,6 +193,13 @@
 						var tmp=parseInt(that.clockListData[i].time.substr(0,2));
 						that.clockListData[i].hour=tmp
 						that.clockListData[i].minute=that.clockListData[i].time.substr(3,2)
+						var count=i
+						var path=""
+						if(getApp().globalData.style=="food") path="/static/clockicons/food/"
+						else if(getApp().globalData.style=="tree") path="/static/clockicons/tree/"
+						else if(getApp().globalData.style=="planet") path="/static/clockicons/planet/"
+						that.clockListData[i].src=path+count.toString()+'.png'
+						console.log(that.clockListData[i].src)
 					}
 				if(true)/* !that.onsetshow */
 				{
