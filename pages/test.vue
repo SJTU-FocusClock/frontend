@@ -44,7 +44,7 @@
 			 plus.runtime.launchApplication( {pname:'com.tencent.qqmusic',action:'qqmusic://'},
 			 	 err=>{
 			 	 	console.log(err)  
-			 	 } );
+			 	 } ); 
 			 
 		} 
 		}}

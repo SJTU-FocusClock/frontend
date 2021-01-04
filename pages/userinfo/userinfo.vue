@@ -13,6 +13,9 @@
 		<uni-popup ref="popup" type="dialog">
 			<uni-popup-info mode="input" title="修改信息" value=""  @confirm="dialogInputConfirm" ></uni-popup-info>
 		</uni-popup>
+		<uni-popup ref="popupe" type="dialog">
+			<uni-popup-vemail mode="input" title="邮箱验证" value=""  @confirm="dialogInputConfirm" ></uni-popup-vemail>
+		</uni-popup>
 		
 		
 		<uni-list :border="false">
@@ -27,6 +30,7 @@
 		
 		<view class = "mybutton">
 			<button :style="{'background-color':color}" class="mbutton" @click="set_info">编辑个人信息</button>
+			<button :style="{'background-color':color}" class="mbutton" @click="veri_mail">绑定个人邮箱</button>
 		</view>	
 </view>
 </template>
@@ -36,13 +40,15 @@
 	import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 	import uniSection from '@/components/uni-section/uni-section.vue'
 	import uniPopupInfo from '@/components/uni-popup/uni-popup-info.vue'
+	import uniPopupVemail from "@/components/uni-popup/uni-popup-vemail/uni-popup-vemail.vue"
 	export default {
 		components: {
 			uniIcons,
-			uniNavBar,
+			uniNavBar, 
 			uniSection,
-			uniPopupInfo
-		},
+			uniPopupInfo,
+			uniPopupVemail
+		}, 
 		data() {
 			return {
 				color:"",
@@ -87,6 +93,9 @@
 		methods: {
 			set_info(){
 				this.$refs.popup.open()
+			},
+			veri_mail(){
+				this.$refs.popupe.open()
 			},
 			dialogInputConfirm(done, val) {
 				console.log(val);
