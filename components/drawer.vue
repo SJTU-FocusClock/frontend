@@ -119,7 +119,7 @@
 				uni.showModal({
 					title: '提示',
 					content: `退出登录`,
-					success: function(res) {
+					success: function(res) { 
 						if (res.confirm) {
 							uni.request({
 								url:'http://106.54.76.21:8080/users/logout',

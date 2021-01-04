@@ -10,17 +10,16 @@
 				<wInput v-model="phoneData" type="text" maxlength="11" placeholder="请输入手机号"></wInput>
 				<wInput v-model="passData" type="password" maxlength="11" placeholder="请输入密码" isShowPass='ture'></wInput>
 			</view>
-
-			<navigator url="/pages/login/Passwordlogin" hover-class="none" style="font-size: 25rpx; color:#555555; margin-left: 100rpx;">用户名登录
-			</navigator>
-
+			
+			<navigator url="/pages/login/Passwordlogin"   hover-class="none" style="font-size: 25rpx; color:#555555; margin-left: 100rpx;">用户名登录 </navigator>
+			
 			<span style="font-size: 25rpx; color:#555555; margin-left: 100rpx;" @click="oneclick">一键登录</span>
-
-			<span class="warn">{{result}}</span>
-
+			 
+			 <span class="warn" >{{result}}</span>
+			
 			<wButton class="wbutton" text="登 录" :rotate="isRotate" bgColor='#c4c4e9' @click="startLogin"></wButton>
 
-
+            
 
 			<!-- 底部信息 -->
 			<view class="footer">
@@ -49,7 +48,7 @@
 				phoneData: '', //用户/电话
 				passData: '', //密码
 				isRotate: false, //是否加载旋转
-				result: '',
+				result:'',
 				jv
 			};
 		},
@@ -62,75 +61,109 @@
 			//this.isLogin();
 		},
 		methods: {
-			isLogin() {},
-			oneclick() {
-				univerifyLogin().catch(err => {
-					if (typeof err === 'boolean') return;
-					univerifyErrorHandler(err);
+			isLogin() {
+			},
+			oneclick(){
+
+				this.init();
+				// this.setCustomUIWithConfig();
+				this.loginAuth();
+			},
+			init(){
+				let self = this;
+				self.jv.init({
+					timeout:7000,
+					isProduction:false,
+				},result=>{
+					/* uni.showModal('init',JSON.stringify(result)); */
+				});
+			},
+			// 一键登录
+			loginAuth(){
+				let self = this;
+				self.jv.loginAuth({
+					autoFinish:true,
+					timeout:5000
+				},result=>{
+					/* uni.showModal('loginAuth',JSON.stringify(result)); */
+					console.log('result',result)
+					
+				},event=>{
+					console.log("loginAuthevent:"+JSON.stringify(event));
 				})
+				
 				return;
 			},
+			startLogin(e) {
+				let that=this;
+				//登录
+				console.log(that.passData)
+				if (this.isRotate) {
+					//判断是否加载中，避免重复点击请求
+					return false;
+				}
+				if (this.phoneData.length == "") {
+					uni.showToast({
+						icon: 'none',
+						position: 'bottom',
+						title: '用户名不能为空'
+					});
+					return;
+				}
+				/* if (this.passData.length < 5) {
+					uni.showToast({
+						icon: 'none',
+						position: 'bottom',
+						title: '密码不正确'
+					});
+					return;
+				} */
 
-		startLogin(e) {
-			let that = this;
-			//登录
-			console.log(that.passData)
-			if (this.isRotate) {
-				//判断是否加载中，避免重复点击请求
-				return false;
-			}
-			if (this.phoneData.length == "") {
-				uni.showToast({
-					icon: 'none',
-					position: 'bottom',
-					title: '用户名不能为空'
-				});
-				return;
-			}
-			/* if (this.passData.length < 5) {
-				uni.showToast({
-					icon: 'none',
-					position: 'bottom',
-					title: '密码不正确'
-				});
-				return;
-			} */
-
-			uni.request({
-				url: 'http://106.54.76.21:8080/users/Plogin',
-				method: 'POST',
-				data: {
-					phone: that.phoneData,
-					password: that.passData,
-				},
-				header: {
-					'content-type': 'application/x-www-form-urlencoded'
-				},
-				success: function(e) {
-					console.log(e)
-					if (e.data.status == 1) {
-						console.log('登陆成功')
-						uni.switchTab({
+				uni.request({
+					url: 'http://106.54.76.21:8080/users/Plogin',
+					method:'POST',
+					data: {
+						phone: that.phoneData,
+						password: that.passData,
+					},
+					header: {
+		  		  'content-type': 'application/x-www-form-urlencoded'
+					},
+					success: function(e) {
+						console.log(e)
+						if(e.data.status==1)
+						{
+							console.log('登陆成功')
+							uni.switchTab({
 							url: "/pages/clocklist/clocklist"
 						})
+						}
+						if(e.data.status==0)
+						{							
+							that.result = e.data.result							
+						}				
+						
 					}
-					if (e.data.status == 0) {
-						that.result = e.data.result
-					}
+				})
 
-				}
-			})
-		},
-	}
+
+				_this.isRotate = true
+				setTimeout(function() {
+					_this.isRotate = false
+				}, 3000)
+
+
+
+			},
+		}
 	}
 </script>
 
 <style>
 	@import url("../../components/watch-login/css/icon.css");
 	@import url("./css/main.css");
-
-	.warn {
-		color: #DD524D;
+	.warn{
+		color:#DD524D;
 		font-size: 25rpx;
 		margin-left: 100rpx;
 	}
