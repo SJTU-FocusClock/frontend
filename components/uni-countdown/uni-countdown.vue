@@ -32,7 +32,7 @@
 			},
 			color: {
 				type: String,
-				default: '#000000'
+				default: '#FFFFFF'
 			},
 			font: { 
 				type: String,
@@ -75,7 +75,7 @@
 		watch: {
 			day(val) {
 				this.changeFlag()
-			},
+			}, 
 			hour(val) {
 				this.changeFlag()
 			},
@@ -88,6 +88,10 @@
 		},
 		created: function(e) {
 			this.startData();
+		},
+		onShow()
+		{
+			this.backgroundColor=getApp().globalData.color
 		},
 		beforeDestroy() {
 			clearInterval(this.timer)
@@ -155,9 +159,11 @@
 </script>
 <style lang="scss" scoped>
 	@import '~@/uni.scss';
-	$countdown-height: 48rpx;
-	$countdown-width: 52rpx;
-
+	/* $countdown-height: 48rpx;
+	$countdown-width: 52rpx; */
+$countdown-height: 148rpx;
+	$countdown-width: 152rpx;
+	$uni-font-size-sm:100rpx;
 	.uni-countdown {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -191,5 +197,6 @@
 		margin: 5rpx;
 		text-align: center;
 		font-size: $uni-font-size-sm;
+		border-radius: 13px;
 	}
 </style>

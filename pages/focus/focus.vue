@@ -22,7 +22,7 @@
 				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
 			</view>
 
-			<uni-countdown font="40px" :key="value"  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end"></uni-countdown>
+			<uni-countdown font="40px" :key="value"  :show-day="false" :hour="hour" :minute="minute" :second="second" @timeup="end" :backgroundColor="color"></uni-countdown>
  
 
 			<view class="b">
@@ -76,7 +76,8 @@
 				duration:1,
 			    value:0,
 				color:"#cacaea",
-				dog_index:2
+				dog_index:2,
+				isfocusing:false
 			}
 		},
 		methods: {
@@ -117,6 +118,8 @@
 				this.start=h+':'+m+':00';
 				this.duration=val;
 				this.path="/static/dogs/"+this.dog_index.toString()+".png"
+				
+				this.isfocusing=true//正在专注
 				done();
 			},
 			/**
@@ -137,7 +140,6 @@
 				if (!e.target.value) {
 					this.mode = "普通模式"
 				}
-				console.log('switch2 发生 change 事件，携带值为', e.target.value)
 			},
 			end() {
 				let that=this;
@@ -145,6 +147,7 @@
 					title: "倒计时结束"
 				})
 				this.isdisabled = false;
+				this.isfocusing=false;
 				uni.vibrateLong({
 				    success: function () {
 				        console.log('success');
@@ -195,7 +198,7 @@
 							_this.value++;
 							 var i=_this.path.lastIndexOf('.')
 							 _this.path=_this.path.substring(0,i)+"_.png"
-							 console.log(_this.path)
+							 _this.isfocusing=false
 						} else if (res.cancel) {
 							console.log('用户点击取消')
 						}
@@ -224,13 +227,19 @@
 		this.minute=0;
 		this.second=0;
 		this.value++
+		if(this.isfocusing){
+			var i=this.path.lastIndexOf('.')
+		this.path=this.path.substring(0,i)+"_.png"
+		//console.log(this.path)
+		}
+		this.isfocusing=false 
 		}
 		
-	}
+	} 
 </script>
 
 <style>
-	page {
+	page { 
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
