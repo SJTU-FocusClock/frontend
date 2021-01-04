@@ -82,6 +82,7 @@
 				},result=>{
 					/* uni.showModal('loginAuth',JSON.stringify(result)); */
 					console.log('result',result)
+					
 				},event=>{
 					console.log("loginAuthevent:"+JSON.stringify(event));
 				})
