@@ -206,6 +206,7 @@
 						else if(getApp().globalData.style=="newyear") path="/static/clockicons/newyear/"
 						else if(getApp().globalData.style=="ghost") path="/static/clockicons/ghost/"
 						else if(getApp().globalData.style=="child") path="/static/clockicons/child/"
+						else if(getApp().globalData.style=="view") path="/static/clockicons/view/"
 						that.clockListData[i].src=path+count.toString()+'.png'
 					}
 				if(true)/* !that.onsetshow */

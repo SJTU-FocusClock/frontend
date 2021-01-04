@@ -56,13 +56,19 @@
 						checked:false,
 						name:"child",
 						color:"#FFA500"
+					},
+					{
+						src:"/static/clockicons/view.png",
+						checked:false,
+						name:"view",
+						color:"#87CEFA"
 					}
 				],
 	            current:0,
 	        }
 	    },
-	    methods: {
-			image_click(index)
+	    methods: { 
+			image_click(index) 
 			{
 				this.items[this.current].checked=false
 				this.items[index].checked=true

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="设置"  />
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="信息"  />
 		<view class="user_avatar">
 			<image class="avatar"  src="/static/avatar.png"></image>
 		</view>
@@ -16,8 +16,8 @@
 		
 		</uni-list>
 		      <view class = "mybutton">
-				  <button class="mbutton" @click="agree">同意</button>
-				  <button class="mbutton">拒绝</button>
+				  <button class="mbutton" @click="agree" :style="{'background-color':color}">同意</button>
+				  <button class="mbutton" :style="{'background-color':color}">拒绝</button>
 			  </view>		
 	</view>
 </template>
@@ -134,7 +134,7 @@ agree(){
 	
 	.user_avatar{
 		height: 200px;
-		background-image: url(../../static/background.png);
+		
 		padding-left: 110px;
 	}
 	

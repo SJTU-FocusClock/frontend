@@ -3,13 +3,14 @@
 	<uni-nav-bar :num="num" :status-bar="true" color="white" :backgroundColor="color" left-icon="bars" title="Clock" @clickLeft="showDrawer('showLeft')" />
 	<view class="content">
 		<uni-drawer ref="showLeft" mode="left" :width="250" @change="change($event,'showLeft')">
-			<view style="width: 250px;height: 150px;padding-left: 75px;padding-top: 50px;">
-				<image style="width: 100px; height: 100px; border-radius:100px;" :mode="'scaleToFill'" src="../static/avatar.png" clickable @click="onClick"></image>
+			<view  style="width: 250px;padding-left: 75px;padding-top: 50px;display: flex;flex-direction: column;">
+				<image style="width: 100px; height: 100px; border-radius:100px;" :mode="'scaleToFill'" src="../static/avatars/0.png" clickable @click="onClick"></image>
+			   <image style="width: 50px; height: 50px; border-radius:100px;margin-left: 23px;" mode="'scaleToFill'" src="/static/avatars/LV0.png"></image>
 			</view>
 			<uni-list :border="false">
 				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="chatboxes" clickable title="我的好友"  @click="onClick1" >
 				</uni-list-item>
-				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="eye" clickable @click="onClick2" title="统计数据">
+				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="eye" clickable @click="onClick2" title="统计数据"> 
 				</uni-list-item>
 			<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="clock"  clickable @click="onClick6" title="闹钟请求">
 						

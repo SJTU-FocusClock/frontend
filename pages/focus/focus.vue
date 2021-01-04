@@ -12,7 +12,7 @@
 
 
 		<view class="content">
-			<image style="width: 400rpx;height: 400rpx;" src="../../static/dogs/2.png"> </image>
+			<image style="width: 400rpx;height: 400rpx;" :src="path"> </image>
 			<view class="mode">
 				<switch  @change="change_mode"></switch>
 				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
@@ -60,6 +60,7 @@
 		},
 		data() {
 			return {
+				path:"/static/dogs/2.png",
 				mode: "普通模式",
 				hour: 0,
 				minute: 0,
@@ -180,6 +181,9 @@
 							_this.minute=0;
 							_this.second=0;
 							_this.value++;
+							 var i=_this.path.lastIndexOf('.')
+							 _this.path=_this.path.substring(0,i)+"_.png"
+							 console.log(_this.path)
 						} else if (res.cancel) {
 							console.log('用户点击取消')
 						}

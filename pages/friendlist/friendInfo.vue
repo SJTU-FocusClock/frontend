@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="设置"  />
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="信息"  />
 
 		<view class="user_avatar">
 			<image class="avatar" src="/static/avatar.png"></image>
@@ -127,6 +127,9 @@
 			//处理性别
 			this.user.sex = info.sex ? '男' : '女'
 			this.color=getApp().globalData.color
+			
+			this.pattern.selectedColor=this.color
+			this.pattern.buttonColor=this.color
 		}
 	}
 </script>
@@ -141,7 +144,7 @@
 
 	.user_avatar {
 		height: 200px;
-		background-image: url(../../static/background.png);
+		
 		padding-left: 110px;
 	}
 
