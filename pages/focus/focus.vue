@@ -2,7 +2,7 @@
 	<view>
 		<drawer :color="color"></drawer>
 		<uni-popup ref="popup" type="dialog">
-			<uni-popup-dialog mode="input" title="时间设定" value="" placeholder="请输入您想要专注的分钟数/min" @confirm="dialogInputConfirm" ></uni-popup-dialog>
+			<uni-popup-dialog mode="input" title="时间设定" value="" placeholder="您想要专注的分钟/min" @confirm="dialogInputConfirm" ></uni-popup-dialog>
 		</uni-popup>
 
 
@@ -10,9 +10,13 @@
 			<uniPopupWhiteList mode="input" title="白名单设定" @confirm="dialogInputConfirm"> </uniPopupWhiteList>
 		</uni-popup>
 
+		<uni-popup ref="dogs" type="dialog">
+			<uniPopupDogs mode="input" title="选择宠物" @confirm="confirmDogs"> </uniPopupDogs>
+		</uni-popup>
+
 
 		<view class="content">
-			<image style="width: 400rpx;height: 400rpx;" :src="path"> </image>
+			<image style="width: 400rpx;height: 400rpx;" :src="path" @click="chooseDogs"> </image>
 			<view class="mode">
 				<switch  @change="change_mode"></switch>
 				<text style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">{{mode}}</text>
@@ -41,7 +45,7 @@
 	import uniPopupWhiteList from '@/components/uni-popup/uni-popup-whitelist.vue'
 	import uniCountdown from '@/components/uni-countdown/uni-countdown.vue'
 	import drawer from '@/components/drawer.vue'
-
+    import uniPopupDogs from "@/components/uni-popup/uni-popup-dogs.vue"
 
 	/* const audio=uni.createInnerAudioContext();
 	audio.src="http://mp3.9ku.com/hot/2004/07-17/41811.mp3"; */
@@ -56,7 +60,8 @@
 			uniPopupDialog,
 			uniCountdown,
 			uniPopupWhiteList,
-			drawer
+			drawer,
+			uniPopupDogs
 		},
 		data() {
 			return {
@@ -70,7 +75,8 @@
 				endd:'',
 				duration:1,
 			    value:0,
-				color:"#cacaea"
+				color:"#cacaea",
+				dog_index:2
 			}
 		},
 		methods: {
@@ -93,18 +99,24 @@
 			set_time() {
 				this.$refs.popup.open()
 			},
+			confirmDogs(done,val){
+				var i=this.path.lastIndexOf('/')
+				this.path=this.path.substring(0,i)+"/"+val.toString()+".png"
+				this.dog_index=val
+				done()
+			},
 			dialogInputConfirm(done, val) {
-				console.log(val);
 				this.isdisabled = true;
 				this.hour = val / 60;
 				this.minute = val - this.hour * 60;
 				this.second = 0;
-				
+				 
 				var tmp=new Date();	
-				var h=tmp.getHours();
+				var h=tmp.getHours(); 
 				var m=tmp.getMinutes();
 				this.start=h+':'+m+':00';
 				this.duration=val;
+				this.path="/static/dogs/"+this.dog_index.toString()+".png"
 				done();
 			},
 			/**
@@ -196,6 +208,9 @@
 				// 	title:"设置白名单"
 				// })
 				this.$refs.whitelist.open()
+			},
+			chooseDogs(){
+				this.$refs.dogs.open()
 			}
 		},
 		onShow()

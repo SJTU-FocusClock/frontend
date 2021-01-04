@@ -32,25 +32,6 @@
 </template>
 
 <script>
-	/**
-	 * PopUp 弹出层-对话框样式
-	 * @description 弹出层-对话框样式
-	 * @tutorial https://ext.dcloud.net.cn/plugin?id=329
-	 * @property {String} value input 模式下的默认值
-	 * @property {String} placeholder input 模式下输入提示
-	 * @property {String} type = [success|warning|info|error] 主题样式
-	 *  @value success 成功
-	 * 	@value warning 提示
-	 * 	@value info 消息
-	 * 	@value error 错误
-	 * @property {String} mode = [base|input] 模式、
-	 * 	@value base 基础对话框
-	 * 	@value input 可输入对话框
-	 * @property {String} content 对话框内容
-	 * @property {Boolean} beforeClose 是否拦截取消事件
-	 * @event {Function} confirm 点击确认按钮触发
-	 * @event {Function} close 点击取消按钮触发
-	 */
 
 	export default {
 		name: "uniPopupWhiteList",

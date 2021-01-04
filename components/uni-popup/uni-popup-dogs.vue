@@ -5,25 +5,14 @@
 		</view>
 
 		<view class="uni-dialog-content">
-		
-			<!-- <checkbox-group @change="checkboxChange">
-				<label class="uni-list-cell uni-list-cell-pd" v-for="item in items" :key="item.value">
-					<view>
-						<checkbox :value="item.value" :checked="item.checked"  />
-						{{item.name}}
-					</view>
-					
+			<!-- <text class="uni-dialog-content-text" v-if="mode === 'base'">{{content}}</text>
+			<input v-else class="uni-dialog-input" v-model="val" type="text" :placeholder="placeholder" :focus="focus" > -->
+
+			<checkbox-group @change="checkboxChange">
+				<label class="uni-list-cell uni-list-cell-pd" v-for="(item,index) in items" :key="item.value">
+						<image :src="item.src"  :style="{'border':(item.checked?'solid #0056B3':'none')}"  mode="scaleToFill" @click="image_click(index)"></image> 			
 				</label>
-			</checkbox-group> -->
-			 <radio-group @change="radioChange">
-			           <label class="uni-list-cell uni-list-cell-pd" v-for="(item, index) in items" :key="item.value">
-			                    <view>
-			                        <radio :value="item.value" :checked="index === current" />
-			                    
-			                    {{item.name}}  
-								</view>
-			                </label>
-			            </radio-group>
+			</checkbox-group>
 		</view>
 
 
@@ -40,8 +29,9 @@
 </template>
 
 <script>
+
 	export default {
-		name: "uniPopupGame",
+		name: "uniPopupDogs",
 		props: {
 			value: {
 				type: [String, Number],
@@ -91,43 +81,41 @@
 			return {
 				dialogType: 'error',
 				focus: false,
-				 current: 0,
 				val: "",
+				current:0,
 				items: [
 					{
-							value:'casual',
-							name:'随机游戏',
-							id:0
+						src:"/static/dogs/0.png",
+						checked:false
+					},
+					{
+						src:"/static/dogs/1.png",
+						checked:false
+					},
+					{
+						src:"/static/dogs/2.png",
+						checked:false
+					},
+					{
+						src:"/static/dogs/3.png",
+						checked:false
 					},{
-						value: '2048',
-						name: '2048',
-						id:1
+						src:"/static/dogs/4.png",
+						checked:false
+					},{
+						src:"/static/dogs/5.png",
+						checked:false
+					},{
+						src:"/static/dogs/6.png",
+						checked:false
 					},
 					{
-						value: 'typist',
-						name: '打字游戏',
-						checked: 'true',
-						id:2
-					},
-					{
-						value: 'caculate',
-						name: '算术游戏',
-						id:3
-					},
-					{
-						value: 'puzzle',
-						name: '拼图游戏',
-						id:4
-					},
-					{
-						value: 'catchMouse',
-						name: '打地鼠',
-						id:5
-					},
-						
+						src:"/static/dogs/7.png",
+						checked:false
+					}
 				]
 			}
-		},
+		}, 
 		inject: ['popup'],
 		watch: {
 			type(val) {
@@ -160,10 +148,9 @@
 			 * 点击确认按钮
 			 */
 			onOk() {
-				
 				this.$emit('confirm', () => {
 					this.popup.close()
-				}, this.items[this.current])
+				}, this.current)
 			},
 			/**
 			 * 点击取消按钮
@@ -176,22 +163,34 @@
 					return
 				}
 				this.popup.close()
-			}, 
-			radioChange: function(evt) {
-            for (let i = 0; i < this.items.length; i++) {
-                if (this.items[i].value === evt.target.value) {
-                    this.current = i;
-                    break;
-                }
-            }
-        },
-			
-			
+			},
+			checkboxChange: function(e) {
+				var items = this.items,
+					values = e.detail.value;
+				for (var i = 0, lenI = items.length; i < lenI; ++i) {
+					const item = items[i]
+					if (values.includes(item.value)) {
+						this.$set(item, 'checked', true)
+					} else {
+						this.$set(item, 'checked', false)
+					}
+				}
+			},
+			image_click(index)
+			{
+				this.items[this.current].checked=false
+				this.items[index].checked=true
+				this.current=index
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+image{
+	width:100rpx;
+	height:100rpx;
+}
 	.uni-popup-dialog {
 		width: 300px;
 		border-radius: 15px;

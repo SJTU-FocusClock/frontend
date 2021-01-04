@@ -81,12 +81,6 @@
 	    },
 		onShow()
 		{
-			/*
-			this.current=getApp().globalData.index
-	
-			this.items[this.current].checked=true
-			this.color=getApp().globalData.color
-			*/
 			this.color=getApp().globalData.color
 		}
 	}
