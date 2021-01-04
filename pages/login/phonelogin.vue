@@ -64,9 +64,37 @@
 			isLogin() {
 			},
 			oneclick(){
+<<<<<<< HEAD
 				univerifyLogin().catch(err => {
 					if (typeof err === 'boolean') return;
 					univerifyErrorHandler(err);
+=======
+				this.init();
+				// this.setCustomUIWithConfig();
+				this.loginAuth();
+			},
+			init(){
+				let self = this;
+				self.jv.init({
+					timeout:7000,
+					isProduction:false,
+				},result=>{
+					/* uni.showModal('init',JSON.stringify(result)); */
+				});
+			},
+			// 一键登录
+			loginAuth(){
+				let self = this;
+				self.jv.loginAuth({
+					autoFinish:true,
+					timeout:5000
+				},result=>{
+					/* uni.showModal('loginAuth',JSON.stringify(result)); */
+					console.log('result',result)
+					
+				},event=>{
+					console.log("loginAuthevent:"+JSON.stringify(event));
+>>>>>>> be8e2329450f5fd5e93d4f51595284973d36e64e
 				})
 				
 				return;
