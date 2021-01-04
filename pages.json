@@ -151,7 +151,16 @@
 						"navigationStyle": "custom"
 					}
 		}
-	],
+	    ,{
+            "path" : "components/uni-popup/uni-popup-vemail/uni-popup-vemail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "",
