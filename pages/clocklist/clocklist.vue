@@ -193,7 +193,7 @@
 						},
 				success: function(e){
 					console.log(e)
-					that.clockListData=e.data
+					that.clockListData=e.data 
 					for(var i=0;i<e.data.length;i++)
 					{
 						var tmp=parseInt(that.clockListData[i].time.substr(0,2));
