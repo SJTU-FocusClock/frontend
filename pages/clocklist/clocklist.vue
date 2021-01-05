@@ -192,6 +192,7 @@
 				'content-type': 'application/x-www-form-urlencoded'
 						},
 				success: function(e){
+					console.log(e)
 					that.clockListData=e.data
 					for(var i=0;i<e.data.length;i++)
 					{
