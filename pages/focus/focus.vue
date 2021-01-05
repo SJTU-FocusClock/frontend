@@ -7,11 +7,15 @@
 
 
 		<uni-popup ref="whitelist" type="dialog">
-			<uniPopupWhiteList mode="input" title="白名单设定" @confirm="dialogInputConfirm"> </uniPopupWhiteList>
+			<uniPopupWhiteList mode="input" title="白名单设定" @confirm="confirmWhitelist"> </uniPopupWhiteList>
 		</uni-popup>
 
 		<uni-popup ref="dogs" type="dialog">
 			<uniPopupDogs mode="input" title="选择宠物" @confirm="confirmDogs"> </uniPopupDogs>
+		</uni-popup>
+
+       <uni-popup ref="jump" type="dialog">
+			<uniPopupJump mode="input" title="跳转" @confirm="confirmDogs"> </uniPopupJump>
 		</uni-popup>
 
 
@@ -29,9 +33,16 @@
 				<button :style="{'background-color':!isdisabled?color:'#F5F5F5'}" :disabled="isdisabled"  @click="set_time" class="my_button">开始</button>
 				<button :style="{'background-color':isdisabled?color:'#F5F5F5'}" :disabled="!isdisabled" @click="stop" class="my_button">停止</button>
 			</view>
-			<text clickable @click="setwhite" style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">设置白名单</text>
+			<text  v-if="!isfocusing&&normal"  clickable @click="setwhite" style="font-size: 30rpx; color: #808080;margin-top: 20rpx;">设置白名单</text>
 		</view>
 
+        <image src="/static/fish.png" style="width: 100rpx;height: 100rpx;margin-left:320rpx ;margin-top: 40rpx;"
+		 mode="scaleToFill"
+		 @click="chooseJump"
+		 v-if="normal&&isfocusing"
+		 >
+			
+		</image>
 	</view>
 </template>
 
@@ -46,7 +57,7 @@
 	import uniCountdown from '@/components/uni-countdown/uni-countdown.vue'
 	import drawer from '@/components/drawer.vue'
     import uniPopupDogs from "@/components/uni-popup/uni-popup-dogs.vue"
-
+	import uniPopupJump from "@/components/uni-popup/uni-popup-jump.vue"
 	/* const audio=uni.createInnerAudioContext();
 	audio.src="http://mp3.9ku.com/hot/2004/07-17/41811.mp3"; */
 	
@@ -61,12 +72,14 @@
 			uniCountdown,
 			uniPopupWhiteList,
 			drawer,
-			uniPopupDogs
+			uniPopupDogs,
+			uniPopupJump
 		},
 		data() {
 			return {
 				path:"/static/dogs/2.png",
 				mode: "普通模式",
+				normal:true,
 				hour: 0,
 				minute: 0,
 				second: 0,
@@ -77,7 +90,8 @@
 			    value:0,
 				color:"#cacaea",
 				dog_index:2,
-				isfocusing:false
+				isfocusing:false,
+				whitelist:[]
 			}
 		},
 		methods: {
@@ -104,6 +118,11 @@
 				var i=this.path.lastIndexOf('/')
 				this.path=this.path.substring(0,i)+"/"+val.toString()+".png"
 				this.dog_index=val
+				done()
+			},
+			confirmWhitelist(done,val)
+			{
+				getApp().globalData.whitelist=val				
 				done()
 			},
 			dialogInputConfirm(done, val) {
@@ -136,9 +155,11 @@
 			change_mode(e) {
 				if (e.target.value) {
 					this.mode = "深度模式"
+					this.normal=false
 				}
 				if (!e.target.value) {
 					this.mode = "普通模式"
+					this.normal=true
 				}
 			},
 			end() {
@@ -205,7 +226,7 @@
 					}
 				})
 			},
-
+ 
 			setwhite() {
 				// uni.showToast({
 				// 	title:"设置白名单"
@@ -214,13 +235,18 @@
 			},
 			chooseDogs(){
 				this.$refs.dogs.open()
-			}
+			},
+			chooseJump(){
+				this.$refs.jump.open()
+		}
 		},
 		onShow()
 		{
 			this.color=getApp().globalData.color
 		},
 		onHide() {
+			if(this.normal==false)
+			{
 		this.isdisabled=false;
 		//???
 		this.hour=0;
@@ -233,6 +259,7 @@
 		//console.log(this.path)
 		}
 		this.isfocusing=false 
+			} 		
 		}
 		
 	} 
