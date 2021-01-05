@@ -5,10 +5,10 @@
 		</view>
 		<view class="uni-dialog-content">
 			<view>
-					<input  v-model="val" type="text" :focus="focus" placeholder="邮箱">
+					<input  v-model="tarmail" type="text" :focus="focus" placeholder="邮箱">
 			</view>
 			<view>
-				<input v-model="sex" type="text" :focus="focus" placeholder="验证码:(请登陆邮箱后查验)">
+				<input v-model="verification" type="text" :focus="focus" placeholder="验证码">
 			</view>
 		</view>
 		<view class="uni-dialog-button-group">
@@ -16,7 +16,7 @@
 				<text class="uni-dialog-button-text">取消</text>
 			</view>
 			<view class="uni-dialog-button" @click="to_veri_email">
-				<text class="uni-dialog-button-text">验证</text>
+				<text class="uni-dialog-button-text uni-button-color">验证</text>
 			</view>
 			<view class="uni-dialog-button uni-border-left" @click="onOk">
 				<text class="uni-dialog-button-text uni-button-color">确定</text>
@@ -144,8 +144,8 @@
 					if (this.mode === 'input') this.val = this.value
 				}, this.mode === 'input' ? this.val : '') */
 				var tmp={
-					name:this.val,
-					sex:this.sex
+					tm:this.tarmail,
+					vf:this.verification
 				};
 				this.$emit('confirm',()=>{
 					this.popup.close();
