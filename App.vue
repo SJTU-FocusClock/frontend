@@ -14,7 +14,8 @@
 		globalData:{
 			style:"food",
 			color:"#F08080",
-			index:0
+			index:0,
+			whitelist:[]
 			
 		}
 	}

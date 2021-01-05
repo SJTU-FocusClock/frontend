@@ -41,11 +41,19 @@
 		 	 err=>{
 		 	 	console.log(err)  
 		 	 } ); */
-			 plus.runtime.launchApplication( {pname:'com.tencent.qqmusic',action:'qqmusic://'},
+			/* plus.runtime.launchApplication( {pname:'com.tencent.qqmusic',action:'qqmusic://'},
 			 	 err=>{
 			 	 	console.log(err)  
-			 	 } ); 
+			 	 } ); */ 
+				/* plus.runtime.launchApplication( {pname:'com.baidu.netdisk',action:'netdisk://'},
+				  	 err=>{
+				  	 	console.log(err)  
+				  	 } ); */
 			 
+			 plus.runtime.launchApplication( {pname:'com.tencent.mobileqq',action:'mobileqq://'},
+			   	 err=>{
+			   	 	console.log(err)  
+			   	 } );
 		} 
 		}}
 	

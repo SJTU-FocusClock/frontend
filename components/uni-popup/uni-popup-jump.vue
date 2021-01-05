@@ -9,11 +9,8 @@
 			<input v-else class="uni-dialog-input" v-model="val" type="text" :placeholder="placeholder" :focus="focus" > -->
 
 			<checkbox-group @change="checkboxChange">
-				<label class="uni-list-cell uni-list-cell-pd" v-for="item in items" :key="item.value">
-					<view>
-						<checkbox :value="item.value" :checked="item.checked" />
-						{{item.name}}
-					</view>					
+				<label class="uni-list-cell uni-list-cell-pd" v-for="(item,index) in items" :key="item.value">
+						<image :src="item.src"  v-if="item.show" mode="scaleToFill" @click="JumpTo(item.name)"></image> 			
 				</label>
 			</checkbox-group>
 		</view>
@@ -34,7 +31,7 @@
 <script>
 
 	export default {
-		name: "uniPopupWhiteList",
+		name: "uniPopupJump",
 		props: {
 			value: {
 				type: [String, Number],
@@ -85,56 +82,58 @@
 				dialogType: 'error',
 				focus: false,
 				val: "",
+				current:0,
 				whitelist:[],
-				items: [{
-						value: 'weixin',
-						name: '微信',
-						checked:false
+				items: [
+					{
+						src:"/static/jump/weixin.png",
+						name:"weixin",
+						show:false
 					},
 					{
-						value: 'QQ',
-						name: 'QQ',
-						checked: false
+						src:"/static/jump/QQ.png",
+						name:"QQ",
+						show:false
 					},
 					{
-						value: 'weibo',
-						name: '微博',
-						checked:false
+						src:"/static/jump/taobao.png",
+						name:"taobao",
+						show:false
 					},
 					{
-						value: 'taobao',
-						name: '淘宝',
-						checked:false
+						src:"/static/jump/weibo.png",
+						name:"weibo", 
+						show:false
 					},
 					{
-						value: 'QQmusic',
-						name: 'QQ音乐',
-						checked:false
+						src:"/static/jump/QQmusic.png",
+						name:"QQmusic",
+						show:false
 					},
 					{
-						value: 'wangyimusic',
-						name: '网易云音乐',
-						checked:false
-					}, 
-					{
-						value: 'baiduMap',
-						name: '百度地图',
-						checked:false
+						src:"/static/jump/baiduMap.png",
+						name:"baiduMap",
+						show:false
 					},
 					{
-						value: 'elm',
-						name: '饿了吗',
-						checked:false
+						src:"/static/jump/wangyimusic.png",
+						name:"wangyimusic",
+						show:false
 					},
 					{
-						value: 'meituan',
-						name: '美团',
-						checked:false
-					}
+						src:"/static/jump/elm.png",
+						name:"elm",
+						show:false
+					},
+					{
+						src:"/static/jump/meituan.png",
+						name:"meituan",
+						show:false
+					},
 					
 				]
 			}
-		},
+		}, 
 		inject: ['popup'],
 		watch: {
 			type(val) {
@@ -147,7 +146,7 @@
 			},
 			value(val) {
 				this.val = val
-			}
+			} 
 		},
 		created() {
 			// 对话框遮罩不可点击
@@ -158,25 +157,79 @@
 			} else {
 				this.dialogType = this.type
 			}
-			var list=getApp().globalData.whitelist
-			var res=list.some(item => {
+			
+			//显示
+			this.whitelist=getApp().globalData.whitelist
+			console.log(this.whitelist)
+			var res=this.whitelist.some(item => {
 				var i
-				for(i in this.items){
-					if(this.items[i].value==item) this.items[i].checked=true
+				for(i in this.items)
+				{
+					if(this.items[i].name==item)
+					{
+						this.items[i].show=true
+					}
 				}
 			})
 		},
 		mounted() {
-			this.focus = true
+			this.focus = true 
 		},
 		methods: {
-			/**
+			JumpTo(dst)
+			{
+				console.log('dst',dst)
+				var pname
+				var action
+				if(dst=='taobao') {
+					pname='com.taobao.taobao'
+					action='taobao://' 
+				}
+				else if(dst=='weibo') {
+					pname='com.sina.weibo'
+					action='weibo://' 
+				}
+				else if(dst=='weixin') {
+					pname='com.tencent.mm'
+					action='mm://' 
+				}
+				else if(dst=='baiduMap') {
+					pname='com.baidu.BaiduMap'
+					action='BaiduMap://' 
+				}
+				else if(dst=='QQmusic') {
+					pname='com.tencent.qqmusic'
+					action='qqmusic://' 
+				}
+				else if(dst=='QQ') {
+					pname='com.tencent.mobileqq'
+					action='mobileqq://' 
+				}
+				else if(dst=='wangyimusic') {
+					pname='com.netease.cloudmusic'
+					action='cloudmusic://' 
+				}
+				else if(dst=='elm') {
+					pname='com.me.ele'
+					action='ele://' 
+				} 
+				else if(dst=='meituan') {
+					pname='com.sankuai.meituan'
+					action='meituan://' 
+				}
+				plus.runtime.launchApplication( {pname:pname,action:action},
+				 err=>{
+				 	console.log(err)  
+				 })
+				 this.popup.close()
+			},
+			/** 
 			 * 点击确认按钮
 			 */
-			onOk() { 
+			onOk() {
 				this.$emit('confirm', () => {
 					this.popup.close()
-				}, this.whitelist)
+				}, this.current)
 			},
 			/**
 			 * 点击取消按钮
@@ -192,22 +245,31 @@
 			},
 			checkboxChange: function(e) {
 				var items = this.items,
-				values = e.detail.value;
-				this.whitelist=values
+					values = e.detail.value;
 				for (var i = 0, lenI = items.length; i < lenI; ++i) {
 					const item = items[i]
 					if (values.includes(item.value)) {
-						this.$set(item, 'checked', true) 
+						this.$set(item, 'checked', true)
 					} else {
 						this.$set(item, 'checked', false)
 					}
 				}
+			},
+			image_click(index)
+			{
+				this.items[this.current].checked=false
+				this.items[index].checked=true
+				this.current=index
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+image{
+	width:100rpx;
+	height:100rpx;
+}
 	.uni-popup-dialog {
 		width: 300px;
 		border-radius: 15px;
