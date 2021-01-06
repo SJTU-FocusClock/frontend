@@ -5,20 +5,20 @@
 		</view>
 		<view class="uni-dialog-content">
 			<view>
-					<input  v-model="tarmail" type="text" :focus="focus" placeholder="邮箱">
+					<input  v-model="email" type="text" :focus="focus" placeholder="邮箱">
 			</view>
 			<view>
-				<input v-model="verification" type="text" :focus="focus" placeholder="验证码">
+				<input v-model="code" type="text" :focus="focus" placeholder="验证码">
 			</view>
 		</view>
 		<view class="uni-dialog-button-group">
 			<view class="uni-dialog-button" @click="close">
 				<text class="uni-dialog-button-text">取消</text>
 			</view>
-			<view class="uni-dialog-button" @click="to_veri_email">
+			<view class="uni-dialog-button" @click="testSend">
 				<text class="uni-dialog-button-text uni-button-color">验证</text>
 			</view>
-			<view class="uni-dialog-button uni-border-left" @click="onOk">
+			<view class="uni-dialog-button uni-border-left" @click="testValidate">
 				<text class="uni-dialog-button-text uni-button-color">确定</text>
 			</view>
 		</view>
@@ -95,11 +95,28 @@
 			}
 		},
 		data() {
+			// return {
+			// 	dialogType: 'error',
+			// 	focus: false,
+			// 	val: "",
+			// 	sex:''
+			// }
 			return {
-				dialogType: 'error',
-				focus: false,
-				val: "",
-				sex:''
+				validstate:false,
+				code: '',
+				codeId: '',
+				email: '',
+				focus:false,
+				effectiveTime: 300,
+				statusJson: {
+					'-5':'验证失败',
+					'-4': '验证码已使用',
+					'-3': '验证码已失效',
+					'-2': '当前邮箱未发送验证码',
+					'-1': '还未发送验证码',
+					'0': '验证码不正确',
+					'1': '验证成功'
+				}
 			}
 		},
 		inject: ['popup'],
@@ -133,8 +150,100 @@
 			/**
 			 * 点击验证按钮
 			 */
-			to_veri_email(){
+			testSend() {
+				if(!this.email){
+					uni.showToast({
+						duration: 1500,
+						title: '请输入邮箱',
+						mask: true,
+						icon: 'none'
+					})
+					return;
+				}
+				uni.showLoading({
+					mask: true
+				})
+				uniCloud.callFunction({
+					name: "emailCode",
+					data: {
+						serviceType: 'qq',
+						method: 'sendCode',
+						html: '您注册的验证码是#code#',
+						email: this.email,
+						subject: '注册验证码'
+					}
+				}).then((res) => {
+					uni.hideLoading();
+					if (res.result.status) {
+						this.codeId = res.result.id;
+						uni.showToast({
+							duration: 1500,
+							icon: 'none',
+							title: '发送成功',
+							mask: true
+						})
+					} else {
+						uni.showToast({
+							duration: 1500,
+							title: '发送失败',
+							mask: true,
+							icon: 'none'
+						})
+					}
+				});
 			},
+			/**
+			 * 点击确认验证按钮
+			 */
+			testValidate() {
+					if(!this.code){
+						uni.showToast({
+							duration: 1500,
+							title: '请输入验证码',
+							mask: true,
+							icon: 'none'
+						})
+						return;
+					}
+					if(!this.email){
+						uni.showToast({
+							duration: 1500,
+							title: '请输入邮箱',
+							mask: true,
+							icon: 'none'
+						})
+						return;
+					}
+					uni.showLoading({
+						mask: true
+					})
+					uniCloud.callFunction({
+						name: "emailCode",
+						data: {
+							code: this.code,
+							method: 'validateCode',
+							email: this.email,
+							codeId: this.codeId,
+							effectiveTime: 300
+						}
+					}).then((res) => {
+						uni.hideLoading();
+						uni.showToast({
+							duration: 1500,
+							title: this.statusJson[res.result.status],
+							mask: true,
+							icon: 'none'
+						})
+						console.log(res.result.status);
+						if(res.result.status == '1')
+						{
+							this.validstate = true;
+							this.onOk();
+						}
+					});
+					
+				},
+			
 			/**
 			 * 点击确认按钮
 			 */
@@ -144,8 +253,8 @@
 					if (this.mode === 'input') this.val = this.value
 				}, this.mode === 'input' ? this.val : '') */
 				var tmp={
-					tm:this.tarmail,
-					vf:this.verification
+					tm:this.email,
+					vf:this.validstate
 				};
 				this.$emit('confirm',()=>{
 					this.popup.close();

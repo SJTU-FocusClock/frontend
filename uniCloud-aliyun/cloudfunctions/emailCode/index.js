@@ -33,8 +33,8 @@ exports.main = async (event, context) => {
 				port: 465,
 				secure: true,
 				auth: {
-					user: '75754567@qq.com',//此处填写要发送邮件的QQ邮箱
-					pass: 'ihatfmjcjkktbhec'//此处请自行生成并填写 //注意此处并不是QQ密码,而是QQ邮箱中成功开启POP3/SMTP服务,拿到的授权码,重要的事件说三遍,不是QQ密码,是QQ授权码!不是QQ密码,是QQ授权码!不是QQ密码,是QQ授权码!
+					user: '763724610@qq.com',//此处填写要发送邮件的QQ邮箱
+					pass: 'uxzyfwzpktvqbeec'//此处请自行生成并填写 //注意此处并不是QQ密码,而是QQ邮箱中成功开启POP3/SMTP服务,拿到的授权码,重要的事件说三遍,不是QQ密码,是QQ授权码!不是QQ密码,是QQ授权码!不是QQ密码,是QQ授权码!
 				}
 			}
 		}

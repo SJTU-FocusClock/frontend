@@ -1,38 +1,38 @@
 <template>
 	<view>
-		
+
 		<view class="user_avatar">
-			<image class="avatar"  :src="user.avatar"></image>
+			<image class="avatar" :src="user.avatar"></image>
 		</view>
-		
+
 		<view class="nickname">
 			<text>{{user.nickname}}</text>
 		</view>
-		
-		
+
+
 		<uni-popup ref="popup" type="dialog">
-			<uni-popup-info mode="input" title="修改信息" value=""  @confirm="dialogInputConfirm" ></uni-popup-info>
+			<uni-popup-info mode="input" title="修改信息" value="" @confirm="dialogInputConfirm"></uni-popup-info>
 		</uni-popup>
 		<uni-popup ref="popupe" type="dialog">
-			<uni-popup-vemail mode="input" title="邮箱验证" value=""  @confirm="dialogInputConfirm" ></uni-popup-vemail>
+			<uni-popup-vemail mode="input" title="邮箱验证" value="" @confirm="dialogInputConfirme"></uni-popup-vemail>
 		</uni-popup>
-		
-		
+
+
 		<uni-list :border="false">
-		<!-- 	<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="compose"  :title="user.intro"  />
+			<!-- 	<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="compose"  :title="user.intro"  />
 			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="person"  :title='user.sex+" / "+user.birthday'  />
 			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="location"  :title="user.adress"  /> -->
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="sex"  :title="user.sex" />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="phone"  :title="user.phone" />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="email"  :title="user.email"  />
-			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="credit"  :title="user.credit"  />
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="sex" :title="user.sex" />
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="phone" :title="user.phone" />
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="email" :title="user.email" />
+			<uni-list-item :border="true" :show-extra-icon="true" :extra-icon="credit" :title="user.credit" />
 		</uni-list>
-		
-		<view class = "mybutton">
+
+		<view class="mybutton">
 			<button :style="{'background-color':color}" class="mbutton" @click="set_info">编辑个人信息</button>
 			<button :style="{'background-color':color}" class="mbutton" @click="veri_mail">绑定个人邮箱</button>
-		</view>	
-</view>
+		</view>
+	</view>
 </template>
 
 <script>
@@ -44,22 +44,22 @@
 	export default {
 		components: {
 			uniIcons,
-			uniNavBar, 
+			uniNavBar,
 			uniSection,
 			uniPopupInfo,
 			uniPopupVemail
-		}, 
+		},
 		data() {
 			return {
-				color:"",
-				user:{
-					nickname:"",
-					intro:"Life is hard for everyone",
-					phone:"",
-					email:"19283746678@qq.com",
-					avatar:"/static/avatar.png",
-					credit:'',
-					sex:''
+				color: "",
+				user: {
+					nickname: "",
+					intro: "Life is hard for everyone",
+					phone: "",
+					email: "19283746678@qq.com",
+					avatar: "/static/avatar.png",
+					credit: '',
+					sex: ''
 				},
 				email: {
 					color: '#93989d',
@@ -76,58 +76,75 @@
 					size: '22',
 					type: 'compose'
 				},
-				credit:{
+				credit: {
 					color: '#93989d',
 					size: '22',
 					type: 'star-filled'
 				},
-				sex:{
+				sex: {
 					color: '#93989d',
 					size: '22',
 					type: 'person'
 				}
-			
-				
+
+
 			}
 		},
 		methods: {
-			set_info(){
+			set_info() {
 				this.$refs.popup.open()
 			},
-			veri_mail(){
+			veri_mail() {
 				this.$refs.popupe.open()
 			},
 			dialogInputConfirm(done, val) {
 				console.log(val);
-				let that=this;
+				let that = this;
 				uni.request({
-					url:'http://106.54.76.21:8080/users/alterInfo',
-					method:'PUT',
-					data:{
-						nickname:val.name,
-						sex:val.sex==='女'?false:true
+					url: 'http://106.54.76.21:8080/users/alterInfo',
+					method: 'PUT',
+					data: {
+						nickname: val.name,
+						sex: val.sex === '女' ? false : true
 					},
-					success:e=>{
+					success: e => {
 						console.log(e)
-						that.user.nickname=val.name;
-						that.user.sex=val.sex
+						that.user.nickname = val.name;
+						that.user.sex = val.sex
 					}
 				})
 				done();
 			},
+			dialogInputConfirme(done, val) {
+				console.log(val.tm);
+				let that = this;
+				if (val.vf) {
+					that.user.email = e.data.email;
+					uni.request({
+						url: 'http://106.54.76.21:8080/users/setEmail?email='+val.tm,
+						method: 'PUT',
+						success: e => {
+							console.log(e)
+							that.user.email = val.email;
+						}
+					})
+					done();
+				}
+			},
 		},
-		onShow(){
-			this.color=getApp().globalData.color
-			let that=this;
+		onShow() {
+			this.color = getApp().globalData.color
+			let that = this;
 			uni.request({
-				url:'http://106.54.76.21:8080/users/user',
-				method:'GET',
-				success:e=>{
+				url: 'http://106.54.76.21:8080/users/user',
+				method: 'GET',
+				success: e => {
 					console.log(e)
-					that.user.nickname=e.data.nickname;
-					that.user.phone=e.data.phone
-					that.user.credit=e.data.credit.toString()
-					that.user.sex=e.data.sex?'男':'女'
+					that.user.nickname = e.data.nickname;
+					that.user.phone = e.data.phone
+					that.user.credit = e.data.credit.toString()
+					that.user.sex = e.data.sex ? '男' : '女'
+					that.user.email = e.data.email
 					console.log(that.user)
 				}
 			})
@@ -136,40 +153,40 @@
 </script>
 
 <style>
-	.avatar{
+	.avatar {
 		width: 100px;
 		height: 100px;
-		border-radius:100px;
+		border-radius: 100px;
 		margin-top: 90px;
 	}
-	
-	.user_avatar{
-		
+
+	.user_avatar {
+
 		height: 200px;
 		/* background-image: url(../../static/background.png); */
 		padding-left: 110px;
 	}
-	
-	.nickname{
+
+	.nickname {
 		text-align: center;
 		font-size: 20px;
 		margin-bottom: 50px;
 	}
-	
-	.mybutton{
+
+	.mybutton {
 		position: fixed;
 		left: 0;
 		right: 0;
 		bottom: 0;
 		display: flex;
 		flex-direction: row;
-		padding:50rpx
+		padding: 50rpx
 	}
-	
-	.mbutton{
-		width:400rpx ;
+
+	.mbutton {
+		width: 400rpx;
 		font-size: 40rpx;
-		background-color:#c4c4e9 ;
+		background-color: #c4c4e9;
 		color: white;
 	}
 </style>

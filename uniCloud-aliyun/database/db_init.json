@@ -1,0 +1,43 @@
+// 在本文件中可配置云数据库初始化，数据格式见：https://uniapp.dcloud.io/uniCloud/cf-database?id=db_init
+
+// 编写完毕后对本文件点右键，可按配置规则创建表和添加数据
+
+{
+	"HM_verificationCode": { // 集合（表名）
+		"data": [ // 数据
+			{
+				"_id": "da51bd8c5e37ac14099ea43a2505a1a5",
+				"PhoneNumber": "15015800000",
+				"type":"TEST",
+				"Code": "123456",
+				"SendTime": 1592902431 ,
+				"ExpireTime": 1592908431,
+				"SendDate": "2020-06-23",
+				"IP": "202.96.128.86",
+				"UUID":"54s5s4s5d1sd5f"
+			}
+		],
+		"index": [
+			{ // 索引
+				"IndexName": "tel_index", // 索引名称
+				"MgoKeySchema": { // 索引规则
+					"MgoIndexKeys": [{
+						"Name": "PhoneNumber", // 索引字段
+						"Direction": "1" // 索引方向，1：ASC-升序，-1：DESC-降序
+					}],
+					"MgoIsUnique": false // 索引是否唯一
+				}
+			},
+			{ // 索引
+				"IndexName": "date_index", // 索引名称
+				"MgoKeySchema": { // 索引规则
+					"MgoIndexKeys": [{
+						"Name": "SendDate", // 索引字段
+						"Direction": "1" // 索引方向，1：ASC-升序，-1：DESC-降序
+					}],
+					"MgoIsUnique": false // 索引是否唯一
+				}
+			}
+		]
+	}
+}
