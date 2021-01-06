@@ -37,8 +37,8 @@
 		"sms": {
 			"name": "DCloud",
 			"codeExpiresIn": 300,
-			"smsKey": "your sms key",
-			"smsSecret": "your sms secret"
+			"smsKey": "3f80a2661f5956d1cfc9de548aeec7ce",
+			"smsSecret": "c86af2f43dcfc1baa88edc64cb986e5e"
 		},
 		"univerify": {
 			"apiKey": "75339245749e48c7dcf0deb1d64e1ecc",

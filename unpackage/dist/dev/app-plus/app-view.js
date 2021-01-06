@@ -2336,10 +2336,19 @@ var render = function() {
                   expression: "phoneData"
                 }
               }),
-              _c("wInput", {
+              _c("wButton", {
+                staticClass: _vm._$g(6, "sc"),
                 attrs: { _i: 6 },
+                nativeOn: {
+                  click: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
+                }
+              }),
+              _c("wInput", {
+                attrs: { _i: 7 },
                 model: {
-                  value: _vm._$g(6, "v-model"),
+                  value: _vm._$g(7, "v-model"),
                   callback: function() {},
                   expression: "passData"
                 }
@@ -2347,12 +2356,12 @@ var render = function() {
             ],
             1
           ),
-          _c("span", { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } }, [
-            _vm._v(_vm._$g(7, "t0-0"))
+          _c("span", { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } }, [
+            _vm._v(_vm._$g(8, "t0-0"))
           ]),
           _c("wButton", {
-            staticClass: _vm._$g(8, "sc"),
-            attrs: { _i: 8 },
+            staticClass: _vm._$g(9, "sc"),
+            attrs: { _i: 9 },
             nativeOn: {
               click: function($event) {
                 return _vm.$handleViewEvent($event)
@@ -6972,7 +6981,7 @@ var render = function() {
                   callback: function($$v) {
                     _vm.$handleVModelEvent(5, $$v)
                   },
-                  expression: "tarmail"
+                  expression: "email"
                 }
               })
             ],
@@ -6994,7 +7003,7 @@ var render = function() {
                   callback: function($$v) {
                     _vm.$handleVModelEvent(7, $$v)
                   },
-                  expression: "verification"
+                  expression: "code"
                 }
               })
             ],
@@ -7214,7 +7223,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX.2.8.11.20200907.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 15);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.avatar{\n\twidth: 100px;\n\theight: 100px;\n\tborder-radius:100px;\n\tmargin-top: 90px;\n}\n.user_avatar{\n\t\n\theight: 200px;\n\t/* background-image: url(../../static/background.png); */\n\tpadding-left: 110px;\n}\n.nickname{\n\ttext-align: center;\n\tfont-size: 20px;\n\tmargin-bottom: 50px;\n}\n.mybutton{\n\tposition: fixed;\n\tleft: 0;\n\tright: 0;\n\tbottom: 0;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\tpadding:50rpx\n}\n.mbutton{\n\twidth:400rpx ;\n\tfont-size: 40rpx;\n\tbackground-color:#c4c4e9 ;\n\tcolor: white;\n}\n", ""]);
+exports.push([module.i, "\n.avatar {\n\twidth: 100px;\n\theight: 100px;\n\tborder-radius: 100px;\n\tmargin-top: 90px;\n}\n.user_avatar {\n\n\theight: 200px;\n\t/* background-image: url(../../static/background.png); */\n\tpadding-left: 110px;\n}\n.nickname {\n\ttext-align: center;\n\tfont-size: 20px;\n\tmargin-bottom: 50px;\n}\n.mybutton {\n\tposition: fixed;\n\tleft: 0;\n\tright: 0;\n\tbottom: 0;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\tpadding: 50rpx\n}\n.mbutton {\n\twidth: 400rpx;\n\tfont-size: 40rpx;\n\tbackground-color: #c4c4e9;\n\tcolor: white;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -18110,7 +18119,7 @@ var render = function() {
                   callback: function($$v) {
                     _vm.$handleVModelEvent(5, $$v)
                   },
-                  expression: "tarmail"
+                  expression: "email"
                 }
               })
             ],
@@ -18132,7 +18141,7 @@ var render = function() {
                   callback: function($$v) {
                     _vm.$handleVModelEvent(7, $$v)
                   },
-                  expression: "verification"
+                  expression: "code"
                 }
               })
             ],

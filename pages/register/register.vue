@@ -14,6 +14,14 @@
 					maxlength="11"
 					placeholder="请输入手机号"
 				></wInput>
+				
+				<wButton
+					class="wbutton"
+					text="注 册"
+					:rotate="isRotate" 
+					bgColor="#c4c4e9"
+					@click.native="startVali()"
+				></wButton>
 		
 				<wInput
 					v-model="passData"
@@ -51,7 +59,9 @@
 				phoneData:'', // 用户/电话
 				passData:'',
 				isRotate: false, //是否加载旋转
-				result:''
+				result:'',
+				//validation code
+				code:'',
 			}
 		},
 		components:{
@@ -62,7 +72,14 @@
 			_this= this;
 		},
 		methods: {
+			getCode() {
+				const randomStr = '00000' + Math.floor(Math.random() * 1000000)
+				this.code = randomStr.substring(randomStr.length - 6)
+			},
 		    startReg() {
+				//验证手机号码
+				mysendSms(this.phoneData);
+				
 				//注册
 				let that=this;
 				if(this.isRotate){
