@@ -212,6 +212,7 @@
 						else if(getApp().globalData.style=="ghost") path="/static/clockicons/ghost/"
 						else if(getApp().globalData.style=="child") path="/static/clockicons/child/"
 						else if(getApp().globalData.style=="view") path="/static/clockicons/view/"
+						else if(getApp().globalData.style=="spot") path="/static/clockicons/spot/"
 						that.clockListData[i].src=path+count.toString()+'.png'
 					}
 				if(true)/* !that.onsetshow */

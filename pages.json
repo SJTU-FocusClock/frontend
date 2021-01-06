@@ -144,12 +144,6 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": true
 			}
-		},
-		{
-					"path": "pages/test",
-					"style": {
-						"navigationStyle": "custom"
-					}
 		}
 	    ,{
             "path" : "components/uni-popup/uni-popup-vemail/uni-popup-vemail",

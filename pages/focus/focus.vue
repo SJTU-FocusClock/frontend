@@ -15,7 +15,7 @@
 		</uni-popup> 
 
        <uni-popup ref="jump" type="dialog">
-			<uniPopupJump mode="input" title="跳转" @confirm="confirmDogs"> </uniPopupJump>
+			<uniPopupJump mode="input" title="跳转" @confirm="confirmJumps"> </uniPopupJump>
 		</uni-popup>
 
 
@@ -125,6 +125,9 @@
 			{
 				getApp().globalData.whitelist=val				
 				done()
+			},
+			confirmJumps(done,val){
+			
 			},
 			dialogInputConfirm(done, val) {
 				this.isdisabled = true;
@@ -293,8 +296,7 @@
 		//console.log(this.path)
 		}
 		this.isfocusing=false 
-			} 	
-						
+			} 					
 		}
 		
 	} 

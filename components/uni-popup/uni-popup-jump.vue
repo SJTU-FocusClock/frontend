@@ -239,7 +239,7 @@
 				if (this.beforeClose) {
 					this.$emit('close', () => {
 						this.popup.close()
-					})
+					},false)
 					return
 				}
 				this.popup.close()

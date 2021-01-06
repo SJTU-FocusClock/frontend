@@ -1,6 +1,6 @@
 <template>
 	<view>
-	<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="设置"  />
+	<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="设置" @clickLeft="back"  />
     <view class="content">
 		
         <view class="uni-title uni-common-mt uni-common-pl">风格选择</view>
@@ -62,6 +62,12 @@
 						checked:false,
 						name:"view",
 						color:"#87CEFA"
+					},
+					{
+						src:"/static/clockicons/spot.png",
+						checked:false,
+						name:"spot",
+						color:"#FFB6C1"
 					}
 				],
 	            current:0,
@@ -77,7 +83,10 @@
 				getApp().globalData.color=this.items[index].color
 				getApp().globalData.index=this.items[index].index
 				this.color=this.items[index].color
-			}
+			},
+			back(){uni.navigateBack({
+				
+			})}
 	    },
 		onShow()
 		{

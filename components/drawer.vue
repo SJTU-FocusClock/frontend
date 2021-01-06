@@ -156,7 +156,7 @@
 				 		},
 				success:function(e){ 
 						that.credit=e.data
-						var i=that.credit%9
+						var i=that.credit%10
 						that.fruit_path='/static/avatars/'+i.toString()+'.png'
 					}
 				})
