@@ -1,5 +1,7 @@
 <template>
-	<almost-lottery
+	<view>
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="幸运转盘" @clickLeft="back" />
+		<almost-lottery
 	  :prize-list="prizeList"
 	  :prize-index="prizeIndex"
 	  @reset-index="prizeIndex = -1"
@@ -8,16 +10,20 @@
 	  @finish="handleDrawFinish"
 	  v-if="prizeList.length"
 	/>
+	</view>
+	
 </template>
 
 <script>
+	import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 	import AlmostLottery from '@/components/almost-lottery/almost-lottery.vue'
 	export default {
 	  components: {
-	    AlmostLottery
+	    AlmostLottery,uniNavBar
 	  },
 	  data () {
 	    return {
+			color:'',
 	      // 获奖奖品序号，每次抽奖结束后需要重置为 -1
 	      prizeIndex: -1,
 	      // 奖品数据
@@ -46,6 +52,11 @@
 	    }
 	  },
 	  methods: {
+		  back(){
+			  uni.navigateBack({
+			  	
+			  })
+		  },
 	    // 本次抽奖开始
 	    handleDrawStart () {
 	      // 这里需要处理你的中奖逻辑，并得出 prizeIndex
@@ -62,6 +73,10 @@
 	      // 请查看示例项目中的代码
 	      // console.log('抽奖转盘绘制完成', res)
 	    }
+	  },
+	  onShow()
+	  {
+		  this.color=getApp().globalData.color
 	  }
 	}
 </script>

@@ -1,5 +1,6 @@
 <template>
 	<view class="">
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="拼图游戏" @clickLeft="back" />
 		<view class="PingTu">
 			<view class="item" :class="item.class" :style="[itemStyle,{'background-image': 'url('+url+')'}]" v-for="(item,index) in levelArray"
 			 :data-index="index" :key="index" @tap="change"></view>
@@ -14,7 +15,11 @@
 <script>
 	let that;
 	let level = 3;
+	 import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 	export default {
+		components:{
+				  uniNavBar
+		},
 		props: {
 			url: {
 				default: 'http://cdn.test.lfwellness.cn/pintu/xinpin.jpg'
@@ -30,6 +35,7 @@
 				startText: '开始游戏',
 				gameStart: false,
 				timeCounter: null,
+				color:''
 			};
 		},
 		created() {
@@ -42,6 +48,7 @@
 				};
 			}
 			that.levelArray = array;
+			this.color=getApp().globalData.color
 		},
 		computed: {
 			itemStyle() {

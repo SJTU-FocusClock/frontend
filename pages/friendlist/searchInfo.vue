@@ -1,7 +1,8 @@
 <template>
 	<!-- 用于添加好友 -->
 	<view>
-		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="搜索"  />
+		<uni-nav-bar left-icon="back" @clickLeft="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="搜索"  />
+		<view v-if="exist">
 		<view class="user_avatar">
 			<image class="avatar"  :src="user.avatar"></image>
 		</view>
@@ -27,6 +28,12 @@
 			<button :style="{'background-color':color}" class="mbutton" @click="add_friend">添加</button>
 		</view>	
 </view>
+<view v-if="!exist" style="display: flex; flex-direction: column; text-align: center;">
+<image src="/static/no.png" mode="aspectFit" ></image>
+该用户不存在
+</view>
+	</view>
+	
 </template>
 
 <script>
@@ -42,6 +49,7 @@
 		data() {
 			return {
 				color:"#F08080",
+				exist:true,
 				user:{
 					nickname:"",
 					phone:"",
@@ -49,7 +57,7 @@
 					avatar:"/static/avatar.png",
 					credit:'',
 					sex:'',
-					id:0
+					id:0,
 				},
 				email: {
 					color: '#93989d',
@@ -77,6 +85,10 @@
 			}
 		},
 		methods: {
+			back(){
+				uni.navigateBack({		
+				})
+			},
 			add_friend(){
 				let that=this
 				uni.request({
@@ -113,6 +125,7 @@
 				},
 				success:e=>{
 					console.log(e)
+					if(e.data=="") that.exist=false
 					that.user.nickname=e.data.nickname;
 					that.user.phone=e.data.phone
 					that.user.sex=e.data.sex?'男':'女'

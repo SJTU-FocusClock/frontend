@@ -12,7 +12,7 @@
 
 		<uni-popup ref="dogs" type="dialog">
 			<uniPopupDogs mode="input" title="选择宠物" @confirm="confirmDogs"> </uniPopupDogs>
-		</uni-popup>
+		</uni-popup> 
 
        <uni-popup ref="jump" type="dialog">
 			<uniPopupJump mode="input" title="跳转" @confirm="confirmDogs"> </uniPopupJump>
@@ -91,7 +91,8 @@
 				color:"#cacaea",
 				dog_index:2,
 				isfocusing:false,
-				whitelist:[]
+				whitelist:[],
+				jump_timeout:0
 			}
 		},
 		methods: {
@@ -139,6 +140,7 @@
 				this.path="/static/dogs/"+this.dog_index.toString()+".png"
 				
 				this.isfocusing=true//正在专注
+				if(!this.normal) this.deep=true
 				done();
 			},
 			/**
@@ -238,15 +240,47 @@
 			},
 			chooseJump(){
 				this.$refs.jump.open()
-		}
+				this.jump_timeout=setTimeout(this.stop_counting,300000,null)
+		},
+		isScreenOn() {   
+		        if (typeof (plus) !== 'undefined') {  
+		            var pm = plus.android.runtimeMainActivity()  
+		                .getSystemService(plus.android.android.content.Context.POWER_SERVICE);  
+		            return plus.android.invoke(pm, 'isScreenOn');  
+		        }  
+		        return true;  
+		    },
+			stop_counting()
+			{
+				//普通模式
+				if(this.normal==true)
+				{
+				this.isdisabled=false;
+				//???
+				this.hour=0;
+				this.minute=0;
+				this.second=0;
+				this.value++
+				if(this.isfocusing){
+					var i=this.path.lastIndexOf('.')
+					this.path=this.path.substring(0,i)+"_.png" 
+				}
+				this.isfocusing=false 
+				} 
+			}
+			  
 		},
 		onShow()
 		{
 			this.color=getApp().globalData.color
+			getApp().globalData.jumping=false 
+			clearTimeout(this.jump_timeout)
 		},
 		onHide() {
-			if(this.normal==false)
-			{
+			console.log("hide:jump:",getApp().globalData.jumping)
+			//深度模式并且不是熄屏才会停止,普通模式并且不是跳转出去的
+			if((this.normal==false&&this.isScreenOn())||(this.normal==true&&!getApp().globalData.jumping))
+		{
 		this.isdisabled=false;
 		//???
 		this.hour=0;
@@ -255,11 +289,12 @@
 		this.value++
 		if(this.isfocusing){
 			var i=this.path.lastIndexOf('.')
-		this.path=this.path.substring(0,i)+"_.png"
+		this.path=this.path.substring(0,i)+"_.png" 
 		//console.log(this.path)
 		}
 		this.isfocusing=false 
-			} 		
+			} 	
+						
 		}
 		
 	} 

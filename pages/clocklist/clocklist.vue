@@ -84,7 +84,6 @@
 		methods: {
 			confirm() {},
 			onClickClock(item) {
-				console.log("点击闹钟进入编辑页面", item)
 				var i=item.id.toString()
 				uni.navigateTo({
 					url:'/pages/normalclock/modifyclock?id='+i
@@ -123,25 +122,25 @@
 						clock_date.setHours(parseInt(h),parseInt(m),0);
 						
 						var slice=date-clock_date;//时间差
-						console.log("slice",slice);
+						/* console.log("slice",slice); */
 						
 						//slice为负数说明在今天要响,此时才设置定时器
 						if(slice<0)
 						{
-							console.log("c",c)
+							/* console.log("c",c) */
 							var cid=setTimeout(that.ring_clock,-slice,c);
 							that.map.set(c.id,cid);
 						}	
 					}
 				}
 				that.map.forEach(function(value,key){
-					console.log("map",key,value);
+					/* console.log("map",key,value); */
 				});
 				
 			},
 			cancel_clock(){
 			//取消所有闹钟
-			console.log("取消所有闹钟")
+			/* console.log("取消所有闹钟") */
 				this.map.forEach(function(value,key){
 					clearTimeout(value);
 				});
@@ -154,14 +153,14 @@
 				audio.src=this.ringsrc[c.ring];
 				audio.play();
 				this.send_record(c.time);//发送闹钟记录
-				console.log("jump to ",this.gamepages[c.gameid])
+				/* console.log("jump to ",this.gamepages[c.gameid]) */
 				uni.navigateTo({
 					url:this.gamepages[c.gameid]
 			})
 		},
 		send_record(record){
 			//发送闹钟记录
-			console.log("record:",record);
+			/* console.log("record:",record); */
 			uni.request({
 				url:'http://106.54.76.21:8080/clocks/createRecord',
 				method:'POST',
@@ -173,9 +172,9 @@
 					end:record.substr(0,6)+'50'//没有实现闹钟end的计算
 				},
 				complete:(e) =>{
-					console.log(e)
+					/* console.log(e) */
 				}
-			})
+			}) 
 		},
 		onShow() {
 			audio.stop()//让闹钟停止
@@ -192,10 +191,15 @@
 				'content-type': 'application/x-www-form-urlencoded'
 						},
 				success: function(e){
-					console.log(e)
-					that.clockListData=e.data 
+					if(e.data=="Please Login in") uni.navigateTo({
+						url:'/pages/login/phonelogin'
+					})
+					that.clockListData=e.data
+					 console.log(e)
 					for(var i=0;i<e.data.length;i++)
 					{
+						//填充 
+						if(that.clockListData[i].tag=="") that.clockListData[i].tag="无备注"
 						var tmp=parseInt(that.clockListData[i].time.substr(0,2));
 						that.clockListData[i].hour=tmp
 						that.clockListData[i].minute=that.clockListData[i].time.substr(3,2)
@@ -233,7 +237,7 @@
 		height: auto;
 	}
 
-	
+	 
 	.clock-img {
 		height: auto;
 		width: 20%;
@@ -245,6 +249,9 @@
 		font-size:xx-large;
 		margin-left: 10px;
 	}
-	
+	uni-list-item{
+	}
 	
 </style>
+ 
+ 

@@ -3561,7 +3561,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX.2.8.11.20200907.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 15);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.uni-list-item[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  font-size: 32rpx;\r\n  position: relative;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n          justify-content: space-between;\r\n  background-color: #fff;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\n}\n.uni-list-item--disabled[data-v-1093b690] {\r\n  opacity: 0.3;\n}\n.uni-list-item--hover[data-v-1093b690] {\r\n  background-color: #f1f1f1;\n}\n.uni-list-item__container[data-v-1093b690] {\r\n  position: relative;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  padding: 24rpx 30rpx;\r\n  padding-left: 30rpx;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  overflow: hidden;\n}\n.container--right[data-v-1093b690] {\r\n  padding-right: 0;\n}\n.uni-list--border[data-v-1093b690] {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  left: 0;\n}\n.uni-list--border[data-v-1093b690]:after {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  left: 0;\r\n  height: 1px;\r\n  content: '';\r\n  -webkit-transform: scaleY(0.5);\r\n  transform: scaleY(0.5);\r\n  background-color: #c8c7cc;\n}\n.uni-list-item__content[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  padding-right: 8px;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  color: #3b4144;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n          justify-content: space-between;\r\n  overflow: hidden;\n}\n.uni-list-item__content--center[data-v-1093b690] {\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\n}\n.uni-list-item__content-title[data-v-1093b690] {\r\n  font-size: 28rpx;\r\n  color: #3b4144;\r\n  overflow: hidden;\n}\n.uni-list-item__content-note[data-v-1093b690] {\r\n  margin-top: 6rpx;\r\n  color: #999;\r\n  font-size: 24rpx;\r\n  overflow: hidden;\n}\n.uni-list-item__extra[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: end;\r\n  -webkit-justify-content: flex-end;\r\n          justify-content: flex-end;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.uni-list-item__header[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.uni-list-item__icon[data-v-1093b690] {\r\n  margin-right: 18rpx;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.uni-list-item__icon-img[data-v-1093b690] {\r\n  display: block;\r\n  height: 52rpx;\r\n  width: 52rpx;\n}\n.uni-icon-wrapper[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding: 0 10px;\n}\n.flex--direction[data-v-1093b690] {\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-align: initial;\r\n  -webkit-align-items: initial;\r\n          align-items: initial;\n}\n.flex--justify[data-v-1093b690] {\r\n  -webkit-box-pack: initial;\r\n  -webkit-justify-content: initial;\r\n          justify-content: initial;\n}\n.uni-list--lg[data-v-1093b690] {\r\n  height: 80rpx;\r\n  width: 80rpx;\n}\n.uni-list--base[data-v-1093b690] {\r\n  height: 52rpx;\r\n  width: 52rpx;\n}\n.uni-list--sm[data-v-1093b690] {\r\n  height: 40rpx;\r\n  width: 40rpx;\n}\n.uni-list-item__extra-text[data-v-1093b690] {\r\n  color: #999;\r\n  font-size: 24rpx;\n}\n.uni-ellipsis-1[data-v-1093b690] {\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\n}\n.uni-ellipsis-2[data-v-1093b690] {\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 2;\r\n  -webkit-box-orient: vertical;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.uni-list-item[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  font-size: 32rpx;\r\n  position: relative;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n          justify-content: space-between;\r\n  background-color: #fff;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  /* background:url('/static/bbb.jpg') no-repeat ;\r\n\tbackground-size: 300rpx 300rpx;\r\n\tbackground-position: 10% 40%; */\n}\n.uni-list-item--disabled[data-v-1093b690] {\r\n  opacity: 0.3;\n}\n.uni-list-item--hover[data-v-1093b690] {\r\n  background-color: #f1f1f1;\n}\n.uni-list-item__container[data-v-1093b690] {\r\n  position: relative;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  padding: 24rpx 30rpx;\r\n  padding-left: 30rpx;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  overflow: hidden;\n}\n.container--right[data-v-1093b690] {\r\n  padding-right: 0;\n}\n.uni-list--border[data-v-1093b690] {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  left: 0;\n}\n.uni-list--border[data-v-1093b690]:after {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  left: 0;\r\n  height: 1px;\r\n  content: '';\r\n  -webkit-transform: scaleY(0.5);\r\n  transform: scaleY(0.5);\r\n  background-color: #c8c7cc;\n}\n.uni-list-item__content[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  padding-right: 8px;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  color: #3b4144;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n          justify-content: space-between;\r\n  overflow: hidden;\n}\n.uni-list-item__content--center[data-v-1093b690] {\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\n}\n.uni-list-item__content-title[data-v-1093b690] {\r\n  font-size: 28rpx;\r\n  color: #3b4144;\r\n  overflow: hidden;\n}\n.uni-list-item__content-note[data-v-1093b690] {\r\n  margin-top: 6rpx;\r\n  color: #999;\r\n  font-size: 24rpx;\r\n  overflow: hidden;\n}\n.uni-list-item__extra[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: end;\r\n  -webkit-justify-content: flex-end;\r\n          justify-content: flex-end;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.uni-list-item__header[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.uni-list-item__icon[data-v-1093b690] {\r\n  margin-right: 18rpx;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.uni-list-item__icon-img[data-v-1093b690] {\r\n  display: block;\r\n  height: 52rpx;\r\n  width: 52rpx;\n}\n.uni-icon-wrapper[data-v-1093b690] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding: 0 10px;\n}\n.flex--direction[data-v-1093b690] {\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-align: initial;\r\n  -webkit-align-items: initial;\r\n          align-items: initial;\n}\n.flex--justify[data-v-1093b690] {\r\n  -webkit-box-pack: initial;\r\n  -webkit-justify-content: initial;\r\n          justify-content: initial;\n}\n.uni-list--lg[data-v-1093b690] {\r\n  height: 80rpx;\r\n  width: 80rpx;\n}\n.uni-list--base[data-v-1093b690] {\r\n  height: 52rpx;\r\n  width: 52rpx;\n}\n.uni-list--sm[data-v-1093b690] {\r\n  height: 40rpx;\r\n  width: 40rpx;\n}\n.uni-list-item__extra-text[data-v-1093b690] {\r\n  color: #999;\r\n  font-size: 24rpx;\n}\n.uni-ellipsis-1[data-v-1093b690] {\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\n}\n.uni-ellipsis-2[data-v-1093b690] {\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 2;\r\n  -webkit-box-orient: vertical;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -5025,7 +5025,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX.2.8.11.20200907.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 15);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\nbody {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\tbox-sizing: border-box;\n\tbackground-color: #efeff4;\n\tmin-height: 100%;\n\theight: auto;\n}\n.clock-img {\n\theight: auto;\n\twidth: 20%;\n}\n.clockList\n/* .uni-list */\n.uni-list-item__content-title {\n\tfont-size:xx-large;\n\tmargin-left: 10px;\n}\n\n\n", ""]);
+exports.push([module.i, "\nbody {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\tbox-sizing: border-box;\n\tbackground-color: #efeff4;\n\tmin-height: 100%;\n\theight: auto;\n}\n.clock-img {\n\theight: auto;\n\twidth: 20%;\n}\n.clockList\n/* .uni-list */\n.uni-list-item__content-title {\n\tfont-size:xx-large;\n\tmargin-left: 10px;\n}\nuni-list-item{\n}\n\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -8981,31 +8981,32 @@ var render = function() {
         "v-uni-view",
         { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
         [
+          _c("v-uni-view", { attrs: { _i: 4 } }, [_vm._v("请在5分钟内回来")]),
           _c(
             "v-uni-checkbox-group",
             {
-              attrs: { _i: 4 },
+              attrs: { _i: 5 },
               on: {
                 change: function($event) {
                   return _vm.$handleViewEvent($event)
                 }
               }
             },
-            _vm._l(_vm._$g(5, "f"), function(item, index, $20, $30) {
+            _vm._l(_vm._$g(6, "f"), function(item, index, $20, $30) {
               return _c(
                 "v-uni-label",
                 {
                   key: item,
-                  staticClass: _vm._$g("5-" + $30, "sc"),
-                  attrs: { _i: "5-" + $30 }
+                  staticClass: _vm._$g("6-" + $30, "sc"),
+                  attrs: { _i: "6-" + $30 }
                 },
                 [
-                  _vm._$g("6-" + $30, "i")
+                  _vm._$g("7-" + $30, "i")
                     ? _c("v-uni-image", {
                         attrs: {
-                          src: _vm._$g("6-" + $30, "a-src"),
+                          src: _vm._$g("7-" + $30, "a-src"),
                           mode: "scaleToFill",
-                          _i: "6-" + $30
+                          _i: "7-" + $30
                         },
                         on: {
                           click: function($event) {
@@ -9025,13 +9026,13 @@ var render = function() {
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
+        { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
         [
           _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(8, "sc"),
-              attrs: { _i: 8 },
+              staticClass: _vm._$g(9, "sc"),
+              attrs: { _i: 9 },
               on: {
                 click: function($event) {
                   return _vm.$handleViewEvent($event)
@@ -9041,7 +9042,7 @@ var render = function() {
             [
               _c(
                 "v-uni-text",
-                { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
+                { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
                 [_vm._v("取消")]
               )
             ],
@@ -9050,8 +9051,8 @@ var render = function() {
           _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(10, "sc"),
-              attrs: { _i: 10 },
+              staticClass: _vm._$g(11, "sc"),
+              attrs: { _i: 11 },
               on: {
                 click: function($event) {
                   return _vm.$handleViewEvent($event)
@@ -9061,7 +9062,7 @@ var render = function() {
             [
               _c(
                 "v-uni-text",
-                { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
+                { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
                 [_vm._v("确定")]
               )
             ],
@@ -11429,7 +11430,14 @@ var render = function() {
     "v-uni-view",
     { attrs: { _i: 0 } },
     [
-      _c("uni-nav-bar", { attrs: { _i: 1 } }),
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
       _c(
         "v-uni-view",
         { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
@@ -11676,7 +11684,14 @@ var render = function() {
     "v-uni-view",
     { attrs: { _i: 0 } },
     [
-      _c("uni-nav-bar", { attrs: { _i: 1 } }),
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
       _c(
         "uni-list",
         { attrs: { _i: 2 } },
@@ -11848,7 +11863,14 @@ var render = function() {
     "v-uni-view",
     { attrs: { _i: 0 } },
     [
-      _c("uni-nav-bar", { attrs: { _i: 1 } }),
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
       _c(
         "v-uni-view",
         { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
@@ -12116,7 +12138,14 @@ var render = function() {
     "v-uni-view",
     { attrs: { _i: 0 } },
     [
-      _c("uni-nav-bar", { attrs: { _i: 1 } }),
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
       _vm._l(_vm._$g(2, "f"), function(item, $10, $20, $30) {
         return _c(
           "uni-card",
@@ -15792,6 +15821,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniNavBar: __webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115).default
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -15800,24 +15850,32 @@ var render = function() {
     "v-uni-view",
     { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
     [
-      _c("v-uni-view", { attrs: { _i: 1 } }, [_vm._v("请计算")]),
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
+      _c("v-uni-view", { attrs: { _i: 2 } }, [_vm._v("请计算")]),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+        { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
         [
           _vm._v(
-            _vm._$g(2, "t0-0") + _vm._$g(2, "t0-1") + _vm._$g(2, "t0-2") + "="
+            _vm._$g(3, "t0-0") + _vm._$g(3, "t0-1") + _vm._$g(3, "t0-2") + "="
           ),
           _c("v-uni-input", {
-            staticClass: _vm._$g(3, "sc"),
-            attrs: { type: "text", _i: 3 },
+            staticClass: _vm._$g(4, "sc"),
+            attrs: { type: "text", _i: 4 },
             on: {
               input: function($event) {
                 return _vm.$handleViewEvent($event)
               }
             },
             model: {
-              value: _vm._$g(3, "v-model"),
+              value: _vm._$g(4, "v-model"),
               callback: function() {},
               expression: "value"
             }
@@ -15828,7 +15886,7 @@ var render = function() {
       _c(
         "v-uni-button",
         {
-          attrs: { _i: 4 },
+          attrs: { _i: 5 },
           on: {
             click: function($event) {
               return _vm.$handleViewEvent($event)
@@ -15871,8 +15929,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _uniNavBar = _interopRequireDefault(__webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
 
   data: function data() {
@@ -15880,7 +15938,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       wxsProps: {} };
 
   },
-  components: {} };exports.default = _default;
+  components: {
+    'uniNavBar': _uniNavBar.default } };exports.default = _default;
 
 /***/ }),
 /* 442 */
@@ -16010,6 +16069,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniNavBar: __webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115).default
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -16018,21 +16098,29 @@ var render = function() {
     "v-uni-view",
     { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
     [
-      _c("v-uni-view", { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } }, [
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
+      _c("v-uni-view", { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } }, [
         _vm._v("目标:200")
       ]),
       _c(
         "header",
-        { attrs: { _i: 2 } },
+        { attrs: { _i: 3 } },
         [
-          _c("span", { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } }, [
-            _vm._v("总分：" + _vm._$g(3, "t0-0"))
+          _c("span", { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } }, [
+            _vm._v("总分：" + _vm._$g(4, "t0-0"))
           ]),
           _c(
             "v-uni-button",
             {
-              staticClass: _vm._$g(4, "sc"),
-              attrs: { _i: 4 },
+              staticClass: _vm._$g(5, "sc"),
+              attrs: { _i: 5 },
               on: {
                 click: function($event) {
                   return _vm.$handleViewEvent($event)
@@ -16041,27 +16129,27 @@ var render = function() {
             },
             [_vm._v("开始新的游戏")]
           ),
-          _c("span", { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } })
+          _c("span", { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } })
         ],
         1
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
+        { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
         [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
+            { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
             _vm._l(16, function(list, $10, $20, $30) {
-              return _c("span", { attrs: { _i: "8-" + $30 } })
+              return _c("span", { attrs: { _i: "9-" + $30 } })
             }),
             1
           ),
           _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(9, "sc"),
-              attrs: { _i: 9 },
+              staticClass: _vm._$g(10, "sc"),
+              attrs: { _i: 10 },
               on: {
                 touchstart: function($event) {
                   return _vm.$handleViewEvent($event)
@@ -16071,28 +16159,28 @@ var render = function() {
                 }
               }
             },
-            _vm._l(_vm._$g(10, "f"), function(e, index, $21, $31) {
-              return _vm._$g("10-" + $31, "i")
+            _vm._l(_vm._$g(11, "f"), function(e, index, $21, $31) {
+              return _vm._$g("11-" + $31, "i")
                 ? _c(
                     "span",
                     {
                       key: e,
-                      staticClass: _vm._$g("10-" + $31, "sc"),
-                      style: _vm._$g("10-" + $31, "s"),
-                      attrs: { _i: "10-" + $31 }
+                      staticClass: _vm._$g("11-" + $31, "sc"),
+                      style: _vm._$g("11-" + $31, "s"),
+                      attrs: { _i: "11-" + $31 }
                     },
                     [
                       _c(
                         "span",
                         {
-                          staticClass: _vm._$g("11-" + $31, "sc"),
-                          style: _vm._$g("11-" + $31, "s"),
+                          staticClass: _vm._$g("12-" + $31, "sc"),
+                          style: _vm._$g("12-" + $31, "s"),
                           attrs: {
-                            id: _vm._$g("11-" + $31, "a-id"),
-                            _i: "11-" + $31
+                            id: _vm._$g("12-" + $31, "a-id"),
+                            _i: "12-" + $31
                           }
                         },
-                        [_vm._v(_vm._$g("11-" + $31, "t0-0"))]
+                        [_vm._v(_vm._$g("12-" + $31, "t0-0"))]
                       )
                     ],
                     1
@@ -16138,8 +16226,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _uniNavBar = _interopRequireDefault(__webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
 
   data: function data() {
@@ -16147,7 +16235,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       wxsProps: {} };
 
   },
-  components: {} };exports.default = _default;
+  components: {
+    'uniNavBar': _uniNavBar.default } };exports.default = _default;
 
 /***/ }),
 /* 450 */
@@ -16277,6 +16366,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniNavBar: __webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115).default
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -16285,19 +16395,27 @@ var render = function() {
     "v-uni-view",
     { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
     [
-      _c("v-uni-view", { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } }, [
-        _vm._v(_vm._$g(1, "t0-0"))
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
+      _c("v-uni-view", { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } }, [
+        _vm._v(_vm._$g(2, "t0-0"))
       ]),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+        { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
         [
           _c("v-uni-input", {
-            attrs: { type: "text", _i: 3 },
+            attrs: { type: "text", _i: 4 },
             model: {
-              value: _vm._$g(3, "v-model"),
+              value: _vm._$g(4, "v-model"),
               callback: function($$v) {
-                _vm.$handleVModelEvent(3, $$v)
+                _vm.$handleVModelEvent(4, $$v)
               },
               expression: "myResult"
             }
@@ -16308,7 +16426,7 @@ var render = function() {
       _c(
         "v-uni-button",
         {
-          attrs: { _i: 4 },
+          attrs: { _i: 5 },
           on: {
             click: function($event) {
               return _vm.$handleViewEvent($event)
@@ -16351,8 +16469,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _uniNavBar = _interopRequireDefault(__webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
 
   data: function data() {
@@ -16360,7 +16478,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       wxsProps: {} };
 
   },
-  components: {} };exports.default = _default;
+  components: {
+    'uniNavBar': _uniNavBar.default } };exports.default = _default;
 
 /***/ }),
 /* 458 */
@@ -16490,6 +16609,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniNavBar: __webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115).default
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -16498,18 +16638,26 @@ var render = function() {
     "v-uni-view",
     { attrs: { _i: 0 } },
     [
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
-        _vm._l(_vm._$g(2, "f"), function(item, index, $20, $30) {
+        { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+        _vm._l(_vm._$g(3, "f"), function(item, index, $20, $30) {
           return _c("v-uni-view", {
             key: item,
-            staticClass: _vm._$g("2-" + $30, "sc"),
-            class: _vm._$g("2-" + $30, "c"),
-            style: _vm._$g("2-" + $30, "s"),
+            staticClass: _vm._$g("3-" + $30, "sc"),
+            class: _vm._$g("3-" + $30, "c"),
+            style: _vm._$g("3-" + $30, "s"),
             attrs: {
-              "data-index": _vm._$g("2-" + $30, "a-data-index"),
-              _i: "2-" + $30
+              "data-index": _vm._$g("3-" + $30, "a-data-index"),
+              _i: "3-" + $30
             },
             on: {
               click: function($event) {
@@ -16522,26 +16670,26 @@ var render = function() {
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
+        { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
         [
           _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(4, "sc"),
-              attrs: { _i: 4 },
+              staticClass: _vm._$g(5, "sc"),
+              attrs: { _i: 5 },
               on: {
                 click: function($event) {
                   return _vm.$handleViewEvent($event)
                 }
               }
             },
-            [_vm._v(_vm._$g(4, "t0-0"))]
+            [_vm._v(_vm._$g(5, "t0-0"))]
           ),
           _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(5, "sc"),
-              attrs: { _i: 5 },
+              staticClass: _vm._$g(6, "sc"),
+              attrs: { _i: 6 },
               on: {
                 click: function($event) {
                   return _vm.$handleViewEvent($event)
@@ -16587,8 +16735,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _uniNavBar = _interopRequireDefault(__webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   props: ["url", "timeOut"],
   data: function data() {
@@ -16596,7 +16744,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       wxsProps: {} };
 
   },
-  components: {} };exports.default = _default;
+  components: {
+    'uniNavBar': _uniNavBar.default } };exports.default = _default;
 
 /***/ }),
 /* 466 */
@@ -16726,6 +16875,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniNavBar: __webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115).default
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -16734,33 +16904,41 @@ var render = function() {
     "v-uni-view",
     { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
     [
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
+        { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
         [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
-            [_vm._v("时间：" + _vm._$g(2, "t0-0"))]
+            { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
+            [_vm._v("时间：" + _vm._$g(3, "t0-0"))]
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
-            [_vm._v("得分：" + _vm._$g(3, "t0-0"))]
+            { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
+            [_vm._v("得分：" + _vm._$g(4, "t0-0"))]
           )
         ],
         1
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
-        _vm._l(_vm._$g(5, "f"), function(item, index, $20, $30) {
+        { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
+        _vm._l(_vm._$g(6, "f"), function(item, index, $20, $30) {
           return _c(
             "v-uni-view",
             {
               key: item,
-              staticClass: _vm._$g("5-" + $30, "sc"),
-              attrs: { _i: "5-" + $30 },
+              staticClass: _vm._$g("6-" + $30, "sc"),
+              attrs: { _i: "6-" + $30 },
               on: {
                 click: function($event) {
                   return _vm.$handleViewEvent($event)
@@ -16769,22 +16947,6 @@ var render = function() {
             },
             [
               _c("v-uni-image", {
-                staticClass: _vm._$g("6-" + $30, "sc"),
-                attrs: {
-                  src: _vm._$g("6-" + $30, "a-src"),
-                  mode: "aspectFit",
-                  _i: "6-" + $30
-                }
-              }),
-              _c("v-uni-image", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm._$g("7-" + $30, "v-show"),
-                    expression: "_$g((\"7-\"+$30),'v-show')"
-                  }
-                ],
                 staticClass: _vm._$g("7-" + $30, "sc"),
                 attrs: {
                   src: _vm._$g("7-" + $30, "a-src"),
@@ -16806,6 +16968,22 @@ var render = function() {
                   src: _vm._$g("8-" + $30, "a-src"),
                   mode: "aspectFit",
                   _i: "8-" + $30
+                }
+              }),
+              _c("v-uni-image", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm._$g("9-" + $30, "v-show"),
+                    expression: "_$g((\"9-\"+$30),'v-show')"
+                  }
+                ],
+                staticClass: _vm._$g("9-" + $30, "sc"),
+                attrs: {
+                  src: _vm._$g("9-" + $30, "a-src"),
+                  mode: "aspectFit",
+                  _i: "9-" + $30
                 }
               })
             ],
@@ -16848,8 +17026,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _uniNavBar = _interopRequireDefault(__webpack_require__(/*! @/components/uni-nav-bar/uni-nav-bar.vue */ 115));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
 
   data: function data() {
@@ -16857,7 +17035,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       wxsProps: {} };
 
   },
-  components: {} };exports.default = _default;
+  components: {
+    'uniNavBar': _uniNavBar.default } };exports.default = _default;
 
 /***/ }),
 /* 474 */
@@ -17488,55 +17667,95 @@ var render = function() {
     "v-uni-view",
     { attrs: { _i: 0 } },
     [
-      _c("uni-nav-bar", { attrs: { _i: 1 } }),
-      _c(
-        "v-uni-view",
-        { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
-        [
-          _c("v-uni-image", {
-            staticClass: _vm._$g(3, "sc"),
-            attrs: { src: _vm._$g(3, "a-src"), _i: 3 }
-          })
-        ],
-        1
-      ),
-      _c(
-        "v-uni-view",
-        { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
-        [_c("v-uni-text", { attrs: { _i: 5 } }, [_vm._v(_vm._$g(5, "t0-0"))])],
-        1
-      ),
-      _c(
-        "uni-list",
-        { attrs: { _i: 6 } },
-        [
-          _c("uni-list-item", { attrs: { _i: 7 } }),
-          _c("uni-list-item", { attrs: { _i: 8 } }),
-          _c("uni-list-item", { attrs: { _i: 9 } })
-        ],
-        1
-      ),
-      _c(
-        "v-uni-view",
-        { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
-        [
-          _c(
-            "v-uni-button",
-            {
-              staticClass: _vm._$g(11, "sc"),
-              style: _vm._$g(11, "s"),
-              attrs: { _i: 11 },
-              on: {
-                click: function($event) {
-                  return _vm.$handleViewEvent($event)
-                }
-              }
-            },
-            [_vm._v("添加")]
+      _c("uni-nav-bar", {
+        attrs: { _i: 1 },
+        on: {
+          clickLeft: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
+      _vm._$g(2, "i")
+        ? _c(
+            "v-uni-view",
+            { attrs: { _i: 2 } },
+            [
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
+                [
+                  _c("v-uni-image", {
+                    staticClass: _vm._$g(4, "sc"),
+                    attrs: { src: _vm._$g(4, "a-src"), _i: 4 }
+                  })
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
+                [
+                  _c("v-uni-text", { attrs: { _i: 6 } }, [
+                    _vm._v(_vm._$g(6, "t0-0"))
+                  ])
+                ],
+                1
+              ),
+              _c(
+                "uni-list",
+                { attrs: { _i: 7 } },
+                [
+                  _c("uni-list-item", { attrs: { _i: 8 } }),
+                  _c("uni-list-item", { attrs: { _i: 9 } }),
+                  _c("uni-list-item", { attrs: { _i: 10 } })
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
+                [
+                  _c(
+                    "v-uni-button",
+                    {
+                      staticClass: _vm._$g(12, "sc"),
+                      style: _vm._$g(12, "s"),
+                      attrs: { _i: 12 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
+                    },
+                    [_vm._v("添加")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
           )
-        ],
-        1
-      )
+        : _vm._e(),
+      _vm._$g(13, "i")
+        ? _c(
+            "v-uni-view",
+            {
+              staticStyle: {
+                display: "flex",
+                "flex-direction": "column",
+                "text-align": "center"
+              },
+              attrs: { _i: 13 }
+            },
+            [
+              _c("v-uni-image", {
+                attrs: { src: "/static/no.png", mode: "aspectFit", _i: 14 }
+              }),
+              _vm._v("该用户不存在")
+            ],
+            1
+          )
+        : _vm._e()
     ],
     1
   )
@@ -18133,7 +18352,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../HBuilderX.2.8.11.20200907.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 15);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*每个页面公共css */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*每个页面公共css */\n", ""]);
 // Exports
 module.exports = exports;
 

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="好友请求"  />
+		<uni-nav-bar left-icon="back" @clickLeft="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="好友请求"  />
 		<uni-list :border="false">
 			<uni-list-chat  v-for="item in listData" :avatar-circle="true" :key="item.id" :title="item.sendUser.nickname" avatar="/static/avatar.png"
    :clickable="true"  @click="deal(item)"> </uni-list-chat>
@@ -28,6 +28,10 @@
 				}
 			},
 			methods: {
+				back(){
+					uni.navigateBack({		
+					})
+				},
 				deal(item){
 			 		//封装信息
 					var info=JSON.stringify(item)

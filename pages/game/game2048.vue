@@ -1,5 +1,6 @@
 <template>
   <view class="layout">
+	  		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="c" :status-bar="true" color="white" title="2048" @clickLeft="back" />
 	  <view class="goal">目标:200</view>
     <header>
       <span class="score">总分：{{score}}</span>
@@ -39,7 +40,11 @@
     return firstPoint < secondPoint ? -1 : 1;
   };
   const dely = ms => new Promise(res => setTimeout(res, ms));
+  import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
   export default {
+	  components:{
+		  uniNavBar
+	  },
     data() {
       return { 
 		laststart:[],
@@ -62,12 +67,18 @@
           8192: "#281d04"
         },
         directX: 30,
+		c:''
       };
     },
     mounted() {
       this.init();
     },
     methods: {
+		back()
+		{uni.navigateBack({
+			
+		})
+		},
 		start(event){
 			this.laststart=event.touches;
 		},
@@ -327,6 +338,7 @@
 				 })
 			 }
 	})
+	this.c=getApp().globalData.color
   }
   }
 </script>

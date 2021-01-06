@@ -1,5 +1,6 @@
 <template>
 	<view class="box">
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="打地鼠" @clickLeft="back" />
 		<view class="result flex_col flex_col_2">
 			<view class="align_l">时间：{{time}}</view>
 			<view class="align_r">得分：{{countResult}}</view>
@@ -15,18 +16,24 @@
 </template>
 
 <script>
+	 import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 	export default {
+		components:{
+				  uniNavBar
+		},
 		data() {
 			return {
 				list:[0,0,0,0,0,0,0,0,0],	//数值说明 0:无状态,1:老鼠显示,2:砸中状态
 				result:0,
 				time:30,
-				flag:true
+				flag:true,
+				color:''
 			}
 		},
 		mounted() {
 			this.showMouse();
 			this.downTime();
+			this.color=getApp().globalData.color
 		},
 		computed:{
 			// 计算结果，使用计算函数，可方便管理得分基数

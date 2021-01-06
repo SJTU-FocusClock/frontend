@@ -7,7 +7,7 @@
 		<view class="uni-dialog-content">
 			<!-- <text class="uni-dialog-content-text" v-if="mode === 'base'">{{content}}</text>
 			<input v-else class="uni-dialog-input" v-model="val" type="text" :placeholder="placeholder" :focus="focus" > -->
-
+			<view>请在5分钟内回来</view>
 			<checkbox-group @change="checkboxChange">
 				<label class="uni-list-cell uni-list-cell-pd" v-for="(item,index) in items" :key="item.value">
 						<image :src="item.src"  v-if="item.show" mode="scaleToFill" @click="JumpTo(item.name)"></image> 			
@@ -178,6 +178,7 @@
 		methods: {
 			JumpTo(dst)
 			{
+				getApp().globalData.jumping=true
 				console.log('dst',dst)
 				var pname
 				var action
@@ -229,7 +230,7 @@
 			onOk() {
 				this.$emit('confirm', () => {
 					this.popup.close()
-				}, this.current)
+				}, this.current) 
 			},
 			/**
 			 * 点击取消按钮
@@ -254,12 +255,6 @@
 						this.$set(item, 'checked', false)
 					}
 				}
-			},
-			image_click(index)
-			{
-				this.items[this.current].checked=false
-				this.items[index].checked=true
-				this.current=index
 			}
 		}
 	}

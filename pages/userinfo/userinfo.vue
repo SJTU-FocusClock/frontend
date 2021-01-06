@@ -128,7 +128,7 @@
 					that.user.phone=e.data.phone
 					that.user.credit=e.data.credit.toString()
 					that.user.sex=e.data.sex?'男':'女'
-					console.log(that.user)
+					that.user.email=e.data.email
 				}
 			})
 		}

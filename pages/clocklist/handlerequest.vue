@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="闹钟请求"  />
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="闹钟请求" @clickLeft="back"  />
 		<!-- 标题卡片模式 -->
 		<uni-card
 		 v-for="item in requestlist"
@@ -60,18 +60,24 @@
 						{
 							this.week+=',';		
 						}
-						this.week+=i.toString();
+						this.week+=(i+1).toString();
 						k=true;
 					} 
 				}
 			  }		
+		  },
+		  back()
+		  {
+			  uni.navigateBack({
+			  	
+			  })
 		  },
 		  handle(item){
 			 let that=this;
 			 uni.showModal({
 			 	title:'是否接受？',
 				success:(res)=>{
-					console.log(res)
+					console.log('res',res)
 					var type;
 					if(res.confirm) {type=1;}
 					else{type=2;}
@@ -95,6 +101,9 @@
 						}
 						
 					})
+				},
+				fail:(err)=>{
+					console.log('err',err)
 				}
 			 })
 		  }

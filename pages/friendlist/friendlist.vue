@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar  :status-bar="true"  :backgroundColor="color"  @clickLeft="back"  left-icon="arrowleft" left-text="返回"  :fixed="true" color="white" rightIcon="personadd" @clickRight="addNew">
+		<uni-nav-bar  :status-bar="true"  :backgroundColor="color"   left-icon="arrowleft" left-text="返回" @clickLeft="back" :fixed="true" color="white" rightIcon="personadd" @clickRight="addNew">
 			<view class="input-view">
 				<uni-icons class="input-uni-icon" type="search" size="22" color="#666666" />
 				<input confirm-type="search" class="nav-bar-input" type="text" style="color: #333333;" placeholder="输入手机号添加好友"   @confirm="confirm">
@@ -38,6 +38,11 @@
 				}
 			},
 			methods: {
+				back(){
+					uni.navigateBack({
+						
+					})
+				},
 				confirm(e) {		
 					var target=e.target.value
 					uni.navigateTo({

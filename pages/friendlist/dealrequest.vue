@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="信息"  />
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="信息" @clickLeft="back" />
 		<view class="user_avatar">
 			<image class="avatar"  src="/static/avatar.png"></image>
 		</view>
@@ -78,6 +78,11 @@
 			}
 		},
 		methods: {
+			back(){
+				uni.navigateBack({
+					
+				})
+			},
 agree(){
 	let that=this;
 	uni.request({

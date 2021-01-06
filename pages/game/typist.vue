@@ -1,5 +1,6 @@
 <template>
 	<view class="page">
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="打字游戏" @clickLeft="back" />
 		<view class="show">
 			{{result}}
 		</view>
@@ -12,13 +13,18 @@
 </template>
 
 <script>
+	 import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 	export default{
+		components:{
+				  uniNavBar
+		},
 		data(){
 			return{
 				str:"ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz0123456789",
 				result:"",
 				myResult:"",
-				l:5
+				l:5,
+				color:''
 			}
 		},
 		methods:{
@@ -44,7 +50,10 @@
 					})
 					this.randomString()
 				}
-			}
+			},
+			back(){uni.navigateBack({
+				
+			})},
 		},
 		onShow(){
 			this.result=""
@@ -54,6 +63,7 @@
 					var tmp=Math.floor(Math.random() * (len + 1))
 					this.result+=this.str.charAt(tmp)
 				}
+				this.color=getApp().globalData.color
 			}
 		
 	}

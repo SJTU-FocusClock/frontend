@@ -1,5 +1,6 @@
 <template>
 	<view class="page">
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="算术游戏" @clickLeft="back" />
 		<view>
 			请计算
 		</view>
@@ -14,8 +15,11 @@
 </template>
 
 <script>
-	
+	 import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 	export default {
+		components:{
+				  uniNavBar
+		},
 		data() {
 			return{
 			first:0,
@@ -25,10 +29,14 @@
 			min:0,
 			myResult:null,
 			value:"",
-			op:""
+			op:"",
+			color:''
 			}
 		},
 		methods: {
+			back(){uni.navigateBack({
+				
+			})},
 			//其实这里没有用
 			  onKeyInput: function(event) {
 			            this.myResult = event.target.value
@@ -83,7 +91,7 @@
 				this.op="-"
 				this.result=this.first-this.second
 			}
-			
+			this.color=getApp().globalData.color
 		}
 		}
 </script>

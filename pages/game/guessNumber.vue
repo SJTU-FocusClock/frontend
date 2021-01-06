@@ -1,5 +1,6 @@
 <template>
 	<view class="page">
+		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="c" :status-bar="true" color="white" title="猜数字" @clickLeft="back" />
 		<view>
 			请猜数字
 		</view>
@@ -14,7 +15,11 @@
 </template>
 
 <script>
+	import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 	export default {
+		components:{
+				  uniNavBar
+		},
 		data() {
 			return {
 				first: 0,
@@ -24,10 +29,17 @@
 				min: 0,
 				myResult: null,
 				value: "",
-				op: ""
+				op: "",
+				color:''
 			}
 		},
 		methods: {
+			back()
+			{
+				uni.navigateBack({
+					
+				})
+			},
 			//其实这里没有用
 			onKeyInput: function(event) {
 				this.myResult = event.target.value
@@ -62,6 +74,7 @@
 			}
 		},
 		onShow() {
+			this.color=getApp().globalData.color
 			var ope = Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
 			this.first = Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
 			this.second = Math.floor(Math.random() * (this.max - this.min + 1)) + this.min

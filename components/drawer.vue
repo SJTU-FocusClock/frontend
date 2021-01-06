@@ -4,7 +4,7 @@
 	<view class="content">
 		<uni-drawer ref="showLeft" mode="left" :width="250" @change="change($event,'showLeft')">
 			<view  style="width: 250px;padding-left: 75px;padding-top: 50px;display: flex;flex-direction: column;">
-				<image style="width: 100px; height: 100px; border-radius:100px;" :mode="'scaleToFill'" src="../static/avatars/0.png" clickable @click="onClick"></image>
+				<image style="width: 100px; height: 100px; border-radius:100px;" :mode="'scaleToFill'" :src="fruit_path" clickable @click="onClick"></image>
 			   <image style="width: 50px; height: 50px; border-radius:100px;margin-left: 23px;" mode="'scaleToFill'" src="/static/avatars/LV0.png"></image>
 			</view>
 			<uni-list :border="false">
@@ -37,6 +37,8 @@
 			return{
 				showLeft: false,
 				num:1,
+				credit:0,
+				fruit_path:'/static/avatars/0.png',
 				chatboxes: {
 					color: '#93989d',
 					size: '22',
@@ -77,9 +79,8 @@
 		},
 		onShow()
 		{
-			console.log(getApp().globalData.color)
-			//this.color=getApp().globalData.color
-			this.num++
+			this.num++		
+			
 		},
 		methods:{
 			onClick(e){
@@ -146,6 +147,19 @@
 			// 打开窗口
 			showDrawer(e) {
 				this.$refs[e].open()
+				var that=this
+				uni.request({
+				 url:'http://106.54.76.21:8080/users/getUserCredit',
+				 method:'GET',
+				 header: {
+				 'content-type': 'application/x-www-form-urlencoded' 
+				 		},
+				success:function(e){ 
+						that.credit=e.data
+						var i=that.credit%9
+						that.fruit_path='/static/avatars/'+i.toString()+'.png'
+					}
+				})
 			},
 			// 关闭窗口
 			closeDrawer(e) {
@@ -153,10 +167,11 @@
 			},
 			// 抽屉状态发生变化触发
 			change(e, type) {
-				console.log((type === 'showLeft' ? '左窗口' : '右窗口') + (e ? '打开' : '关闭'));
+			
+				/* console.log((type === 'showLeft' ? '左窗口' : '右窗口') + (e ? '打开' : '关闭')); */
 				this[type] = e
 			}
-		}
+		} 
 	}
 </script>
 

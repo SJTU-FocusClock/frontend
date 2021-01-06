@@ -230,14 +230,17 @@ $list-item-pd: $uni-spacing-col-lg $uni-spacing-row-lg;
 .uni-list-item {
 	/* #ifndef APP-NVUE */
 	display: flex;
-	/* #endif */
+	/* #endif */ 
 	font-size: $uni-font-size-lg;
 	position: relative;
 	justify-content: space-between;
 	background-color: #fff;
 	flex-direction: row;
+	/* background:url('/static/bbb.jpg') no-repeat ;
+	background-size: 300rpx 300rpx;
+	background-position: 10% 40%; */
 }
-
+ 
 .uni-list-item--disabled {
 	opacity: 0.3;
 }

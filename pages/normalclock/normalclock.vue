@@ -235,6 +235,7 @@
 				var week = that.formData.checkboxTag.split(",")
 				week = week.map(Number)
 				console.log(that.ringData.radio)
+				var t=that.tag
 				uni.request({
 					url: 'http://106.54.76.21:8080/clocks/create',
 					data: {
@@ -243,7 +244,7 @@
 						time: time,
 						week: week,
 						ring: that.ringData.radio,
-						tag: that.tag
+	 					tag: that.tag
 					},
 					dataType:'json',
 					method: 'POST',

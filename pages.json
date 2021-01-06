@@ -105,31 +105,31 @@
 		{
 			"path": "pages/game/caculate",
 			"style": {
-				"navigationBarTitleText": "算数游戏"
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path":"pages/game/game2048",
 			"style": {
-				"navigationBarTitleText": "2048"
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path":"pages/game/typist",
 			"style": {
-				"navigationBarTitleText": "typist"
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path":"pages/game/puzzle",
 			"style": {
-				"navigationBarTitleText": "puzzle"
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path":"pages/game/catchMouse",
 			"style": {
-				"navigationBarTitleText": "打地鼠"
+				"navigationStyle": "custom"
 			}
 		},
 		{

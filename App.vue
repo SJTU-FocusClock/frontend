@@ -10,13 +10,15 @@
 		},
 		onHide: function() {
 			console.log('App Hide')
+			//这里可以检测熄屏
+			
 		},
 		globalData:{
 			style:"food",
 			color:"#F08080",
 			index:0,
-			whitelist:[]
-			
+			whitelist:[],
+			jumping:false,
 		}
 	}
 </script>
