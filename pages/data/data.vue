@@ -13,9 +13,11 @@
 		:showMonth="false"
 	    @change="change0"
 	     />
+		 <button type="default" @click="capture">保存分享截图</button>
 		<YSteps   color='#fff' backgroundColor='rgb(194,197,228)' :infoList='list1' :type='1'></YSteps>
 		</view>
 		<view v-if="this.index==1">
+			<button type="default" @click="capture">保存分享截图</button>
 		<uni-calendar 
 		    :insert="true"
 		    :lunar="false" 
@@ -172,6 +174,40 @@ import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 			}
 		},
 		methods: {
+			capture() {  
+                var pages = getCurrentPages();  
+                var page = pages[pages.length - 1];  
+				console.log("当前页"+pages.length-1);
+                var bitmap=null;  
+                var currentWebview = page.$getAppWebview();
+                bitmap = new plus.nativeObj.Bitmap('amway_img');  
+                // 将webview内容绘制到Bitmap对象中  
+                currentWebview.draw(bitmap,function(){  
+                    console.log('截屏绘制图片成功'); 
+					var dir="_doc/"+Math.random().toString(36).slice(-8)+".jpg"
+                    bitmap.save( dir  
+                    ,{}  
+                    ,function(i){  
+                        console.log('保存图片成功：'+JSON.stringify(i));  
+                        uni.saveImageToPhotosAlbum({  
+                            filePath: i.target,  
+                            success: function () {  
+                                bitmap.clear(); //销毁Bitmap图片  
+                                uni.showToast({  
+                                    title: '保存图片成功',  
+                                    mask: false,  
+                                    duration: 1500  
+                                });  
+                            }  
+                        });  
+                    }  
+                    ,function(e){  
+                        console.log('保存图片失败：'+JSON.stringify(e));  
+                    });  
+                },function(e){  
+                    console.log('截屏绘制图片失败：'+JSON.stringify(e));  
+                });  
+			},
 			 change0(e) {
 			    console.log(e);
 				console.log(e.fulldate)
