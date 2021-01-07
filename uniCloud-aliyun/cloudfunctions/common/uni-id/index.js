@@ -3751,6 +3751,7 @@ var Xr = Object.freeze({
 		type: r,
 		templateId: n
 	}) {
+		console.log(n);
 		if (!e) throw new Error("手机号码不可为空");
 		if (t || (t = x()), !r) throw new Error("验证码类型不可为空");
 		const i = $();

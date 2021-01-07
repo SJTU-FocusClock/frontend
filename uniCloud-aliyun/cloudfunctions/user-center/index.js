@@ -57,7 +57,7 @@ exports.main = async (event, context) => {
 					msg: '请求过于频繁'
 				}
 			}
-			const templateId = '' // 替换为自己申请的模板id
+			const templateId = '10805' // 替换为自己申请的模板id
 			if (!templateId) {
 				return {
 					code: 500,
