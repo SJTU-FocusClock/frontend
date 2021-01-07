@@ -40,7 +40,7 @@
 		univerifyLogin,
 		univerifyErrorHandler
 	} from '@/common/univerify.js'
-	const jv = uni.requireNativePlugin('JG-JVerification');
+	//const jv = uni.requireNativePlugin('JG-JVerification');
 
 	export default {
 		data() {

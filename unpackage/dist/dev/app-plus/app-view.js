@@ -2336,27 +2336,10 @@ var render = function() {
                   expression: "phoneData"
                 }
               }),
-              _c("wButton", {
-                staticClass: _vm._$g(6, "sc"),
+              _c("wInput", {
                 attrs: { _i: 6 },
-                nativeOn: {
-                  click: function($event) {
-                    return _vm.$handleViewEvent($event)
-                  }
-                }
-              }),
-              _c("wInput", {
-                attrs: { _i: 7 },
                 model: {
-                  value: _vm._$g(7, "v-model"),
-                  callback: function() {},
-                  expression: "validData"
-                }
-              }),
-              _c("wInput", {
-                attrs: { _i: 8 },
-                model: {
-                  value: _vm._$g(8, "v-model"),
+                  value: _vm._$g(6, "v-model"),
                   callback: function() {},
                   expression: "passData"
                 }
@@ -2364,12 +2347,12 @@ var render = function() {
             ],
             1
           ),
-          _c("span", { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } }, [
-            _vm._v(_vm._$g(9, "t0-0"))
+          _c("span", { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } }, [
+            _vm._v(_vm._$g(7, "t0-0"))
           ]),
           _c("wButton", {
-            staticClass: _vm._$g(10, "sc"),
-            attrs: { _i: 10 },
+            staticClass: _vm._$g(8, "sc"),
+            attrs: { _i: 8 },
             nativeOn: {
               click: function($event) {
                 return _vm.$handleViewEvent($event)
@@ -9374,38 +9357,62 @@ var render = function() {
                   }
                 }
               }),
-              _c("YSteps", { attrs: { _i: 6 } })
+              _c(
+                "v-uni-button",
+                {
+                  attrs: { type: "default", _i: 6 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [_vm._v("保存分享截图")]
+              ),
+              _c("YSteps", { attrs: { _i: 7 } })
             ],
             1
           )
         : _vm._e(),
-      _vm._$g(7, "i")
+      _vm._$g(8, "i")
         ? _c(
             "v-uni-view",
-            { attrs: { _i: 7 } },
+            { attrs: { _i: 8 } },
             [
+              _c(
+                "v-uni-button",
+                {
+                  attrs: { type: "default", _i: 9 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [_vm._v("保存分享截图")]
+              ),
               _c("uni-calendar", {
-                attrs: { _i: 8 },
+                attrs: { _i: 10 },
                 on: {
                   change: function($event) {
                     return _vm.$handleViewEvent($event)
                   }
                 }
               }),
-              _c("YSteps", { attrs: { _i: 9 } })
+              _c("YSteps", { attrs: { _i: 11 } })
             ],
             1
           )
         : _vm._e(),
-      _vm._$g(10, "i")
+      _vm._$g(12, "i")
         ? _c(
             "v-uni-view",
-            { attrs: { _i: 10 } },
+            { attrs: { _i: 12 } },
             [
-              _c("uni-section", { attrs: { _i: 11 } }),
-              _c("histogram-chart", { attrs: { _i: 12 } }),
               _c("uni-section", { attrs: { _i: 13 } }),
-              _c("histogram-chart", { attrs: { _i: 14 } })
+              _c("histogram-chart", { attrs: { _i: 14 } }),
+              _c("uni-section", { attrs: { _i: 15 } }),
+              _c("histogram-chart", { attrs: { _i: 16 } })
             ],
             1
           )

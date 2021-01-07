@@ -16,8 +16,8 @@ var config = {
 	"SMS_Provider":"aliyun",	//string 服务提供商 可选值: "aliyun" "tencent" "upyun" 根据自己选择的服务提供商，填写下方对应的配置参数
 	"aliyun":{
 		//阿里大于短信参数，在阿里云控制机台申请
-		"accessKeyId":"xxx",
-		"accessKeySecret":"xxx",
+		"accessKeyId":"LTAI4G3LLEAmGEbxi7ZAZS5n",
+		"accessKeySecret":"lECaDmHQqvsObkWLa9wjJZeCDMv1nr",
 		"SignName":"xxx",		//短信申请 注意是签名内容非签名ID
 		"TemplateID":{//短信模板列表
 			//用途:短信模板ID 自定义项名 例如 "register":"123456" 或 "resetpwd":"123456"

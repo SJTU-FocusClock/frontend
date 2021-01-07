@@ -15,22 +15,22 @@
 					placeholder="请输入手机号"
 				></wInput>
 				
-				<wButton
+				<!-- <wButton
 					class="wbutton"
 					text="验 证 "
 					:rotate="isRotate" 
 					bgColor="#c4c4e9"
-					@click.native="startVali()"
-				></wButton>
+					@click.native="onecheck()"
+				></wButton> -->
 				
-				<wInput
+				<!-- <wInput
 					v-model="validData"
 					type="password"
 					maxlength="11"
 					placeholder="请输入验证码"
 					isShowPass='ture'
-				></wInput>
-		
+				></wInput> -->
+				
 				<wInput
 					v-model="passData"
 					type="password"
@@ -58,7 +58,7 @@
 <script>
 	var _this;
 	import wInput from '../../components/watch-login/watch-input.vue' //input
-	import wButton from '../../components/watch-login/watch-button.vue' //button
+	import wButton from '../../components/watch-login/watch-button.vue' //button	
 	
 	export default {
 		data() {
@@ -124,6 +124,13 @@
 					this.boolphone = true;
 				}
 			},
+			// onecheck(){
+			// 	univerifyLogin().catch(err => {
+			// 		if (typeof err === 'boolean') return;
+			// 		univerifyErrorHandler(err);
+			// 	})
+			// 	return;
+			// },
 			startReg() {
 				
 				//注册
