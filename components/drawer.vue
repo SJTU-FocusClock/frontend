@@ -5,7 +5,7 @@
 		<uni-drawer ref="showLeft" mode="left" :width="250" @change="change($event,'showLeft')">
 			<view  style="width: 250px;padding-left: 75px;padding-top: 50px;display: flex;flex-direction: column;">
 				<image style="width: 100px; height: 100px; border-radius:100px;" :mode="'scaleToFill'" :src="fruit_path" clickable @click="onClick"></image>
-			   <image style="width: 50px; height: 50px; border-radius:100px;margin-left: 23px;" mode="'scaleToFill'" src="/static/avatars/LV0.png"></image>
+			   <image style="width: 50px; height: 50px; border-radius:100px;margin-left: 23px;" mode="'scaleToFill'" :src="lv_path"></image>
 			</view>
 			<uni-list :border="false">
 				<uni-list-item :border="false" :show-extra-icon="true" :extra-icon="chatboxes" clickable title="我的好友"  @click="onClick1" >
@@ -39,6 +39,7 @@
 				num:1,
 				credit:0,
 				fruit_path:'/static/avatars/0.png',
+				lv_path:'',
 				chatboxes: {
 					color: '#93989d',
 					size: '22',
@@ -144,7 +145,7 @@
 				
 						
 			},
-			// 打开窗口
+			// 打开窗口 
 			showDrawer(e) {
 				this.$refs[e].open()
 				var that=this
@@ -158,6 +159,9 @@
 						that.credit=e.data
 						var i=that.credit%10
 						that.fruit_path='/static/avatars/'+i.toString()+'.png'
+						var c=parseInt(that.credit/10)
+						that.lv_path='/static/avatars/LV'+c.toString()+'.png'
+						console.log(that.lv_path)
 					}
 				})
 			},
@@ -167,8 +171,6 @@
 			},
 			// 抽屉状态发生变化触发
 			change(e, type) {
-			
-				/* console.log((type === 'showLeft' ? '左窗口' : '右窗口') + (e ? '打开' : '关闭')); */
 				this[type] = e
 			}
 		} 

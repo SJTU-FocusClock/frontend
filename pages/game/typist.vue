@@ -43,6 +43,8 @@
 					uni.showToast({
 						title:"right!"
 					})
+					uni.navigateBack({
+					})
 				}
 				else{
 					uni.showToast({
@@ -52,7 +54,6 @@
 				}
 			},
 			back(){uni.navigateBack({
-				
 			})},
 		},
 		onShow(){

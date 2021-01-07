@@ -9,7 +9,7 @@
 		}"
 	 @click="choiceDate(weeks)">
 		<view class="uni-calendar-item__weeks-box-item">
-			<text v-if="selected&&weeks.extraInfo" class="uni-calendar-item__weeks-box-circle"></text>
+			<text v-if="selected&&weeks.extraInfo" class="uni-calendar-item__weeks-box-circle" :style="{'background-color':color}"></text>
 			<text class="uni-calendar-item__weeks-box-text" :class="{
 				'uni-calendar-item--isDay-text': weeks.isDay,
 				'uni-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
@@ -18,7 +18,9 @@
 				'uni-calendar-item--multiple': weeks.multiple,
 				'uni-calendar-item--after-checked':weeks.afterMultiple,
 				'uni-calendar-item--disable':weeks.disable,
-				}">{{weeks.date}}</text>
+				}"
+				:style="{'background-color':color}"
+				>{{weeks.date}}</text>
 			<text v-if="!lunar&&!weeks.extraInfo && weeks.isDay" class="uni-calendar-item__weeks-lunar-text" :class="{
 				'uni-calendar-item--isDay-text':weeks.isDay,
 				'uni-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
@@ -26,7 +28,7 @@
 				'uni-calendar-item--before-checked':weeks.beforeMultiple,
 				'uni-calendar-item--multiple': weeks.multiple,
 				'uni-calendar-item--after-checked':weeks.afterMultiple,
-				}">今天</text>
+				}" :style="{'background-color':color}">今天</text>
 			<text v-if="lunar&&!weeks.extraInfo" class="uni-calendar-item__weeks-lunar-text" :class="{
 				'uni-calendar-item--isDay-text':weeks.isDay,
 				'uni-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
@@ -35,7 +37,9 @@
 				'uni-calendar-item--multiple': weeks.multiple,
 				'uni-calendar-item--after-checked':weeks.afterMultiple,
 				'uni-calendar-item--disable':weeks.disable,
-				}">{{weeks.isDay?'今天': (weeks.lunar.IDayCn === '初一'?weeks.lunar.IMonthCn:weeks.lunar.IDayCn)}}</text>
+				}"
+				:style="{'background-color':color}" 
+				>{{weeks.isDay?'今天': (weeks.lunar.IDayCn === '初一'?weeks.lunar.IMonthCn:weeks.lunar.IDayCn)}}</text>
 			<text v-if="weeks.extraInfo&&weeks.extraInfo.info" class="uni-calendar-item__weeks-lunar-text" :class="{
 				'uni-calendar-item--extra':weeks.extraInfo.info,
 				'uni-calendar-item--isDay-text':weeks.isDay,
@@ -45,13 +49,19 @@
 				'uni-calendar-item--multiple': weeks.multiple,
 				'uni-calendar-item--after-checked':weeks.afterMultiple,
 				'uni-calendar-item--disable':weeks.disable,
-				}">{{weeks.extraInfo.info}}</text>
+				}"
+				:style="{'background-color':color}"
+				>{{weeks.extraInfo.info}}</text>
 		</view>
 	</view>
 </template>
 
 <script>
 	export default {
+		data(){
+			return{
+			}
+		},
 		props: {
 			weeks: {
 				type: Object,
@@ -74,12 +84,18 @@
 			lunar: {
 				type: Boolean,
 				default: false
+			},
+			color:{
+				type:String,
+				default:''
 			}
 		},
 		methods: {
 			choiceDate(weeks) {
 				this.$emit('change', weeks)
 			}
+		},
+		onShow(){
 		}
 	}
 </script>
@@ -135,13 +151,15 @@
 	}
 
 	.uni-calendar-item--isDay-text {
-		color: rgb(109,106,149);
+		/* color: rgb(109,106,149); */
+		/* color: #0056B3; */
 	}
 
 	.uni-calendar-item--isDay {
 		background-color: rgb(194,197,228);
+		/* background-color: #0056B3; */
 		opacity: 0.8;
-		color: #fff;
+		color: #fff; 
 		border-radius: 20upx;
 	}
 

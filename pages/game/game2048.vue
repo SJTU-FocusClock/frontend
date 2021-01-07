@@ -1,7 +1,7 @@
 <template>
   <view class="layout">
 	  		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="c" :status-bar="true" color="white" title="2048" @clickLeft="back" />
-	  <view class="goal">目标:200</view>
+	  <view class="goal">目标:30</view>
     <header>
       <span class="score">总分：{{score}}</span>
       <button class="star" @click="init">开始新的游戏</button>
@@ -332,7 +332,7 @@
     },
 	onShow(){
 		 this.$watch("score", function (newValue, oldValue) {
-			 if(newValue>=200){
+			 if(newValue>=30){
 				 uni.showToast({
 				 	title:"win!"
 				 })
@@ -386,7 +386,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-      }
+      } 
     }
     .all-container {
       height: 500px;

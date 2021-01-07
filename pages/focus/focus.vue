@@ -13,7 +13,7 @@
 		<uni-popup ref="dogs" type="dialog">
 			<uniPopupDogs mode="input" title="选择宠物" @confirm="confirmDogs"> </uniPopupDogs>
 		</uni-popup> 
-
+ 
        <uni-popup ref="jump" type="dialog">
 			<uniPopupJump mode="input" title="跳转" @confirm="confirmJumps"> </uniPopupJump>
 		</uni-popup>
@@ -280,9 +280,9 @@
 			clearTimeout(this.jump_timeout)
 		},
 		onHide() {
-			console.log("hide:jump:",getApp().globalData.jumping)
+			console.log("hide:jump:",getApp().globalData.jumping) 
 			//深度模式并且不是熄屏才会停止,普通模式并且不是跳转出去的
-			if((this.normal==false&&this.isScreenOn())||(this.normal==true&&!getApp().globalData.jumping))
+			if((this.normal==false&&this.isScreenOn())||(this.normal==true&&!getApp().globalData.jumping&&this.isScreenOn()))
 		{
 		this.isdisabled=false;
 		//???

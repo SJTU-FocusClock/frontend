@@ -3,7 +3,7 @@
 		<uni-nav-bar left-icon="back" left-text="返回" :backgroundColor="color" :status-bar="true" color="white" title="信息" @clickLeft="back" />
 
 		<view class="user_avatar">
-			<image class="avatar" src="/static/avatar.png"></image>
+			<image class="avatar" :src="path"></image>
 		</view>
 
 		<view class="nickname">
@@ -35,6 +35,7 @@
 		data() {
 			return {
 				color:"#F08080",
+				path:'',
 				user: {
 					nickname: "",
 					phone: "",
@@ -128,7 +129,8 @@
 			var info = JSON.parse(options.info);
 			console.log("info", info);
 			this.user = info;
-
+			var i=this.user.phone%10
+			this.path='/static/avatars/'+i.toString()+'.png'
 			//处理性别
 			this.user.sex = info.sex ? '男' : '女'
 			this.color=getApp().globalData.color
@@ -145,6 +147,7 @@
 		height: 100px;
 		border-radius: 100px;
 		margin-top: 90px;
+		margin-left: 50rpx; 
 	}
 
 	.user_avatar {

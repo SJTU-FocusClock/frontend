@@ -52,7 +52,7 @@
 				</view>
 				<view class="uni-calendar__weeks" v-for="(item,weekIndex) in weeks" :key="weekIndex">
 					<view class="uni-calendar__weeks-item" v-for="(weeks,weeksIndex) in item" :key="weeksIndex">
-						<calendar-item :weeks="weeks" :calendar="calendar" :selected="selected" :lunar="lunar" @change="choiceDate"></calendar-item>
+						<calendar-item :key="value" :color="color" :weeks="weeks" :calendar="calendar" :selected="selected" :lunar="lunar" @change="choiceDate"></calendar-item>
 					</view>
 				</view>
 			</view>
@@ -125,6 +125,10 @@
 			clearDate: {
 				type: Boolean,
 				default: true
+			},
+			color:{
+				type:String,
+				default:""
 			}
 		},
 		data() {
@@ -133,7 +137,8 @@
 				weeks: [],
 				calendar: {},
 				nowDate: '',
-				aniMaskShow: false
+				aniMaskShow: false,
+				value:0
 			}
 		},
 		watch: {
@@ -165,6 +170,7 @@
 			this.cale.setDate(this.date)
 			this.init(this.cale.selectDate.fullDate)
 			// this.setDay
+			this.value++
 		},
 		methods: {
 			// 取消穿透

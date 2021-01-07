@@ -4821,7 +4821,7 @@ var render = function() {
                     },
                     attrs: {
                       mode: "'scaleToFill'",
-                      src: "/static/avatars/LV0.png",
+                      src: _vm._$g(6, "a-src"),
                       _i: 6
                     }
                   })
@@ -8987,7 +8987,11 @@ var render = function() {
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
+        {
+          staticClass: _vm._$g(3, "sc"),
+          staticStyle: { display: "flex", "flex-direction": "column" },
+          attrs: { _i: 3 }
+        },
         [
           _c("v-uni-view", { attrs: { _i: 4 } }, [_vm._v("请在5分钟内回来")]),
           _c(
@@ -9355,7 +9359,7 @@ var render = function() {
       _vm._$g(4, "i")
         ? _c(
             "v-uni-view",
-            { attrs: { _i: 4 } },
+            { key: _vm._$g(4, "a-key"), attrs: { _i: 4 } },
             [
               _c("uni-calendar", {
                 attrs: { _i: 5 },
@@ -9365,38 +9369,89 @@ var render = function() {
                   }
                 }
               }),
-              _c("YSteps", { attrs: { _i: 6 } })
+              _c("v-uni-image", {
+                key: _vm._$g(6, "a-key"),
+                staticStyle: {
+                  width: "80rpx",
+                  height: "80rpx",
+                  margin: "50rpx",
+                  position: "fixed",
+                  bottom: "40rpx",
+                  right: "40rpx"
+                },
+                attrs: { src: _vm._$g(6, "a-src"), _i: 6 },
+                on: {
+                  click: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
+                }
+              }),
+              _c("YSteps", { attrs: { _i: 7 } })
             ],
             1
           )
         : _vm._e(),
-      _vm._$g(7, "i")
+      _vm._$g(8, "i")
         ? _c(
             "v-uni-view",
-            { attrs: { _i: 7 } },
+            { key: _vm._$g(8, "a-key"), attrs: { _i: 8 } },
             [
               _c("uni-calendar", {
-                attrs: { _i: 8 },
+                attrs: { _i: 9 },
                 on: {
                   change: function($event) {
                     return _vm.$handleViewEvent($event)
                   }
                 }
               }),
-              _c("YSteps", { attrs: { _i: 9 } })
+              _c("YSteps", { attrs: { _i: 10 } }),
+              _c("v-uni-image", {
+                key: _vm._$g(11, "a-key"),
+                staticStyle: {
+                  width: "80rpx",
+                  height: "80rpx",
+                  margin: "50rpx",
+                  position: "fixed",
+                  bottom: "40rpx",
+                  right: "40rpx"
+                },
+                attrs: { src: _vm._$g(11, "a-src"), _i: 11 },
+                on: {
+                  click: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
+                }
+              })
             ],
             1
           )
         : _vm._e(),
-      _vm._$g(10, "i")
+      _vm._$g(12, "i")
         ? _c(
             "v-uni-view",
-            { attrs: { _i: 10 } },
+            { attrs: { _i: 12 } },
             [
-              _c("uni-section", { attrs: { _i: 11 } }),
-              _c("histogram-chart", { attrs: { _i: 12 } }),
               _c("uni-section", { attrs: { _i: 13 } }),
-              _c("histogram-chart", { attrs: { _i: 14 } })
+              _c("histogram-chart", { attrs: { _i: 14 } }),
+              _c("uni-section", { attrs: { _i: 15 } }),
+              _c("histogram-chart", { attrs: { _i: 16 } }),
+              _c("v-uni-image", {
+                key: _vm._$g(17, "a-key"),
+                staticStyle: {
+                  width: "80rpx",
+                  height: "80rpx",
+                  margin: "50rpx",
+                  position: "fixed",
+                  bottom: "40rpx",
+                  right: "40rpx"
+                },
+                attrs: { src: _vm._$g(17, "a-src"), _i: 17 },
+                on: {
+                  click: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
+                }
+              })
             ],
             1
           )
@@ -10043,6 +10098,7 @@ var render = function() {
                           },
                           [
                             _c("calendar-item", {
+                              key: _vm._$g("36-" + $30 + "-" + $31, "a-key"),
                               attrs: { _i: "36-" + $30 + "-" + $31 },
                               on: {
                                 change: function($event) {
@@ -10101,7 +10157,7 @@ __webpack_require__.r(__webpack_exports__);
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 var _uniCalendarItem = _interopRequireDefault(__webpack_require__(/*! ./uni-calendar-item.vue */ 278));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
-  props: ["date", "selected", "lunar", "startDate", "endDate", "range", "insert", "showMonth", "clearDate"],
+  props: ["date", "selected", "lunar", "startDate", "endDate", "range", "insert", "showMonth", "clearDate", "color"],
   data: function data() {
     return {
       wxsProps: {} };
@@ -10210,6 +10266,7 @@ var render = function() {
           _vm._$g(2, "i")
             ? _c("v-uni-text", {
                 staticClass: _vm._$g(2, "sc"),
+                style: _vm._$g(2, "s"),
                 attrs: { _i: 2 }
               })
             : _vm._e(),
@@ -10218,6 +10275,7 @@ var render = function() {
             {
               staticClass: _vm._$g(3, "sc"),
               class: _vm._$g(3, "c"),
+              style: _vm._$g(3, "s"),
               attrs: { _i: 3 }
             },
             [_vm._v(_vm._$g(3, "t0-0"))]
@@ -10228,6 +10286,7 @@ var render = function() {
                 {
                   staticClass: _vm._$g(4, "sc"),
                   class: _vm._$g(4, "c"),
+                  style: _vm._$g(4, "s"),
                   attrs: { _i: 4 }
                 },
                 [_vm._v("今天")]
@@ -10239,6 +10298,7 @@ var render = function() {
                 {
                   staticClass: _vm._$g(5, "sc"),
                   class: _vm._$g(5, "c"),
+                  style: _vm._$g(5, "s"),
                   attrs: { _i: 5 }
                 },
                 [_vm._v(_vm._$g(5, "t0-0"))]
@@ -10250,6 +10310,7 @@ var render = function() {
                 {
                   staticClass: _vm._$g(6, "sc"),
                   class: _vm._$g(6, "c"),
+                  style: _vm._$g(6, "s"),
                   attrs: { _i: 6 }
                 },
                 [_vm._v(_vm._$g(6, "t0-0"))]
@@ -10295,7 +10356,7 @@ __webpack_require__.r(__webpack_exports__);
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 {
-  props: ["weeks", "calendar", "selected", "lunar"],
+  props: ["weeks", "calendar", "selected", "lunar", "color"],
   data: function data() {
     return {
       wxsProps: {} };
@@ -10350,7 +10411,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX.2.8.11.20200907.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 15);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.uni-calendar-item__weeks-box[data-v-09f1e40c] {\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.uni-calendar-item__weeks-box-text[data-v-09f1e40c] {\r\n  font-size: 28rpx;\r\n  color: #333;\n}\n.uni-calendar-item__weeks-lunar-text[data-v-09f1e40c] {\r\n  font-size: 24rpx;\r\n  color: #333;\n}\n.uni-calendar-item__weeks-box-item[data-v-09f1e40c] {\r\n  position: relative;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  width: 100rpx;\r\n  height: 75rpx;\n}\n.uni-calendar-item__weeks-box-circle[data-v-09f1e40c] {\r\n  position: absolute;\r\n  top: 5px;\r\n  right: 5px;\r\n  width: 8px;\r\n  height: 8px;\r\n  border-radius: 8px;\r\n  background-color: #dd524d;\n}\n.uni-calendar-item--disable[data-v-09f1e40c] {\r\n  background-color: rgba(249, 249, 249, 0.3);\r\n  color: #c0c0c0;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--isDay-text[data-v-09f1e40c] {\r\n  color: #6d6a95;\n}\n.uni-calendar-item--isDay[data-v-09f1e40c] {\r\n  background-color: #c2c5e4;\r\n  opacity: 0.8;\r\n  color: #fff;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--extra[data-v-09f1e40c] {\r\n  color: #dd524d;\r\n  opacity: 0.8;\n}\n.uni-calendar-item--checked[data-v-09f1e40c] {\r\n  background-color: #c2c5e4;\r\n  color: #fff;\r\n  opacity: 0.8;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--multiple[data-v-09f1e40c] {\r\n  background-color: #c2c5e4;\r\n  color: #fff;\r\n  opacity: 0.8;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--before-checked[data-v-09f1e40c] {\r\n  background-color: #ff5a5f;\r\n  color: #fff;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--after-checked[data-v-09f1e40c] {\r\n  background-color: #ff5a5f;\r\n  color: #fff;\r\n  border-radius: 20upx;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.uni-calendar-item__weeks-box[data-v-09f1e40c] {\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.uni-calendar-item__weeks-box-text[data-v-09f1e40c] {\r\n  font-size: 28rpx;\r\n  color: #333;\n}\n.uni-calendar-item__weeks-lunar-text[data-v-09f1e40c] {\r\n  font-size: 24rpx;\r\n  color: #333;\n}\n.uni-calendar-item__weeks-box-item[data-v-09f1e40c] {\r\n  position: relative;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  width: 100rpx;\r\n  height: 75rpx;\n}\n.uni-calendar-item__weeks-box-circle[data-v-09f1e40c] {\r\n  position: absolute;\r\n  top: 5px;\r\n  right: 5px;\r\n  width: 8px;\r\n  height: 8px;\r\n  border-radius: 8px;\r\n  background-color: #dd524d;\n}\n.uni-calendar-item--disable[data-v-09f1e40c] {\r\n  background-color: rgba(249, 249, 249, 0.3);\r\n  color: #c0c0c0;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--isDay-text[data-v-09f1e40c] {\r\n  /* color: rgb(109,106,149); */\r\n  /* color: #0056B3; */\n}\n.uni-calendar-item--isDay[data-v-09f1e40c] {\r\n  background-color: #c2c5e4;\r\n  /* background-color: #0056B3; */\r\n  opacity: 0.8;\r\n  color: #fff;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--extra[data-v-09f1e40c] {\r\n  color: #dd524d;\r\n  opacity: 0.8;\n}\n.uni-calendar-item--checked[data-v-09f1e40c] {\r\n  background-color: #c2c5e4;\r\n  color: #fff;\r\n  opacity: 0.8;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--multiple[data-v-09f1e40c] {\r\n  background-color: #c2c5e4;\r\n  color: #fff;\r\n  opacity: 0.8;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--before-checked[data-v-09f1e40c] {\r\n  background-color: #ff5a5f;\r\n  color: #fff;\r\n  border-radius: 20upx;\n}\n.uni-calendar-item--after-checked[data-v-09f1e40c] {\r\n  background-color: #ff5a5f;\r\n  color: #fff;\r\n  border-radius: 20upx;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -11077,7 +11138,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX.2.8.11.20200907.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 15);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.mycolor{\n\tcolor: rgb(214,211,238);\n}\n\n", ""]);
+exports.push([module.i, "\n.mycolor{\n\t\tcolor: rgb(214,211,238);\n}\nuni-button{\n\tfont: 'Courier New', Courier, monospace,#ffffff;\n\twidth: 400rpx;\n\tmargin-top: 20rpx;\n\tcolor:#ffffff\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -11459,7 +11520,7 @@ var render = function() {
         [
           _c("v-uni-image", {
             staticClass: _vm._$g(3, "sc"),
-            attrs: { src: "/static/avatar.png", _i: 3 }
+            attrs: { src: _vm._$g(3, "a-src"), _i: 3 }
           })
         ],
         1
@@ -11589,7 +11650,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX.2.8.11.20200907.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 15);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.avatar {\n\twidth: 100px;\n\theight: 100px;\n\tborder-radius: 100px;\n\tmargin-top: 90px;\n}\n.user_avatar {\n\theight: 200px;\n\t\n\tpadding-left: 110px;\n}\n.nickname {\n\ttext-align: center;\n\tfont-size: 20px;\n\tmargin-bottom: 50px;\n}\n", ""]);
+exports.push([module.i, "\n.avatar {\n\twidth: 100px;\n\theight: 100px;\n\tborder-radius: 100px;\n\tmargin-top: 90px;\n\tmargin-left: 50rpx;\n}\n.user_avatar {\n\theight: 200px;\n\t\n\tpadding-left: 110px;\n}\n.nickname {\n\ttext-align: center;\n\tfont-size: 20px;\n\tmargin-bottom: 50px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -16122,7 +16183,7 @@ var render = function() {
         }
       }),
       _c("v-uni-view", { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } }, [
-        _vm._v("目标:200")
+        _vm._v("目标:30")
       ]),
       _c(
         "header",

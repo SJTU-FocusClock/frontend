@@ -65,7 +65,6 @@
 						title:"right!"
 					})
 					uni.navigateBack({
-						
 					})
 				}
 				else{

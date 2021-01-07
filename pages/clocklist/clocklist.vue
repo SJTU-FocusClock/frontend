@@ -123,7 +123,7 @@
 						
 						var slice=date-clock_date;//时间差
 						/* console.log("slice",slice); */
-						
+						 
 						//slice为负数说明在今天要响,此时才设置定时器
 						if(slice<0)
 						{

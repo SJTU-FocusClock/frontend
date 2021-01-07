@@ -5,10 +5,10 @@
 				<uni-icons class="input-uni-icon" type="search" size="22" color="#666666" />
 				<input confirm-type="search" class="nav-bar-input" type="text" style="color: #333333;" placeholder="输入手机号添加好友"   @confirm="confirm">
 				<uni-badge class="mybadge" type="error" :text="request_num" size="small"></uni-badge>
-			</view>
+			</view> 
 		</uni-nav-bar>
 		<uni-list :border="false">
-			<uni-list-chat  v-for="item in listData" :avatar-circle="true" :key="item.id" :title="item.nickname" avatar="/static/avatar.png"
+			<uni-list-chat  v-for="item in listData" :avatar-circle="true" :key="item.id" :title="item.nickname" :avatar="item.path"
 			   :clickable="true"  @click="jump_to_friend(item)"></uni-list-chat>
 		</uni-list>
 		
@@ -27,11 +27,6 @@
 			},
 			data() {
 				return {
-					back() {
-						uni.navigateBack({
-							delta: 1
-						})
-					},
 					listData:[],
 					request_num:0,
 					color:"#F08080",
@@ -84,7 +79,12 @@
 					success:e=>{
 						console.log(e);
 						that.listData=e.data;//将数据填入
-						
+						var i
+						for(i in this.listData)
+						{
+							var k=i%10
+							this.listData[i].path='/static/avatars/'+k.toString()+'.png'
+						}
 					}
 				})
 				that.get_request()
