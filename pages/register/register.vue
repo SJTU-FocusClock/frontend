@@ -15,14 +15,22 @@
 					placeholder="请输入手机号"
 				></wInput>
 				
-				<wButton
+				<!-- <wButton
 					class="wbutton"
-					text="注 册"
+					text="验 证 "
 					:rotate="isRotate" 
 					bgColor="#c4c4e9"
-					@click.native="startVali()"
-				></wButton>
-		
+					@click.native="onecheck()"
+				></wButton> -->
+				
+				<!-- <wInput
+					v-model="validData"
+					type="password"
+					maxlength="11"
+					placeholder="请输入验证码"
+					isShowPass='ture'
+				></wInput> -->
+				
 				<wInput
 					v-model="passData"
 					type="password"
@@ -50,7 +58,7 @@
 <script>
 	var _this;
 	import wInput from '../../components/watch-login/watch-input.vue' //input
-	import wButton from '../../components/watch-login/watch-button.vue' //button
+	import wButton from '../../components/watch-login/watch-button.vue' //button	
 	
 	export default {
 		data() {
@@ -58,10 +66,14 @@
 				//logo图片 base64
 				phoneData:'', // 用户/电话
 				passData:'',
+				validData:'',
 				isRotate: false, //是否加载旋转
 				result:'',
 				//validation code
 				code:'',
+				boolphone:false,
+				type:'register',
+				tid:'10805'
 			}
 		},
 		components:{
@@ -76,11 +88,53 @@
 				const randomStr = '00000' + Math.floor(Math.random() * 1000000)
 				this.code = randomStr.substring(randomStr.length - 6)
 			},
-		    startReg() {
+			sendsmsvalidation(){
+				console.log("get here");
+				uniCloud.callFunction({
+					name: 'user-center',
+					data: {
+						action: 'sendSmsCode',
+						params: {
+							mobile: this.phoneData,
+							code: this.code,
+							type: this.type,
+							templateId: this.tid,
+						}
+					},
+					success(res) {
+						uni.showModal({
+							showCancel: false,
+							content: JSON.stringify(res.result)
+						})
+					},
+					fail(e) {
+						console.error(e)
+						uni.showModal({
+							showCancel: false,
+							content: '发送失败，请稍后再试'
+						})
+					}
+				})
+			},
+		    startVali(){
 				//验证手机号码
-				mysendSms(this.phoneData);
+				this.sendsmsvalidation();
+				if(this.code == this.validData)
+				{
+					this.boolphone = true;
+				}
+			},
+			// onecheck(){
+			// 	univerifyLogin().catch(err => {
+			// 		if (typeof err === 'boolean') return;
+			// 		univerifyErrorHandler(err);
+			// 	})
+			// 	return;
+			// },
+			startReg() {
 				
 				//注册
+				//if(this.boolphone)
 				let that=this;
 				if(this.isRotate){
 					//判断是否加载中，避免重复点击请求

@@ -116,15 +116,15 @@
 				done();
 			},
 			dialogInputConfirme(done, val) {
-				console.log(val.tm);
+				console.log(val);
 				let that = this;
 				if (val.vf) {
 					that.user.email = e.data.email;
 					uni.request({
 						url: 'http://106.54.76.21:8080/users/setEmail?email='+val.tm,
 						method: 'PUT',
-						success: e => {
-							console.log(e)
+						success: res => {
+							console.log(res)
 							that.user.email = val.email;
 						}
 					})

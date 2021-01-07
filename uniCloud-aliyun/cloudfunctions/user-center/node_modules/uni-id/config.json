@@ -10,32 +10,32 @@
 	"forceInviteCode": false,
 	"app-plus": {
 		"tokenExpiresIn": 2592000,
-		"oauth" : {
-			"weixin" : {
-				"appid" : "weixin appid",
-				"appsecret" : "weixin appsecret"
+		"oauth": {
+			"weixin": {
+				"appid": "weixin appid",
+				"appsecret": "weixin appsecret"
 			}
 		}
 	},
 	"mp-weixin": {
-		"oauth" : {
-			"weixin" : {
-				"appid" : "weixin appid",
-				"appsecret" : "weixin appsecret"
+		"oauth": {
+			"weixin": {
+				"appid": "weixin appid",
+				"appsecret": "weixin appsecret"
 			}
 		}
 	},
 	"mp-alipay": {
-		"oauth" : {
-			"alipay" : {
-				"appid" : "alipay appid",
-				"privateKey" : "alipay privateKey"
+		"oauth": {
+			"alipay": {
+				"appid": "alipay appid",
+				"privateKey": "alipay privateKey"
 			}
 		}
 	},
 	"service": {
 		"sms": {
-			"name": "DCloud",
+			"name": "FocClock",
 			"codeExpiresIn": 300,
 			"smsKey": "3f80a2661f5956d1cfc9de548aeec7ce",
 			"smsSecret": "c86af2f43dcfc1baa88edc64cb986e5e"

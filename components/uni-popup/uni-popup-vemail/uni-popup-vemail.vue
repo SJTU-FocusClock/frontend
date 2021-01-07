@@ -241,7 +241,6 @@
 							this.onOk();
 						}
 					});
-					
 				},
 			
 			/**
@@ -252,6 +251,7 @@
 					this.popup.close()
 					if (this.mode === 'input') this.val = this.value
 				}, this.mode === 'input' ? this.val : '') */
+				console.log("确认")
 				var tmp={
 					tm:this.email,
 					vf:this.validstate

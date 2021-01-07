@@ -2335,19 +2335,10 @@ var render = function() {
                   expression: "phoneData"
                 }
               }),
-              _c("wButton", {
-                staticClass: _vm._$g(6, "sc"),
-                attrs: { _i: 6 },
-                nativeOn: {
-                  click: function($event) {
-                    return _vm.$handleViewEvent($event)
-                  }
-                }
-              }),
               _c("wInput", {
-                attrs: { _i: 7 },
+                attrs: { _i: 6 },
                 model: {
-                  value: _vm._$g(7, "v-model"),
+                  value: _vm._$g(6, "v-model"),
                   callback: function() {},
                   expression: "passData"
                 }
@@ -2355,12 +2346,12 @@ var render = function() {
             ],
             1
           ),
-          _c("span", { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } }, [
-            _vm._v(_vm._$g(8, "t0-0"))
+          _c("span", { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } }, [
+            _vm._v(_vm._$g(7, "t0-0"))
           ]),
           _c("wButton", {
-            staticClass: _vm._$g(9, "sc"),
-            attrs: { _i: 9 },
+            staticClass: _vm._$g(8, "sc"),
+            attrs: { _i: 8 },
             nativeOn: {
               click: function($event) {
                 return _vm.$handleViewEvent($event)
